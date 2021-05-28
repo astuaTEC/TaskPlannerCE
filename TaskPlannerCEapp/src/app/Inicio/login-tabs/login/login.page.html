@@ -1,0 +1,44 @@
+<ion-content>
+  <ion-row class="fila-logo ion-justify-content-center">
+    <ion-col class="ion-align-self-center">
+    </ion-col>
+  </ion-row>
+  
+  <form #form="ngForm" novalidate>
+    <ion-grid>
+      <h1>TaskPlannerCE</h1>
+      <ion-row class="fila-correo ion-justify-content-center">
+        <ion-col class="ion-align-self-center ion-text-center" size="2">
+          <ion-icon name="person" style="zoom:2.5;"></ion-icon>
+        </ion-col>
+        <ion-col class="ion-align-self-center ion-text-start" size="8">
+          <ion-item class="input-icon">
+            <ion-input clear-input="true" type="text" required
+             placeholder="Correo institucional" name="correo">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class=" fila-contrasena ion-justify-content-center">
+        <ion-col class="ion-align-self-center ion-text-center" size="2">
+          <ion-icon name="lock-closed" style="zoom:2.5;"></ion-icon>
+        </ion-col>
+        <ion-col class="ion-align-self-center ion-text-start" size="8">
+          <ion-item class="input-icon">
+            <ion-input clear-input="true" type="password" required  
+             placeholder="Contraseña" name="contrasena">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row class="fila-boton ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="7">
+          <ion-button type="submit" [disabled]="form.invalid" expand="block" (click)="goToEstudianteHome()">Iniciar sesión</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </form>
+</ion-content>

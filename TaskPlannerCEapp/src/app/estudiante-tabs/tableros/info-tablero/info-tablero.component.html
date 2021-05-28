@@ -1,0 +1,80 @@
+<ion-content>
+  <ion-row class="nombre ion-justify-content-center">
+    <ion-col class="ion-text-center ion-align-self-center">
+      <b>Nombre del tablero</b>
+    </ion-col>
+  </ion-row>
+
+  <ion-grid>
+    <ion-row class="tipo ion-justify-content-center">
+      <ion-col class="ion-text-center ion-align-self-center">
+        Tipo:
+      </ion-col>
+      <ion-col class="ion-text-start ion-align-self-center">
+        el tipo de tablero
+      </ion-col>
+    </ion-row>
+    <ion-row class="creador ion-justify-content-center">
+      <ion-col class="ion-text-center ion-align-self-center">
+        Creador:
+      </ion-col>
+      <ion-col class="ion-text-start ion-align-self-center">
+        creador del tablero
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row class="titulo-descripcion ion-justify-content-center">
+      <ion-col class="ion-text-center ion-align-self-center">
+        <b>Descripción</b>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row class="descripcion ion-justify-content-center">
+      <ion-col class="ion-text-center ion-align-self-center">
+        <p>Esta es la descripción del tablero que le dice al usuario 
+          de lo que se trata el tablero. Es importante que se tome en cuenta
+          la extensión de esta descripción
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-list class="lista-colaboradores">
+      <ion-list-header lines="inset" class="ion-text-center">
+        <ion-label><b>Colaboradores</b></ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let v of [1,1,1,1,1]">
+        <ion-row class="ion-justify-content-center">
+          <ion-col class="ion-align-self-start">
+            Nombre colaborador
+          </ion-col>
+          <ion-col class="ion-align-self-start">
+            <i>keviinar51@gmail.com</i>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-list class="lista-profesores">
+      <ion-list-header lines="inset" class="ion-text-center">
+        <ion-label><b>Profesores observadores</b></ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let v of [1,1,1,1,1]">
+        <ion-row class="ion-justify-content-center">
+          <ion-col class="ion-align-self-start">
+            Nombre profesor
+          </ion-col>
+          <ion-col class="ion-align-self-start">
+            <i>keviinar51@gmail.com</i>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+    
+  </ion-grid>
+</ion-content>

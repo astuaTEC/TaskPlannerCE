@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goToPreRegister()">
+        <ion-icon name="arrow-back-circle" style="zoom:1.7;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Registro de profesor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" novalidate>
+    <ion-grid>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center">
+          <ion-text>
+            <h5>Primer nombre</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text" required
+            name="correo">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col class="ion-align-self-center">
+          <ion-text>
+            <h5>Segundo nombre</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text" required
+            name="correo">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center">
+          <ion-text>
+            <h5>Primer apellido</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text" required
+            name="correo">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col class="ion-align-self-center">
+          <ion-text>
+            <h5>Segundo apellido</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text" required
+            name="correo">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="9">
+          <ion-text>
+            <h5>Carné estudiantil</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text" required
+            name="correo">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="9">
+          <ion-text>
+            <h5>Correo institucional</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text" required
+            name="correo">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="9">
+          <ion-text>
+            <h5>Número de teléfono</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="number" required
+            name="correo">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="fila-boton ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="7">
+          <ion-button type="submit" [disabled]="form.invalid" expand="block">Registrarse</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </form>
+</ion-content>

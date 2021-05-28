@@ -1,0 +1,44 @@
+.nombre{
+    padding-top: 5%;
+    font-size: 20;
+    text-align: center;
+}
+
+.tipo{
+    padding-top: 10%;
+}
+
+.titulo-descripcion{
+    text-align: center;
+    padding-top: 10%;
+}
+
+.lista-colaboradores{
+    padding-top: 5%;
+}
+
+.lista-profesores{
+    padding-top: 5%;
+}
+
+ion-content{
+    --ion-background-color: #7ECA9C;
+
+    --ion-item-background: #7ECA9C;
+  
+    --ion-toolbar-background: #7ECA9C;
+  
+    --ion-tab-bar-background: #7ECA9C;
+  
+    --ion-card-background: #7ECA9C;
+  
+    --ion-text-color: #000000;
+  
+    --ion-border-color: #1C1427;
+  
+    --ion-header-background: #7ECA9C;
+}
+
+ion-grid{
+    border-style: groove;
+}
