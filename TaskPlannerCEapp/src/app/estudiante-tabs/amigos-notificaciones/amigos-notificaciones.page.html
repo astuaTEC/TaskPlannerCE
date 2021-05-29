@@ -8,7 +8,7 @@
 </ion-row>
 
 <ion-footer>
-  <ion-row class="ion-justify-content-center">
+  <ion-row class="ion-justify-content-center fila">
     <ion-col size="9" class="titulo ion-text-start ion-align-self-center">
       <b>Tus notificaciones</b> 
     </ion-col>
@@ -37,7 +37,7 @@
                 20-12-2000
                </ion-col>
                <ion-col class="ion-align-self-center ion-text-end" size="2">
-                <ion-icon name="trash" style="zoom:1.7;"></ion-icon>
+                <ion-icon name="trash" style="zoom:1.7;" (click)="eliminarNotificacion()"></ion-icon>
               </ion-col>
             </ion-row>
    
@@ -47,7 +47,7 @@
     </ion-list>
   </ion-grid>
 
-  <ion-row class="ion-justify-content-center">
+  <ion-row class="ion-justify-content-center fila">
     <ion-col size="9" class="titulo ion-text-start ion-align-self-center">
      <b>Solicitudes de amistad</b> 
     </ion-col>
@@ -67,7 +67,7 @@
                Nombre
               </ion-col>
               <ion-col class="ion-text-end ion-align-self-center" size="2">
-                <ion-icon name="checkmark-circle" style="zoom:1.7;"></ion-icon>
+                <ion-icon name="checkmark-circle" style="zoom:1.7;" (click)="aceptarSolicitud()"></ion-icon>
                </ion-col>
             </ion-row>
             <ion-row class="ion-justify-content-center">
@@ -75,7 +75,7 @@
                 <i>correo institucional</i>
               </ion-col>
               <ion-col class="ion-text-end ion-align-self-center" size="2">
-                <ion-icon name="close-circle" style="zoom:1.7;"></ion-icon>
+                <ion-icon name="close-circle" style="zoom:1.7;" (click)="rechazarSolicitud()"></ion-icon>
                </ion-col>
             </ion-row>
    

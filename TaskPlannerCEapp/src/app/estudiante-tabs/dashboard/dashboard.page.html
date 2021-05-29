@@ -11,10 +11,8 @@
         </ion-col>
     </ion-row>
 
-    <ion-row class="ion-justify-content-center">
-        <ion-col class="ion-align-self-center ion-text-center cantidad-tableros">
-            <ion-badge color="warning">3</ion-badge>
-        </ion-col>
+    <ion-row class="ion-justify-content-center cantidad-fila">
+      <div class="numberCircle">1</div>
     </ion-row>
 
     <ion-row class="ion-justify-content-center titulo">
@@ -30,7 +28,13 @@
                     <ion-card-header>
                      <ion-row class="ion-justify-content-center">
                        <ion-col class="subtitulo ion-text-center ion-align-self-center">
-                        <b>Nombre</b> 
+                        <b>Kevin</b> 
+                       </ion-col>
+                       <ion-col class="subtitulo ion-text-center ion-align-self-center">
+                        <b>Acevedo</b> 
+                       </ion-col>
+                       <ion-col class="subtitulo ion-text-center ion-align-self-center">
+                        <b>Rodríguez</b> 
                        </ion-col>
                      </ion-row>
                     </ion-card-header>
@@ -38,7 +42,12 @@
                     <ion-card-content>
                       <ion-row class="ion-justify-content-center">
                         <ion-col class="ion-text-center ion-align-self-center">
-                          <i>correo institucional</i>
+                          <i>Keviinar51@gmail.com</i>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row class="ion-justify-content-center">
+                        <ion-col class="ion-text-center ion-align-self-center">
+                          Ingeniería en Computadores
                         </ion-col>
                       </ion-row>
                     </ion-card-content>
@@ -54,10 +63,12 @@
         </ion-col>
     </ion-row>
 
-    <ion-card class="carta">
-      <ion-card-content>
-        <canvas #barCanvas></canvas>
-      </ion-card-content>
-    </ion-card>
+    <ion-grid class="bar-container">
+      <ion-card class="carta">
+        <ion-card-content>
+          <canvas #barCanvas style="position:relative; height: 100%; width: 100%;"></canvas>
+        </ion-card-content>
+      </ion-card>
+    </ion-grid>
     
 </ion-footer>

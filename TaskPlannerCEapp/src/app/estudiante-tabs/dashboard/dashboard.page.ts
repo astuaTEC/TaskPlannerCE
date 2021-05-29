@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,11 +10,44 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 export class DashboardPage implements OnInit {
 
-
+  @ViewChild('barCanvas') private barChart: ElementRef;
+  bars: any;
+  colorArray: any;
+  
   constructor() { }
 
   ngOnInit(): void {
+    
+  }
+
+  ngAfterViewInit(): void{
+    this.createBarChart();
+  }
+
  
+  createBarChart() {
+    this.bars = new Chart(this.barChart.nativeElement, {
+      type: 'bar',
+      data: {
+        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+        datasets: [{
+          label: 'Cantidad de tableros creados',
+          data: [10,3,4,2,5,6],
+          backgroundColor: 'blue', // array should have same number of elements as number of dataset
+          borderColor: 'blue',// array should have same number of elements as number of dataset
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
   }
 
   slideOpts = {

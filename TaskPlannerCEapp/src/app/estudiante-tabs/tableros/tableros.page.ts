@@ -16,10 +16,6 @@ export class TablerosPage implements OnInit {
   ngOnInit() {
   }
 
-  goToLogin(){
-    this.router.navigate(['/login-tabs/login']);
-  }
-
   async eliminarTablero() {
     const alert = await this.alertController.create({
       header: 'Eliminar tableros',

@@ -35,10 +35,15 @@ const routes: Routes = [
       {
         path: 'amigos-notificaciones',
         loadChildren: () => import('./amigos-notificaciones/amigos-notificaciones.module').then( m => m.AmigosNotificacionesPageModule)
+      },
+      {
+        path: 'editar-perfil',
+        loadChildren: () => import('./editar-perfil/editar-perfil.module').then( m => m.EditarPerfilPageModule)
       }
     
     ]
   }
+ 
 
 ];
 
