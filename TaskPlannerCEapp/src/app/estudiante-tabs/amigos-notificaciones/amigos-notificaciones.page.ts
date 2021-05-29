@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-amigos-notificaciones',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AmigosNotificacionesPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
+  
+  goToAmigos(){
+    this.router.navigate(['/estudiante-tabs/amigos']);
+  }
+
 
 }

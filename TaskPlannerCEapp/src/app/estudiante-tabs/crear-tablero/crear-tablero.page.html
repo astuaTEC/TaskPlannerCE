@@ -1,9 +1,128 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>crear-tablero</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-row class="ion-justify-content-center cabecera">
+  <ion-col class="ion-align-self-center" size="1">
+    <ion-icon name="arrow-back-circle" style="zoom:1.7;" (click)="goToTableros()"></ion-icon>
+  </ion-col>
+  <ion-col class="ion-align-self-center ion-text-start titulo" size="11">
+    <b>Crear tablero</b>
+  </ion-col>
+</ion-row>
 
 <ion-content>
+  <form #form="ngForm" novalidate>
+    <ion-grid class="contenedor">
+      <ion-row class="ion-justify-content-center fila">
+        <ion-col class="ion-align-self-center" size="9">
+            <h5>Nombre del tablero</h5>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text" required
+            name="nombreTablero">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
+      <ion-row class="ion-justify-content-center fila">
+        <ion-col class="ion-align-self-center" size="9">
+            <h5>Tipo de tablero</h5>
+          <ion-item class="ion-margin input-icon">
+            <ion-select placeholder="Tipos">
+              <ion-select-option value="P">Proyecto</ion-select-option>
+              <ion-select-option value="E">Exámen</ion-select-option>
+              <ion-select-option value="T">Tarea</ion-select-option>
+              <ion-select-option value="PP">Proyecto de programación</ion-select-option>
+              <ion-select-option value="RE">Reporte escrito</ion-select-option>
+              <ion-select-option value="IL">Informe de laboratorio</ion-select-option>
+              <ion-select-option value="AC">Actividad cultural</ion-select-option>
+              <ion-select-option value="O">Otro</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center fila">
+        <ion-col class="ion-align-self-center" size="9">
+            <h5>Descripción</h5>
+          <ion-item>
+            <ion-textarea rows="3" cols="20"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+
+      <ion-grid class="contenedor">
+        <ion-row class="colaboradores ion-justify-content-center fila">
+          <ion-col class="ion-align-self-center" size="4">
+              <h5>Colaboradores</h5>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row class="ion-justify-content-center fila">
+          <ion-col class="ion-align-self-center" size="9">
+            <ion-searchbar placeholder="Nombre o correo"></ion-searchbar>
+          </ion-col>
+          <ion-col size="2" offset="1" class="ion-align-self-center"> 
+            <ion-icon name="close-circle" style="zoom:1.7;"></ion-icon>
+          </ion-col>
+        </ion-row>
+  
+        <ion-list class="lista">
+          <ion-item *ngFor="let v of [1,1,1,1,1]">
+            <ion-row class="ion-justify-content-center">
+              <ion-col class="ion-align-self-center" size="3">
+                Nombre Apellido
+              </ion-col>
+              <ion-col class="ion-align-self-center" size="8">
+                <i>keviinar51@gmail.com</i>
+              </ion-col>
+              <ion-col size="1" class="ion-align-self-center ion-text-center"> 
+                <ion-icon name="trash" style="zoom:1.5;"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-item>
+        </ion-list>
+      </ion-grid>
+
+      <ion-grid  class="contenedor">
+        <ion-row class="profesores ion-justify-content-center fila">
+          <ion-col class="ion-align-self-center" size="8">
+            <ion-text>
+              <h5>Profesores observadores</h5>
+            </ion-text>
+          </ion-col>
+
+        </ion-row>
+  
+        <ion-row class="ion-justify-content-center fila">
+          <ion-col class="ion-align-self-center" size="9">
+            <ion-searchbar placeholder="Nombre o correo"></ion-searchbar>
+          </ion-col>
+          <ion-col size="2" offset="1" class="ion-align-self-center"> 
+            <ion-icon name="close-circle" style="zoom:1.7;"></ion-icon>
+          </ion-col>
+        </ion-row>
+  
+        <ion-list class="lista">
+          <ion-item *ngFor="let v of [1,1,1,1,1]">
+            <ion-row class="ion-justify-content-center">
+              <ion-col class="ion-align-self-center" size="3">
+                Nombre Apellido
+              </ion-col>
+              <ion-col class="ion-align-self-center" size="8">
+                <i>keviinar51@gmail.com</i>
+              </ion-col>
+              <ion-col size="1" class="ion-align-self-center ion-text-center"> 
+                <ion-icon name="trash" style="zoom:1.5;"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-item>
+        </ion-list>
+      </ion-grid>
+
+      <ion-row class="fila-boton ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="7">
+          <ion-button type="submit" [disabled]="form.invalid" expand="block">Crear tablero</ion-button>
+        </ion-col>
+      </ion-row>
+
+  </form>
 </ion-content>

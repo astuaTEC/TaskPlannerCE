@@ -1,9 +1,92 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>amigos-notificaciones</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-row class="ion-justify-content-center cabecera">
+  <ion-col class="ion-align-self-center" size="1">
+    <ion-icon name="arrow-back-circle" style="zoom:1.7;" (click)="goToAmigos()"></ion-icon>
+  </ion-col>
+  <ion-col class="ion-align-self-center ion-text-start titulo" size="11">
+    <b>Notificaciones</b>
+  </ion-col>
+</ion-row>
 
-<ion-content>
+<ion-footer>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="9" class="titulo ion-text-start ion-align-self-center">
+      <b>Tus notificaciones</b> 
+    </ion-col>
+    <ion-col size="3" class="ion-text-start ion-align-self-center">
+      <b>Cantidad: 3</b> 
+    </ion-col>
+  </ion-row>
 
-</ion-content>
+  <ion-grid class="contenedor-tus-tableros">
+
+    <ion-list class="lista">
+      <ion-item *ngFor="let el of [1,2,3,34,4,4,4]">
+        <ion-card class="carta">
+          <ion-card-content>
+            <ion-row class="ion-justify-content-center">
+              <ion-col class="ion-text-start ion-align-self-center">
+               Nombre Apellido ha aceptado tu solicitud de amistad
+              </ion-col>
+
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+              <ion-col class="ion-text-start ion-align-self-center" size="2">
+               Fecha:
+              </ion-col>
+              <ion-col class="ion-text-start ion-align-self-center" size="8">
+                20-12-2000
+               </ion-col>
+               <ion-col class="ion-align-self-center ion-text-end" size="2">
+                <ion-icon name="trash" style="zoom:1.7;"></ion-icon>
+              </ion-col>
+            </ion-row>
+   
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="9" class="titulo ion-text-start ion-align-self-center">
+     <b>Solicitudes de amistad</b> 
+    </ion-col>
+    <ion-col size="3" class="ion-text-start ion-align-self-center">
+      <b>Cantidad: 3</b> 
+    </ion-col>
+  </ion-row>
+
+  <ion-grid class="contenedor-tus-tableros">
+    <ion-list class="lista">
+      <ion-item *ngFor="let el of [1,2,3,34,4,4,4]">
+        <ion-card class="carta">
+   
+          <ion-card-content>
+            <ion-row class="ion-justify-content-center">
+              <ion-col class="ion-text-start ion-align-self-center" size="10">
+               Nombre
+              </ion-col>
+              <ion-col class="ion-text-end ion-align-self-center" size="2">
+                <ion-icon name="checkmark-circle" style="zoom:1.7;"></ion-icon>
+               </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+              <ion-col class="ion-text-start ion-align-self-center" size="10">
+                <i>correo institucional</i>
+              </ion-col>
+              <ion-col class="ion-text-end ion-align-self-center" size="2">
+                <ion-icon name="close-circle" style="zoom:1.7;"></ion-icon>
+               </ion-col>
+            </ion-row>
+   
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+</ion-footer>
+
+
+
+
+

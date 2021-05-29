@@ -1,0 +1,63 @@
+<ion-row class="ion-justify-content-center cabecera">
+    <ion-col class="ion-align-self-center ion-text-center">
+      <b>Indicadores personales</b>
+    </ion-col>
+</ion-row>
+
+<ion-footer>
+    <ion-row class="ion-justify-content-center titulo">
+        <ion-col class="ion-align-self-center ion-text-center">
+          <b>Cantidad de tableros actuales</b>
+        </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center ion-text-center cantidad-tableros">
+            <ion-badge color="warning">3</ion-badge>
+        </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center titulo">
+        <ion-col class="ion-align-self-center ion-text-center">
+          <b>Los últimos 5 amigos agregados</b>
+        </ion-col>
+    </ion-row>
+
+    <ion-grid>
+        <ion-slides pager="true" [options]="slideOpts">
+            <ion-slide *ngFor="let x of [1,2,3,4,5]">
+                <ion-card class="carta">
+                    <ion-card-header>
+                     <ion-row class="ion-justify-content-center">
+                       <ion-col class="subtitulo ion-text-center ion-align-self-center">
+                        <b>Nombre</b> 
+                       </ion-col>
+                     </ion-row>
+                    </ion-card-header>
+                  
+                    <ion-card-content>
+                      <ion-row class="ion-justify-content-center">
+                        <ion-col class="ion-text-center ion-align-self-center">
+                          <i>correo institucional</i>
+                        </ion-col>
+                      </ion-row>
+                    </ion-card-content>
+                  </ion-card>
+            </ion-slide>
+           
+          </ion-slides>
+    </ion-grid>
+
+    <ion-row class="ion-justify-content-center titulo">
+        <ion-col class="ion-align-self-center ion-text-center">
+          <b>Cantidad de tableros en los últimos 6 meses</b>
+        </ion-col>
+    </ion-row>
+
+    <ion-card class="carta">
+      <ion-card-content>
+        <canvas #barCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+    
+</ion-footer>

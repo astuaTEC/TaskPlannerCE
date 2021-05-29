@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-crear-tablero',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrearTableroPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+  }
+
+  goToTableros(){
+    this.router.navigate(['/estudiante-tabs/tableros']);
   }
 
 }

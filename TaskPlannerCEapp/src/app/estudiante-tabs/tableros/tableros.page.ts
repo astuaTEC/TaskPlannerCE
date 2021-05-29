@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
 import {InfoTableroComponent} from 'src/app/estudiante-tabs/tableros/info-tablero/info-tablero.component'
-import { ModalController} from '@ionic/angular';
+
 
 @Component({
   selector: 'app-tableros',
@@ -57,5 +57,9 @@ export class TablerosPage implements OnInit {
 
     const { role } = await popover.onDidDismiss();
     console.log('onDidDismiss resolved with role', role);
+  }
+
+  goToCrearTablero(){
+    this.router.navigate(['/estudiante-tabs/crear-tablero']);
   }
 }

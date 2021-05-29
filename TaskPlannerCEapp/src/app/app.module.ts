@@ -7,7 +7,8 @@ import {InfoTableroComponent} from 'src/app/estudiante-tabs/tableros/info-tabler
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
- 
+import { Chart } from 'chart.js';
+
 @NgModule({
   declarations: [AppComponent, InfoTableroComponent],
   entryComponents: [InfoTableroComponent],

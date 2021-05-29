@@ -27,16 +27,17 @@ const routes: Routes = [
       {
         path: 'buscar-amigos',
         loadChildren: () => import('./buscar-amigos/buscar-amigos.module').then( m => m.BuscarAmigosPageModule)
+      },
+      {
+        path: 'crear-tablero',
+        loadChildren: () => import('./crear-tablero/crear-tablero.module').then( m => m.CrearTableroPageModule)
+      },
+      {
+        path: 'amigos-notificaciones',
+        loadChildren: () => import('./amigos-notificaciones/amigos-notificaciones.module').then( m => m.AmigosNotificacionesPageModule)
       }
+    
     ]
-  },
-  {
-    path: 'crear-tablero',
-    loadChildren: () => import('./crear-tablero/crear-tablero.module').then( m => m.CrearTableroPageModule)
-  },
-  {
-    path: 'amigos-notificaciones',
-    loadChildren: () => import('./amigos-notificaciones/amigos-notificaciones.module').then( m => m.AmigosNotificacionesPageModule)
   }
 
 ];

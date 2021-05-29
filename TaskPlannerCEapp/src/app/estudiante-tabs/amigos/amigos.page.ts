@@ -17,5 +17,9 @@ export class AmigosPage implements OnInit {
     this.router.navigate(['/estudiante-tabs/buscar-amigos']);
   }
 
+  goToNotificaciones(){
+    this.router.navigate(['/estudiante-tabs/amigos-notificaciones']);
+  }
+
 
 }
