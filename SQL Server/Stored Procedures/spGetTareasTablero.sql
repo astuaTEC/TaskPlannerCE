@@ -5,7 +5,7 @@ ALTER PROCEDURE spGetTareasTablero(
 @correo VARCHAR(50),
 @nombreTablero VARCHAR(50))
 AS
-SELECT	E.nombre as nombreEstado, T.fechaInicio, T.fechaFinalizacion
+SELECT	E.nombre as nombreEstado, T.nombre as nombreTarea, T.fechaInicio, T.fechaFinalizacion
 FROM	(SELECT nombre, correoEstudiante, nombreTablero
 		FROM ESTADO
 		WHERE	@correo = correoEstudiante AND
