@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>TaskPlannerCE_API</RootNamespace>
+    <UserSecretsId>9575d474-9b5e-4c14-9e78-5e8dda5e5610</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

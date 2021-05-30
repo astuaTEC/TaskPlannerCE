@@ -5506,11 +5506,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\samas\\Documents\\C#\\TaskPlannerCE-API\\TaskPlannerCE-API.csproj",
+      "projectUniqueName": "C:\\Users\\samas\\Documents\\GitHub\\TaskPlannerCE\\TaskPlannerCE-API\\TaskPlannerCE-API.csproj",
       "projectName": "TaskPlannerCE-API",
-      "projectPath": "C:\\Users\\samas\\Documents\\C#\\TaskPlannerCE-API\\TaskPlannerCE-API.csproj",
+      "projectPath": "C:\\Users\\samas\\Documents\\GitHub\\TaskPlannerCE\\TaskPlannerCE-API\\TaskPlannerCE-API.csproj",
       "packagesPath": "C:\\Users\\samas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\samas\\Documents\\C#\\TaskPlannerCE-API\\obj\\",
+      "outputPath": "C:\\Users\\samas\\Documents\\GitHub\\TaskPlannerCE\\TaskPlannerCE-API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\samas\\AppData\\Roaming\\NuGet\\NuGet.Config",
