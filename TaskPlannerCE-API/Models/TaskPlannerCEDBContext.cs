@@ -454,6 +454,8 @@ namespace TaskPlannerCE_API.Models
 
             modelBuilder.Entity<BuscarAmigoView>().HasNoKey().ToView(null);
             modelBuilder.Entity<BuscarEstudiantesView>().HasNoKey().ToView(null);
+            modelBuilder.Entity<MisTablerosView>().HasNoKey().ToView(null);
+            modelBuilder.Entity<ColaboradoresView>().HasNoKey().ToView(null);
 
             OnModelCreatingPartial(modelBuilder);
         }

@@ -24,10 +24,10 @@ namespace TaskPlannerCE_API.Repositories
         /// Metodo para acceder a la informacion de un perfil
         /// </summary>
         /// <param name="correoInstitucional">El correo a consultar</param>
-        /// <returns></returns>
-        public List<Estudiante> GetMiInfo(string correoInstitucional)
+        /// <returns>la informacion relacionada al estudiante</returns>
+        public Estudiante GetMiInfo(string correoInstitucional)
         {
-            return _context.Estudiantes.Where(x => x.CorreoInstitucional == correoInstitucional).ToList();
+            return _context.Estudiantes.Where(x => x.CorreoInstitucional == correoInstitucional).FirstOrDefault();
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace TaskPlannerCE_API.Repositories
         /// </summary>
         /// <param name="miCorreo">El correo del que hace la consulta</param>
         /// <param name="variable">El correo o el nombre a buscar</param>
-        /// <returns></returns>
+        /// <returns>lista de estudiantes encontrados</returns>
         public List<BuscarEstudiantesDTO> buscarEstudiantes(string miCorreo, string variable)
         {
             var estudiantesTotales = _context.Set<BuscarEstudiantesView>().FromSqlRaw($"EXEC spBuscarEstudiantes " +
@@ -80,5 +80,6 @@ namespace TaskPlannerCE_API.Repositories
 
             return resultado;
         }
+
     }
 }
