@@ -31,6 +31,17 @@ namespace TaskPlannerCE_API.Repositories
         }
 
         /// <summary>
+        /// Metodo para acceder a todos los amigos disponibles
+        /// </summary>
+        /// <param name="miCorreo">el correo del estudiante que realiza la consulta</param>
+        /// <returns>la lista de amigos</returns>
+        public List<BuscarAmigoView> getMisAmigos(string miCorreo)
+        {
+            return _context.Set<BuscarAmigoView>().FromSqlRaw($"EXEC spGetAmigos " +
+                            $"@miCorreo = {miCorreo}").ToList();
+        }
+
+        /// <summary>
         /// Metodo para buscar un amigo por nombre o por correo institucional
         /// </summary>
         /// <param name="miCorreo">El correo del estudiante que realiza la consulta</param>
