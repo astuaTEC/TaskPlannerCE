@@ -73,5 +73,17 @@ namespace TaskPlannerCE_API.Repositories
 
             return tableroInfo;
         }
+
+        /// <summary>
+        /// Metodo para acceder a todas las tareas incluidas en un tablero. Se incluyen todos los estados existentes
+        /// </summary>
+        /// <param name="correo">correo del propietario del tablero</param>
+        /// <param name="nombreTablero">nombre del tablero a consultar</param>
+        /// <returns>una lista con todas las tareas existentes</returns>
+        public List<TareaView> GetTareas(string correo, string nombreTablero)
+        {
+            return _context.Set<TareaView>().FromSqlRaw($"EXEC spGetTareasTablero " +
+                            $"@correo = {correo}, @nombreTablero = {nombreTablero}").ToList();
+        }
     }
 }
