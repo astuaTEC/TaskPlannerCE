@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using TaskPlannerCE_API.Models.Views;
 
 #nullable disable
 
@@ -27,6 +28,7 @@ namespace TaskPlannerCE_API.Models
         public virtual DbSet<Tarea> Tareas { get; set; }
         public virtual DbSet<TareaDependencium> TareaDependencia { get; set; }
         public virtual DbSet<TareaEstudiante> TareaEstudiantes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
@@ -34,7 +36,7 @@ namespace TaskPlannerCE_API.Models
             modelBuilder.Entity<Estado>(entity =>
             {
                 entity.HasKey(e => new { e.CorreoEstudiante, e.NombreTablero, e.Nombre })
-                    .HasName("PK__ESTADO__C3E874D6EE22291B");
+                    .HasName("PK__ESTADO__C3E874D67ADCD24A");
 
                 entity.ToTable("ESTADO");
 
@@ -57,13 +59,13 @@ namespace TaskPlannerCE_API.Models
                     .WithMany(p => p.Estados)
                     .HasForeignKey(d => new { d.CorreoEstudiante, d.NombreTablero })
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ESTADO__3552E9B6");
+                    .HasConstraintName("FK__ESTADO__53D770D6");
             });
 
             modelBuilder.Entity<Estudiante>(entity =>
             {
                 entity.HasKey(e => e.CorreoInstitucional)
-                    .HasName("PK__ESTUDIAN__A0764CD0C092F42F");
+                    .HasName("PK__ESTUDIAN__A0764CD00931937F");
 
                 entity.ToTable("ESTUDIANTE");
 
@@ -134,8 +136,8 @@ namespace TaskPlannerCE_API.Models
 
             modelBuilder.Entity<EstudianteAmigo>(entity =>
             {
-                entity.HasKey(e => e.CorreoEstudiante)
-                    .HasName("PK__ESTUDIAN__190729D2B3483391");
+                entity.HasKey(e => new { e.CorreoEstudiante, e.CorreoAmigo })
+                    .HasName("PK__ESTUDIAN__43D4BA45891AE2DE");
 
                 entity.ToTable("ESTUDIANTE_AMIGO");
 
@@ -145,7 +147,6 @@ namespace TaskPlannerCE_API.Models
                     .HasColumnName("correoEstudiante");
 
                 entity.Property(e => e.CorreoAmigo)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("correoAmigo");
@@ -154,19 +155,19 @@ namespace TaskPlannerCE_API.Models
                     .WithMany(p => p.EstudianteAmigoCorreoAmigoNavigations)
                     .HasForeignKey(d => d.CorreoAmigo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ESTUDIANT__corre__3A179ED3");
+                    .HasConstraintName("FK__ESTUDIANT__corre__589C25F3");
 
                 entity.HasOne(d => d.CorreoEstudianteNavigation)
-                    .WithOne(p => p.EstudianteAmigoCorreoEstudianteNavigation)
-                    .HasForeignKey<EstudianteAmigo>(d => d.CorreoEstudiante)
+                    .WithMany(p => p.EstudianteAmigoCorreoEstudianteNavigations)
+                    .HasForeignKey(d => d.CorreoEstudiante)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ESTUDIANT__corre__39237A9A");
+                    .HasConstraintName("FK__ESTUDIANT__corre__57A801BA");
             });
 
             modelBuilder.Entity<EstudianteTablero>(entity =>
             {
-                entity.HasKey(e => new { e.CorreoEstudiante, e.NombreTablero })
-                    .HasName("PK__ESTUDIAN__059ADB6A9396396A");
+                entity.HasKey(e => new { e.CorreoEstudiante, e.NombreTablero, e.CorreoColaborador })
+                    .HasName("PK__ESTUDIAN__69230B3D75CFA166");
 
                 entity.ToTable("ESTUDIANTE_TABLERO");
 
@@ -181,7 +182,6 @@ namespace TaskPlannerCE_API.Models
                     .HasColumnName("nombreTablero");
 
                 entity.Property(e => e.CorreoColaborador)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("correoColaborador");
@@ -190,19 +190,19 @@ namespace TaskPlannerCE_API.Models
                     .WithMany(p => p.EstudianteTableros)
                     .HasForeignKey(d => d.CorreoColaborador)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ESTUDIANT__corre__3EDC53F0");
+                    .HasConstraintName("FK__ESTUDIANT__corre__5D60DB10");
 
                 entity.HasOne(d => d.Tablero)
-                    .WithOne(p => p.EstudianteTablero)
-                    .HasForeignKey<EstudianteTablero>(d => new { d.CorreoEstudiante, d.NombreTablero })
+                    .WithMany(p => p.EstudianteTableros)
+                    .HasForeignKey(d => new { d.CorreoEstudiante, d.NombreTablero })
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ESTUDIANTE_TABLE__3DE82FB7");
+                    .HasConstraintName("FK__ESTUDIANTE_TABLE__5C6CB6D7");
             });
 
             modelBuilder.Entity<Profesor>(entity =>
             {
                 entity.HasKey(e => e.CorreoInstitucional)
-                    .HasName("PK__PROFESOR__A0764CD0445BADE3");
+                    .HasName("PK__PROFESOR__A0764CD04AD8F579");
 
                 entity.ToTable("PROFESOR");
 
@@ -252,7 +252,7 @@ namespace TaskPlannerCE_API.Models
             modelBuilder.Entity<Tablero>(entity =>
             {
                 entity.HasKey(e => new { e.CorreoEstudiante, e.Nombre })
-                    .HasName("PK__TABLERO__7E2DD21EF19CA5C1");
+                    .HasName("PK__TABLERO__7E2DD21EC8437714");
 
                 entity.ToTable("TABLERO");
 
@@ -281,13 +281,13 @@ namespace TaskPlannerCE_API.Models
                     .WithMany(p => p.Tableros)
                     .HasForeignKey(d => d.CorreoEstudiante)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__TABLERO__correoE__345EC57D");
+                    .HasConstraintName("FK__TABLERO__correoE__52E34C9D");
             });
 
             modelBuilder.Entity<TableroProfesor>(entity =>
             {
                 entity.HasKey(e => new { e.CorreoEstudiante, e.NombreTablero, e.CorreoProfesor })
-                    .HasName("PK__TABLERO___EE46085EF092DDD0");
+                    .HasName("PK__TABLERO___EE46085E5BBE2878");
 
                 entity.ToTable("TABLERO_PROFESOR");
 
@@ -310,19 +310,19 @@ namespace TaskPlannerCE_API.Models
                     .WithMany(p => p.TableroProfesors)
                     .HasForeignKey(d => d.CorreoProfesor)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__TABLERO_P__corre__3BFFE745");
+                    .HasConstraintName("FK__TABLERO_P__corre__5A846E65");
 
                 entity.HasOne(d => d.Tablero)
                     .WithMany(p => p.TableroProfesors)
                     .HasForeignKey(d => new { d.CorreoEstudiante, d.NombreTablero })
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__TABLERO_PROFESOR__3B0BC30C");
+                    .HasConstraintName("FK__TABLERO_PROFESOR__59904A2C");
             });
 
             modelBuilder.Entity<Tarea>(entity =>
             {
                 entity.HasKey(e => new { e.CorreoEstudiante, e.NombreTablero, e.NombreEstado, e.Nombre })
-                    .HasName("PK__TAREA__270F8340F1AA7547");
+                    .HasName("PK__TAREA__270F83403CE248EF");
 
                 entity.ToTable("TAREA");
 
@@ -363,13 +363,13 @@ namespace TaskPlannerCE_API.Models
                     .WithMany(p => p.Tareas)
                     .HasForeignKey(d => new { d.CorreoEstudiante, d.NombreTablero, d.NombreEstado })
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__TAREA__36470DEF");
+                    .HasConstraintName("FK__TAREA__54CB950F");
             });
 
             modelBuilder.Entity<TareaDependencium>(entity =>
             {
                 entity.HasKey(e => new { e.CorreoEstudiante, e.NombreTablero, e.NombreEstado, e.NombreTarea })
-                    .HasName("PK__TAREA_DE__9572CACBD0D1FD26");
+                    .HasName("PK__TAREA_DE__9572CACB35F95E27");
 
                 entity.ToTable("TAREA_DEPENDENCIA");
 
@@ -403,13 +403,13 @@ namespace TaskPlannerCE_API.Models
                     .WithOne(p => p.TareaDependencium)
                     .HasForeignKey<TareaDependencium>(d => new { d.CorreoEstudiante, d.NombreTablero, d.NombreEstado, d.NombreTarea })
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__TAREA_DEPENDENCI__3CF40B7E");
+                    .HasConstraintName("FK__TAREA_DEPENDENCI__5B78929E");
             });
 
             modelBuilder.Entity<TareaEstudiante>(entity =>
             {
                 entity.HasKey(e => new { e.CorreoEstudiante, e.NombreTablero, e.NombreEstado, e.NombreTarea, e.CorreoResponsable })
-                    .HasName("PK__TAREA_ES__1B60A5519A44376C");
+                    .HasName("PK__TAREA_ES__1B60A551DEE1C9DD");
 
                 entity.ToTable("TAREA_ESTUDIANTE");
 
@@ -442,14 +442,18 @@ namespace TaskPlannerCE_API.Models
                     .WithMany(p => p.TareaEstudiantes)
                     .HasForeignKey(d => d.CorreoResponsable)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__TAREA_EST__corre__382F5661");
+                    .HasConstraintName("FK__TAREA_EST__corre__56B3DD81");
 
                 entity.HasOne(d => d.Tarea)
                     .WithMany(p => p.TareaEstudiantes)
                     .HasForeignKey(d => new { d.CorreoEstudiante, d.NombreTablero, d.NombreEstado, d.NombreTarea })
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__TAREA_ESTUDIANTE__373B3228");
+                    .HasConstraintName("FK__TAREA_ESTUDIANTE__55BFB948");
             });
+
+
+            modelBuilder.Entity<BuscarAmigoView>().HasNoKey().ToView(null);
+            modelBuilder.Entity<BuscarEstudiantesView>().HasNoKey().ToView(null);
 
             OnModelCreatingPartial(modelBuilder);
         }

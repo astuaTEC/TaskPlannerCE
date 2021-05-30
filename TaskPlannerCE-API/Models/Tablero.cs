@@ -10,6 +10,7 @@ namespace TaskPlannerCE_API.Models
         public Tablero()
         {
             Estados = new HashSet<Estado>();
+            EstudianteTableros = new HashSet<EstudianteTablero>();
             TableroProfesors = new HashSet<TableroProfesor>();
         }
 
@@ -19,8 +20,8 @@ namespace TaskPlannerCE_API.Models
         public string Descripcion { get; set; }
 
         public virtual Estudiante CorreoEstudianteNavigation { get; set; }
-        public virtual EstudianteTablero EstudianteTablero { get; set; }
         public virtual ICollection<Estado> Estados { get; set; }
+        public virtual ICollection<EstudianteTablero> EstudianteTableros { get; set; }
         public virtual ICollection<TableroProfesor> TableroProfesors { get; set; }
     }
 }
