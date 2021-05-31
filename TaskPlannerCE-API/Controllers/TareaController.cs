@@ -17,5 +17,16 @@ namespace TaskPlannerCE_API.Controllers
         {
             _repo = repo;
         }
+
+        [HttpGet]
+        [Route("api/tarea/infoTarea")]
+        public IActionResult GetInfoTarea([FromQuery] string correo, [FromQuery] string nombreTablero,
+            [FromQuery] string nombreTarea, [FromQuery] string estado)
+        {
+            var resultado = _repo.GetInfoTarea(correo, nombreTablero, nombreTarea, estado);
+            if (resultado == null)
+                return BadRequest("Ha ocurrido un error");
+            return Ok(resultado);
+        }
     }
 }

@@ -9,6 +9,7 @@ SELECT	(E.primerNombre + ' ' + E.primerApellido) AS nombre,
 		E.correoInstitucional
 FROM	ESTUDIANTE AS E, ESTUDIANTE_TABLERO AS ET 
 WHERE	ET.correoEstudiante = @correo AND
+		ET.nombreTablero = @nombre AND
 		ET.correoColaborador = E.correoInstitucional;
 
 GO
