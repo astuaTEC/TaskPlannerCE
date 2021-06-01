@@ -42,6 +42,17 @@ namespace TaskPlannerCE_API.Repositories
         }
 
         /// <summary>
+        /// Metodo para acceder a los estudiantes que no son amigos de un estudiante específico
+        /// </summary>
+        /// <param name="miCorreo">el estudainte que realiza la consulta</param>
+        /// <returns>la lista de estudiantes que no son amigos</returns>
+        public List<BuscarEstudiantesView> getEstudiantesNoAmigos(string miCorreo)
+        {
+            return _context.Set<BuscarEstudiantesView>().FromSqlRaw($"EXEC spGetEstudiantesNoAmigos " +
+                            $"@miCorreo = {miCorreo}").ToList();
+        }
+
+        /// <summary>
         /// Metodo para buscar un amigo por nombre o por correo institucional
         /// </summary>
         /// <param name="miCorreo">El correo del estudiante que realiza la consulta</param>

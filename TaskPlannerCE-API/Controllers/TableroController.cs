@@ -49,6 +49,16 @@ namespace TaskPlannerCE_API.Controllers
         }
 
         [HttpGet]
+        [Route("api/tablero/amigosYcolaboradores")]
+        public IActionResult GetAmigosYcolaboradores([FromQuery] string correo, [FromQuery] string nombre)
+        {
+            var resultado = _repo.GetAmigosColaboradores(correo, nombre);
+            if (resultado == null)
+                return BadRequest("Ha ocurrido un error");
+            return Ok(resultado);
+        }
+
+        [HttpGet]
         [Route("api/tablero/getTareas")]
         public IActionResult GetTareas([FromQuery] string correo, [FromQuery] string nombre)
         {

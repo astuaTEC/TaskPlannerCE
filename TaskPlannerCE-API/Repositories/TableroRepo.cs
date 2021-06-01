@@ -85,5 +85,42 @@ namespace TaskPlannerCE_API.Repositories
             return _context.Set<TareaView>().FromSqlRaw($"EXEC spGetTareasTablero " +
                             $"@correo = {correo}, @nombreTablero = {nombreTablero}").ToList();
         }
+
+        /// <summary>
+        /// Metodo para acceder a los amigos y saber cuáles de ellos son colaboradores de un tablero
+        /// </summary>
+        /// <param name="correo">correo del propietario del tablero</param>
+        /// <param name="nombreTablero">el nombre del tablero a consultar</param>
+        /// <returns>la lista de estudiantes amigos e indica si es colaborador o no </returns>
+        public List<ColaboradorAmigoView> GetAmigosColaboradores(string correo, string nombreTablero)
+        {
+            var colaboradores = _context.Set<ColaboradoresView>().FromSqlRaw($"EXEC spGetColaboradoresTablero " +
+                            $"@correo = {correo}, @nombre = {nombreTablero}").ToList();
+
+            var amigos = _context.Set<BuscarAmigoView>().FromSqlRaw($"EXEC spGetAmigos " +
+                            $"@miCorreo = {correo}").ToList();
+
+            List<ColaboradorAmigoView> colaboradoresAmigos = new List<ColaboradorAmigoView>();
+
+            foreach(var amigo in amigos)
+            {
+                ColaboradorAmigoView ca = new ColaboradorAmigoView
+                {
+                    nombre = amigo.nombre,
+                    correoInstitucional = amigo.correoAmigo
+                };
+
+                foreach(var colaborador in colaboradores)
+                {
+                    if (ca.correoInstitucional == colaborador.correoInstitucional)
+                    {
+                        ca.colaborador = true;
+                        break;
+                    }
+                }
+                colaboradoresAmigos.Add(ca);
+            }
+            return colaboradoresAmigos;
+        }
     }
 }

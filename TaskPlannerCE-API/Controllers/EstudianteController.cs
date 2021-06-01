@@ -39,6 +39,16 @@ namespace TaskPlannerCE_API.Controllers
         }
 
         [HttpGet]
+        [Route("api/estudiante/estudiantesNoAmigos")]
+        public IActionResult GetEstudiantesNoAmigos([FromQuery] string correo)
+        {
+            var resultado = _repo.getEstudiantesNoAmigos(correo);
+            if (resultado == null)
+                return BadRequest("Ha ocurrido un error");
+            return Ok(resultado);
+        }
+
+        [HttpGet]
         [Route("api/estudiante/buscarAmigo")]
         public IActionResult BuscarAmigo([FromQuery] string correo, [FromQuery] string variable)
         {

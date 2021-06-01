@@ -45,6 +45,7 @@ CREATE TABLE TABLERO (
 	nombre					VARCHAR(50)		NOT NULL,
 	tipo					VARCHAR(50)		NOT NULL,
 	descripcion				VARCHAR(200),
+	fechaCreacion			DATE			NOT NULL,
 	PRIMARY KEY(correoEstudiante, nombre)
 );
 
