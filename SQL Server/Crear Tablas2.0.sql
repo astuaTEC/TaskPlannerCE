@@ -64,7 +64,7 @@ CREATE TABLE TAREA(
 	descripcion				VARCHAR(200),
 	fechaInicio				DATE			NOT NULL,
 	fechaFinalizacion		DATE			NOT NULL,
-	PRIMARY KEY(correoEstudiante, nombreTablero, nombreEstado, nombre)
+	PRIMARY KEY(correoEstudiante, nombreTablero, nombre)
 );
 
 -- SE CREAN LAS TABLAS CON RELACIONES MUCHOS A MUCHOS
@@ -86,19 +86,17 @@ CREATE TABLE TABLERO_PROFESOR(
 CREATE TABLE TAREA_ESTUDIANTE(
 	correoEstudiante		VARCHAR(50)		NOT NULL,
 	nombreTablero			VARCHAR(50)		NOT NULL,
-	nombreEstado			VARCHAR(50)		NOT NULL,
 	nombreTarea				VARCHAR(50)		NOT NULL,
 	correoResponsable		VARCHAR(50)		NOT NULL,
-	PRIMARY KEY(correoEstudiante, nombreTablero, nombreEstado, nombreTarea, correoResponsable)
+	PRIMARY KEY(correoEstudiante, nombreTablero, nombreTarea, correoResponsable)
 );
 
 CREATE TABLE TAREA_DEPENDENCIA(
 	correoEstudiante		VARCHAR(50)		NOT NULL,
 	nombreTablero			VARCHAR(50)		NOT NULL,
-	nombreEstado			VARCHAR(50)		NOT NULL,
 	nombreTarea				VARCHAR(50)		NOT NULL,
 	nombreTareaDependiente	VARCHAR(50)		NOT NULL,
-	PRIMARY KEY(correoEstudiante, nombreTablero, nombreEstado, nombreTarea)
+	PRIMARY KEY(correoEstudiante, nombreTablero, nombreTarea)
 );
 
 CREATE TABLE ESTUDIANTE_TABLERO(
@@ -106,6 +104,19 @@ CREATE TABLE ESTUDIANTE_TABLERO(
 	nombreTablero			VARCHAR(50)		NOT NULL,
 	correoColaborador		VARCHAR(50)     NOT NULL,
 	PRIMARY KEY(correoEstudiante, nombreTablero, correoColaborador)
+);
+
+CREATE TABLE NOTIFICACION(
+	correoEstudiante		VARCHAR(50)		NOT NULL,
+	descripcion				VARCHAR(200)	NOT NULL,
+	PRIMARY KEY(correoEstudiante)
+);
+
+CREATE TABLE SOLICITUD(
+	correoEmisor		VARCHAR(50)		NOT NULL,
+	correoReceptor		VARCHAR(50)		NOT NULL,
+	estado				VARCHAR(15)		NOT NULL,
+	PRIMARY KEY(correoEmisor, correoReceptor)
 );
 
 -- SE AGREGAN LAS LLAVES FORÁNEAS
@@ -121,8 +132,8 @@ ADD FOREIGN KEY (correoEstudiante, nombreTablero, nombreEstado)
 REFERENCES ESTADO(correoEstudiante, nombreTablero, nombre);
 
 ALTER TABLE TAREA_ESTUDIANTE
-ADD FOREIGN KEY (correoEstudiante, nombreTablero, nombreEstado, nombreTarea)
-REFERENCES TAREA(correoEstudiante, nombreTablero, nombreEstado, nombre),
+ADD FOREIGN KEY (correoEstudiante, nombreTablero, nombreTarea)
+REFERENCES TAREA(correoEstudiante, nombreTablero, nombre),
 FOREIGN KEY (correoResponsable) REFERENCES ESTUDIANTE(correoInstitucional);
 
 ALTER TABLE	ESTUDIANTE_AMIGO
@@ -135,9 +146,16 @@ REFERENCES TABLERO(correoEstudiante, nombre),
 FOREIGN KEY (correoProfesor) REFERENCES PROFESOR(correoInstitucional);
 
 ALTER TABLE TAREA_DEPENDENCIA
-ADD FOREIGN KEY (correoEstudiante, nombreTablero, nombreEstado, nombreTarea)
-REFERENCES TAREA(correoEstudiante, nombreTablero, nombreEstado, nombre);
+ADD FOREIGN KEY (correoEstudiante, nombreTablero, nombreTarea)
+REFERENCES TAREA(correoEstudiante, nombreTablero, nombre);
 
 ALTER TABLE ESTUDIANTE_TABLERO
 ADD FOREIGN KEY (correoEstudiante, nombreTablero) REFERENCES TABLERO(correoEstudiante, nombre),
 FOREIGN KEY (correoColaborador) REFERENCES ESTUDIANTE(correoInstitucional);
+
+ALTER TABLE NOTIFICACION
+ADD FOREIGN KEY (correoEstudiante) REFERENCES ESTUDIANTE(correoInstitucional);
+
+ALTER TABLE	SOLICITUD
+ADD FOREIGN KEY (correoEmisor) REFERENCES ESTUDIANTE(correoInstitucional),
+FOREIGN KEY (correoReceptor) REFERENCES ESTUDIANTE(correoInstitucional);

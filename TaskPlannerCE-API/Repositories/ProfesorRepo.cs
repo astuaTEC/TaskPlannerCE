@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TaskPlannerCE_API.Models;
+using TaskPlannerCE_API.Models.Views;
 
 namespace TaskPlannerCE_API.Repositories
 {
@@ -15,5 +17,15 @@ namespace TaskPlannerCE_API.Repositories
         {
             _context = context;
         }
+
+        /// <summary>
+        /// Metodo para acceder a todos los profesores del sistema
+        /// </summary>
+        /// <returns>la lista de profesores correspondiente</returns>
+        public List<ColaboradoresView> getTodosProfes()
+        {
+            return _context.Set<ColaboradoresView>().FromSqlRaw($"EXEC spGetTodosProfes").ToList();
+        }
+        
     }
 }

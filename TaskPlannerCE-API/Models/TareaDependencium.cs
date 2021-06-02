@@ -9,7 +9,6 @@ namespace TaskPlannerCE_API.Models
     {
         public string CorreoEstudiante { get; set; }
         public string NombreTablero { get; set; }
-        public string NombreEstado { get; set; }
         public string NombreTarea { get; set; }
         public string NombreTareaDependiente { get; set; }
 

@@ -38,11 +38,11 @@ VALUES	('sam.astua@estudiantec.cr', 'oscar.araya@estudiantec.cr'),
 		('oscar.araya@estudiantec.cr', 'kevinar51@estudiantec.cr');
 
 -- TABLERO
-INSERT INTO TABLERO(correoEstudiante, nombre, tipo, descripcion)
-VALUES ('sam.astua@estudiantec.cr', 'Tablero 1', 'Tarea', 'Este es un tablero para probar funcionalidades'), -- SAYMON
-	   ('sam.astua@estudiantec.cr', 'Tablero 2', 'Reporte Escrito', 'Este es un tablero para probar funcionalidades'),
-	   ('oscar.araya@estudiantec.cr', 'SyS 2021', 'Exámen', 'Este es un tablero para probar funcionalidades'), --OSCAR
-	   ('kevinar51@estudiantec.cr', 'Maluma 2021', 'Otro', 'Este es un tablero para probar funcionalidades'); -- KEVIN
+INSERT INTO TABLERO(correoEstudiante, nombre, tipo, descripcion, fechaCreacion)
+VALUES ('sam.astua@estudiantec.cr', 'Tablero 1', 'Tarea', 'Este es un tablero para probar funcionalidades', '2021-06-01'), -- SAYMON
+	   ('sam.astua@estudiantec.cr', 'Tablero 2', 'Reporte Escrito', 'Este es un tablero para probar funcionalidades','2021-06-01'),
+	   ('oscar.araya@estudiantec.cr', 'SyS 2021', 'Exámen', 'Este es un tablero para probar funcionalidades','2021-06-01'), --OSCAR
+	   ('kevinar51@estudiantec.cr', 'Maluma 2021', 'Otro', 'Este es un tablero para probar funcionalidades','2021-06-01'); -- KEVIN
 
 
 -- ESTUDIANTE_TABLERO (COLABORADORES)
@@ -81,11 +81,11 @@ VALUES	('sam.astua@estudiantec.cr', 'Tablero 1', 'Estado A', 'Tarea 1', 'Hacer a
 		('kevinar51@estudiantec.cr', 'Maluma 2021', 'Me encanta', 'ADMV', 'Escuchar esto', '2021-05-29', '2021-06-03');
 
 -- TAREA_ESTUDIANTE
-INSERT INTO TAREA_ESTUDIANTE(correoEstudiante, nombreTablero, nombreEstado, nombreTarea, correoResponsable)
-VALUES	('kevinar51@estudiantec.cr', 'Maluma 2021', 'No me gusta', 'Perfecta', 'sam.astua@estudiantec.cr'),
-		('kevinar51@estudiantec.cr', 'Maluma 2021', 'Me gusta', 'Hawái', 'oscar.araya@estudiantec.cr');
+INSERT INTO TAREA_ESTUDIANTE(correoEstudiante, nombreTablero, nombreTarea, correoResponsable)
+VALUES	('kevinar51@estudiantec.cr', 'Maluma 2021', 'Perfecta', 'sam.astua@estudiantec.cr'),
+		('kevinar51@estudiantec.cr', 'Maluma 2021', 'Hawái', 'oscar.araya@estudiantec.cr');
 
 -- TAREA DEPENDENCIA
-INSERT INTO TAREA_DEPENDENCIA(correoEstudiante, nombreTablero, nombreEstado, nombreTarea, nombreTareaDependiente)
-VALUES	('sam.astua@estudiantec.cr', 'Tablero 1', 'Estado A', 'Tarea 2', 'Tarea 3'),
-		('sam.astua@estudiantec.cr', 'Tablero 1', 'Estado A', 'Tarea 1', 'Tarea 2');
+INSERT INTO TAREA_DEPENDENCIA(correoEstudiante, nombreTablero, nombreTarea, nombreTareaDependiente)
+VALUES	('sam.astua@estudiantec.cr', 'Tablero 1', 'Tarea 2', 'Tarea 3'),
+		('sam.astua@estudiantec.cr', 'Tablero 1', 'Tarea 1', 'Tarea 2');

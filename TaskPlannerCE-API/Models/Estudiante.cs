@@ -12,6 +12,8 @@ namespace TaskPlannerCE_API.Models
             EstudianteAmigoCorreoAmigoNavigations = new HashSet<EstudianteAmigo>();
             EstudianteAmigoCorreoEstudianteNavigations = new HashSet<EstudianteAmigo>();
             EstudianteTableros = new HashSet<EstudianteTablero>();
+            SolicitudCorreoEmisorNavigations = new HashSet<Solicitud>();
+            SolicitudCorreoReceptorNavigations = new HashSet<Solicitud>();
             Tableros = new HashSet<Tablero>();
             TareaEstudiantes = new HashSet<TareaEstudiante>();
         }
@@ -28,9 +30,12 @@ namespace TaskPlannerCE_API.Models
         public string ProvinciaUniversidad { get; set; }
         public string AreaDeInteres { get; set; }
 
+        public virtual Notificacion Notificacion { get; set; }
         public virtual ICollection<EstudianteAmigo> EstudianteAmigoCorreoAmigoNavigations { get; set; }
         public virtual ICollection<EstudianteAmigo> EstudianteAmigoCorreoEstudianteNavigations { get; set; }
         public virtual ICollection<EstudianteTablero> EstudianteTableros { get; set; }
+        public virtual ICollection<Solicitud> SolicitudCorreoEmisorNavigations { get; set; }
+        public virtual ICollection<Solicitud> SolicitudCorreoReceptorNavigations { get; set; }
         public virtual ICollection<Tablero> Tableros { get; set; }
         public virtual ICollection<TareaEstudiante> TareaEstudiantes { get; set; }
     }

@@ -7,7 +7,6 @@ namespace TaskPlannerCE_API.Models.Views
 {
     public class TareaSimpleView
     {
-        public string nombreEstado { get; set; }
         public string nombreTarea { get; set; }
     }
 }

@@ -17,5 +17,15 @@ namespace TaskPlannerCE_API.Controllers
         {
             _repo = repo;
         }
+
+        [HttpGet]
+        [Route("api/profesor/getTodos")]
+        public IActionResult GetTodosProfes()
+        {
+            var resultado = _repo.getTodosProfes();
+            if (resultado == null)
+                return BadRequest("Ha ocurrido un error");
+            return Ok(resultado);
+        }
     }
 }

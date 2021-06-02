@@ -39,6 +39,16 @@ namespace TaskPlannerCE_API.Controllers
         }
 
         [HttpGet]
+        [Route("api/tablero/visualizadores")]
+        public IActionResult GetVisualizadores([FromQuery] string correo, [FromQuery] string nombre)
+        {
+            var resultado = _repo.GetVisualizadores(correo, nombre);
+            if (resultado == null)
+                return BadRequest("Ha ocurrido un error");
+            return Ok(resultado);
+        }
+
+        [HttpGet]
         [Route("api/tablero/infoTablero")]
         public IActionResult GetInfoTablero([FromQuery] string correo, [FromQuery] string nombre)
         {
@@ -53,6 +63,16 @@ namespace TaskPlannerCE_API.Controllers
         public IActionResult GetAmigosYcolaboradores([FromQuery] string correo, [FromQuery] string nombre)
         {
             var resultado = _repo.GetAmigosColaboradores(correo, nombre);
+            if (resultado == null)
+                return BadRequest("Ha ocurrido un error");
+            return Ok(resultado);
+        }
+
+        [HttpGet]
+        [Route("api/tablero/profesYvisualizadores")]
+        public IActionResult GetProfesYvisualizadores([FromQuery] string correo, [FromQuery] string nombre)
+        {
+            var resultado = _repo.GetProfesoresYvisualizadores(correo, nombre);
             if (resultado == null)
                 return BadRequest("Ha ocurrido un error");
             return Ok(resultado);

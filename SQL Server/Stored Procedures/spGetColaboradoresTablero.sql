@@ -5,7 +5,7 @@ ALTER PROCEDURE spGetColaboradoresTablero(
 @correo VARCHAR(50),
 @nombre VARCHAR(50))
 AS
-SELECT	(E.primerNombre + ' ' + E.primerApellido) AS nombre,
+SELECT	(E.primerNombre + ' ' + E.segundoNombre  + ' ' + E.primerApellido + ' ' + E.segundoApellido) AS nombre,
 		E.correoInstitucional
 FROM	ESTUDIANTE AS E, ESTUDIANTE_TABLERO AS ET 
 WHERE	ET.correoEstudiante = @correo AND

@@ -75,6 +75,18 @@ namespace TaskPlannerCE_API.Repositories
         }
 
         /// <summary>
+        /// Metodo para acceder a los visualizadores de un tablero especifico
+        /// </summary>
+        /// <param name="correo">el correo del propietario del tablero</param>
+        /// <param name="nombreTablero">el nombre del tablero a consultar</param>
+        /// <returns>la lista de visualizadores si existen</returns>
+        public List<ColaboradoresView> GetVisualizadores(string correo, string nombreTablero)
+        {
+            return _context.Set<ColaboradoresView>().FromSqlRaw($"EXEC spGetVisualizadoresTablero " +
+                            $"@correo = {correo}, @nombre = {nombreTablero}").ToList();
+        }
+
+        /// <summary>
         /// Metodo para acceder a todas las tareas incluidas en un tablero. Se incluyen todos los estados existentes
         /// </summary>
         /// <param name="correo">correo del propietario del tablero</param>
@@ -92,7 +104,7 @@ namespace TaskPlannerCE_API.Repositories
         /// <param name="correo">correo del propietario del tablero</param>
         /// <param name="nombreTablero">el nombre del tablero a consultar</param>
         /// <returns>la lista de estudiantes amigos e indica si es colaborador o no </returns>
-        public List<ColaboradorAmigoView> GetAmigosColaboradores(string correo, string nombreTablero)
+        public List<ColaboradorAmigoDTO> GetAmigosColaboradores(string correo, string nombreTablero)
         {
             var colaboradores = _context.Set<ColaboradoresView>().FromSqlRaw($"EXEC spGetColaboradoresTablero " +
                             $"@correo = {correo}, @nombre = {nombreTablero}").ToList();
@@ -100,11 +112,11 @@ namespace TaskPlannerCE_API.Repositories
             var amigos = _context.Set<BuscarAmigoView>().FromSqlRaw($"EXEC spGetAmigos " +
                             $"@miCorreo = {correo}").ToList();
 
-            List<ColaboradorAmigoView> colaboradoresAmigos = new List<ColaboradorAmigoView>();
+            List<ColaboradorAmigoDTO> colaboradoresAmigos = new List<ColaboradorAmigoDTO>();
 
             foreach(var amigo in amigos)
             {
-                ColaboradorAmigoView ca = new ColaboradorAmigoView
+                ColaboradorAmigoDTO ca = new ColaboradorAmigoDTO
                 {
                     nombre = amigo.nombre,
                     correoInstitucional = amigo.correoAmigo
@@ -121,6 +133,43 @@ namespace TaskPlannerCE_API.Repositories
                 colaboradoresAmigos.Add(ca);
             }
             return colaboradoresAmigos;
+        }
+
+        /// <summary>
+        /// Metodo para acceder a los profes y saber cuáles de ellos son visualizadores de un tablero
+        /// </summary>
+        /// <param name="correo">correo del propietario del tablero</param>
+        /// <param name="nombreTablero">el nombre del tablero a consultar</param>
+        /// <returns>la lista de profesores e indica si es visualizador o no </returns>
+
+        public List<ProfesorVisualizadorDTO> GetProfesoresYvisualizadores(string correo, string nombreTablero)
+        {
+            var visualizadores = _context.Set<ColaboradoresView>().FromSqlRaw($"EXEC spGetVisualizadoresTablero " +
+                            $"@correo = {correo}, @nombre = {nombreTablero}").ToList();
+
+            var profesores = _context.Set<ColaboradoresView>().FromSqlRaw($"EXEC spGetTodosProfes").ToList();
+
+            List<ProfesorVisualizadorDTO> profesVisualizadores = new List<ProfesorVisualizadorDTO>();
+
+            foreach(var profe in profesores)
+            {
+                ProfesorVisualizadorDTO pv = new ProfesorVisualizadorDTO
+                {
+                    nombre = profe.nombre,
+                    correoInstitucional = profe.correoInstitucional
+                };
+                foreach (var visualizador in visualizadores)
+                {
+                    if (pv.correoInstitucional == visualizador.correoInstitucional)
+                    {
+                        pv.visualizador = true;
+                        break;
+                    }
+                }
+                profesVisualizadores.Add(pv);
+            }
+
+            return profesVisualizadores;
         }
     }
 }

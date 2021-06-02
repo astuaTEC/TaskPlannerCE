@@ -29,13 +29,11 @@ namespace TaskPlannerCE_API.Repositories
         /// <returns>un objeto con la información de la tarea</returns>
         public TareaInfoDTO GetInfoTarea(string correo, string nombreTablero, string nombreTarea, string estado)
         {
-            var colaboradores = _context.Set<ColaboradoresView>().FromSqlRaw($"EXEC spGetResponsablesTarea " +
-                            $"@correo = {correo}, @nombreTablero = {nombreTablero}, @nombreTarea = {nombreTarea}," +
-                            $"@estado = {estado}").ToList();
+            var responsables = _context.Set<ColaboradoresView>().FromSqlRaw($"EXEC spGetResponsablesTarea " +
+                            $"@correo = {correo}, @nombreTablero = {nombreTablero}, @nombreTarea = {nombreTarea}").ToList();
 
             var dependencias = _context.Set<TareaSimpleView>().FromSqlRaw($"EXEC spGetDependenciasTarea " +
-                            $"@correo = {correo}, @nombreTablero = {nombreTablero}, @nombreTarea = {nombreTarea}," +
-                            $"@estado = {estado}").ToList();
+                            $"@correo = {correo}, @nombreTablero = {nombreTablero}, @nombreTarea = {nombreTarea}").ToList();
 
             var tareaInfo = new TareaInfoDTO
             {
@@ -47,9 +45,9 @@ namespace TaskPlannerCE_API.Repositories
                 tareaInfo.dependencias.Add(dependencia);
             }
 
-            foreach (var colaborador in colaboradores)
+            foreach (var responsable in responsables)
             {
-                tareaInfo.colaboradores.Add(colaborador);
+                tareaInfo.responsables.Add(responsable);
             }
 
             return tareaInfo;

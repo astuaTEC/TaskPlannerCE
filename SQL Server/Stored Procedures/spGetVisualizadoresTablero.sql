@@ -1,11 +1,11 @@
 USE TaskPlannerCEDB;
 GO
 
-CREATE PROCEDURE spGetVisualizadoresTablero(
+ALTER PROCEDURE spGetVisualizadoresTablero(
 @correo VARCHAR(50),
 @nombre VARCHAR(50))
 AS
-SELECT	(P.primerNombre + ' ' + P.primerApellido) AS nombre,
+SELECT	(P.primerNombre + ' ' + P.segundoNombre  + ' ' + P.primerApellido + ' ' + P.segundoApellido) AS nombre,
 		P.correoInstitucional
 FROM	PROFESOR AS P, TABLERO_PROFESOR AS TP 
 WHERE	TP.correoEstudiante = @correo AND

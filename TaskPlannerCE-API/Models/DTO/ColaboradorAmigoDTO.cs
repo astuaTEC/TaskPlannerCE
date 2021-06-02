@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 
 namespace TaskPlannerCE_API.Models.DTO
 {
-    public class ColaboradorAmigoView
+    public class ColaboradorAmigoDTO
     {
         public string nombre { get; set; }
         public string correoInstitucional { get; set; }
-
         public bool colaborador { get; set; }
     }
 }

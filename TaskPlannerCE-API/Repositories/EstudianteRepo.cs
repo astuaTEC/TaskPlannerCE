@@ -31,6 +31,17 @@ namespace TaskPlannerCE_API.Repositories
         }
 
         /// <summary>
+        /// Metodo para acceder a todos los estudiantes del sistema, menos al estudiante que realiza la consulta.
+        /// </summary>
+        /// <param name="correo">el estudiante que realiza la consulta</param>
+        /// <returns>la lista de estudiantes</returns>
+        public List<ColaboradoresView> getTodosEstudiantes(string correo)
+        {
+            return _context.Set<ColaboradoresView>().FromSqlRaw($"EXEC spGetTodosEstudiantes " +
+                            $"@correo = {correo}").ToList();
+        }
+
+        /// <summary>
         /// Metodo para acceder a todos los amigos disponibles
         /// </summary>
         /// <param name="miCorreo">el correo del estudiante que realiza la consulta</param>
