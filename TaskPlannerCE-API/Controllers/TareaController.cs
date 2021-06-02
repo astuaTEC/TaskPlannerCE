@@ -21,9 +21,9 @@ namespace TaskPlannerCE_API.Controllers
         [HttpGet]
         [Route("api/tarea/infoTarea")]
         public IActionResult GetInfoTarea([FromQuery] string correo, [FromQuery] string nombreTablero,
-            [FromQuery] string nombreTarea, [FromQuery] string estado)
+            [FromQuery] string nombreTarea)
         {
-            var resultado = _repo.GetInfoTarea(correo, nombreTablero, nombreTarea, estado);
+            var resultado = _repo.GetInfoTarea(correo, nombreTablero, nombreTarea);
             if (resultado == null)
                 return BadRequest("Ha ocurrido un error");
             return Ok(resultado);

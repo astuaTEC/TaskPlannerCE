@@ -87,15 +87,59 @@ namespace TaskPlannerCE_API.Repositories
         }
 
         /// <summary>
-        /// Metodo para acceder a todas las tareas incluidas en un tablero. Se incluyen todos los estados existentes
+        /// Metodo para acceder a todos los estados con sus respectivas tareas
         /// </summary>
         /// <param name="correo">correo del propietario del tablero</param>
         /// <param name="nombreTablero">nombre del tablero a consultar</param>
-        /// <returns>una lista con todas las tareas existentes</returns>
-        public List<TareaView> GetTareas(string correo, string nombreTablero)
+        /// <returns>una lista con todos los estados y tareas asociadas</returns>
+        public List<EstadoDTO> GetEstadosConTarea(string correo, string nombreTablero)
         {
-            return _context.Set<TareaView>().FromSqlRaw($"EXEC spGetTareasTablero " +
+            var tareasConEstado = _context.Set<TareaView>().FromSqlRaw($"EXEC spGetTareasTablero " +
                             $"@correo = {correo}, @nombreTablero = {nombreTablero}").ToList();
+
+            List<EstadoDTO> listaEstados = new List<EstadoDTO>();
+
+            foreach (var tarea in tareasConEstado)
+            { 
+
+                if(!verificarExistenciaEstado(tarea.nombreEstado, listaEstados))
+                {
+                    EstadoDTO est = new EstadoDTO
+                    {
+                        nombre = tarea.nombreEstado
+                    };
+                    listaEstados.Add(est);
+                }
+                
+                foreach (var estado in listaEstados)
+                {
+                    if(tarea.nombreEstado == estado.nombre && tarea.nombreTarea != null)
+                    {
+                        estado.tareas.Add(tarea);
+                        break;
+                    }
+                }    
+            }
+
+            return listaEstados;
+        }
+
+        /// <summary>
+        /// Metodo para verificar si existe un estado con un determinado nombre
+        /// </summary>
+        /// <param name="nombre">el nombre a consultar</param>
+        /// <param name="estados">la lista de estados para verificar</param>
+        /// <returns>un true si existe, false en caso contrario</returns>
+        public bool verificarExistenciaEstado(string nombre, List<EstadoDTO> estados)
+        {
+            foreach (var estado in estados)
+            {
+                if (nombre == estado.nombre)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>

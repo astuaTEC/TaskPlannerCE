@@ -10,12 +10,12 @@ namespace TaskPlannerCE_API.Models.DTO
     {
         public TareaInfoDTO()
         {
-            responsables = new List<ColaboradoresView>();
-            dependencias = new List<TareaSimpleView>();
+            encargados = new List<ColaboradorEncargadoDTO>();
+            dependencias = new List<TareaDependenciaDTO>();
         }
 
         public string nombreTarea { get; set; }
-        public List<ColaboradoresView> responsables { get; set; }
-        public List<TareaSimpleView> dependencias { get; set; }
+        public List<ColaboradorEncargadoDTO> encargados { get; set; }
+        public List<TareaDependenciaDTO> dependencias { get; set; }
     }
 }

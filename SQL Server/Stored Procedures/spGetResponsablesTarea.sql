@@ -17,4 +17,4 @@ WHERE	TE.correoEstudiante = @correo AND
 GO
 
 EXEC	spGetResponsablesTarea @correo = 'kevinar51@estudiantec.cr', @nombreTablero = 'Maluma 2021',
-		@nombreTarea = 'Hawái', @estado = 'Me gusta';
+		@nombreTarea = 'Hawái';

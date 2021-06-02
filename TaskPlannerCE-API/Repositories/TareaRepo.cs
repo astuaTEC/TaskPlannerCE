@@ -27,7 +27,7 @@ namespace TaskPlannerCE_API.Repositories
         /// <param name="nombreTarea">nombre de la tarea a consultar</param>
         /// <param name="estado">estado al que pertenece esa tarea</param>
         /// <returns>un objeto con la información de la tarea</returns>
-        public TareaInfoDTO GetInfoTarea(string correo, string nombreTablero, string nombreTarea, string estado)
+        public TareaInfoDTO GetInfoTarea(string correo, string nombreTablero, string nombreTarea)
         {
             var responsables = _context.Set<ColaboradoresView>().FromSqlRaw($"EXEC spGetResponsablesTarea " +
                             $"@correo = {correo}, @nombreTablero = {nombreTablero}, @nombreTarea = {nombreTarea}").ToList();
@@ -35,22 +35,74 @@ namespace TaskPlannerCE_API.Repositories
             var dependencias = _context.Set<TareaSimpleView>().FromSqlRaw($"EXEC spGetDependenciasTarea " +
                             $"@correo = {correo}, @nombreTablero = {nombreTablero}, @nombreTarea = {nombreTarea}").ToList();
 
+            var tareasTotales = _context.Set<TareaSimpleView>().FromSqlRaw($"EXEC spGetTareasTableroSinEstado " +
+                            $"@correo = {correo}, @nombre = {nombreTablero}, @nombreTarea = {nombreTarea}").ToList();
+
+            var colaboradores = _context.Set<ColaboradoresView>().FromSqlRaw($"EXEC spGetColaboradoresTablero " +
+                            $"@correo = {correo}, @nombre = {nombreTablero}").ToList();
+
             var tareaInfo = new TareaInfoDTO
             {
                 nombreTarea = nombreTarea
             };
 
-            foreach (var dependencia in dependencias)
+            foreach(var tarea in tareasTotales)
             {
-                tareaInfo.dependencias.Add(dependencia);
+                var tareaDependencia = new TareaDependenciaDTO
+                {
+                    nombreTarea = tarea.nombreTarea
+                };
+
+                if (verificarDependencia(tarea.nombreTarea, dependencias))
+                    tareaDependencia.dependencia = true;
+                else
+                    tareaDependencia.dependencia = false;
+
+                tareaInfo.dependencias.Add(tareaDependencia);
             }
 
-            foreach (var responsable in responsables)
+            foreach(var colaborador in colaboradores)
             {
-                tareaInfo.responsables.Add(responsable);
+                var colaboradorEncargado = new ColaboradorEncargadoDTO
+                {
+                    nombre = colaborador.nombre,
+                    correoInstitucional = colaborador.correoInstitucional
+                };
+
+                if (verificarResponsable(colaborador.nombre, responsables))
+                    colaboradorEncargado.encargado = true;
+                else
+                    colaboradorEncargado.encargado = false;
+
+                tareaInfo.encargados.Add(colaboradorEncargado);
             }
 
             return tareaInfo;
+        }
+
+        public bool verificarResponsable(string nombre, List<ColaboradoresView> responsables)
+        {
+            foreach(var responsable in responsables)
+            {
+                if(nombre == responsable.nombre)
+                {
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
+        public bool verificarDependencia(string nombre, List<TareaSimpleView> dependencias)
+        {
+            foreach(var dependencia in dependencias)
+            {
+                if(nombre == dependencia.nombreTarea)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
