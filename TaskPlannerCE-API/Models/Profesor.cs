@@ -19,7 +19,7 @@ namespace TaskPlannerCE_API.Models
         public string PrimerApellido { get; set; }
         public string SegundoApellido { get; set; }
         public string Telefono { get; set; }
-        public bool? Administrador { get; set; }
+        public bool Administrador { get; set; }
 
         public virtual ICollection<TableroProfesor> TableroProfesors { get; set; }
     }

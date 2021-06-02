@@ -58,7 +58,7 @@ namespace TaskPlannerCE_API.Controllers
             return Ok(resultado);
         }
 
-        [HttpGet]
+        /*[HttpGet]
         [Route("api/estudiante/buscarAmigo")]
         public IActionResult BuscarAmigo([FromQuery] string correo, [FromQuery] string variable)
         {
@@ -66,9 +66,9 @@ namespace TaskPlannerCE_API.Controllers
             if (resultado == null)
                 return BadRequest("Ha ocurrido un error");
             return Ok(resultado);
-        }
+        }*/
 
-        [HttpGet]
+       /* [HttpGet]
         [Route("api/estudiante/buscarEstudiante")]
         public IActionResult BuscarEstudiantes([FromQuery] string correo, [FromQuery] string variable)
         {
@@ -76,6 +76,6 @@ namespace TaskPlannerCE_API.Controllers
             if (resultado == null)
                 return BadRequest("Ha ocurrido un error");
             return Ok(resultado);
-        }
+        }*/
     }
 }

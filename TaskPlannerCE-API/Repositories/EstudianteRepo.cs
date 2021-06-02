@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TaskPlannerCE_API.Models;
 using TaskPlannerCE_API.Models.Views;
 using TaskPlannerCE_API.Models.DTO;
+using System.Net.Http;
 
 namespace TaskPlannerCE_API.Repositories
 {
@@ -69,11 +70,11 @@ namespace TaskPlannerCE_API.Repositories
         /// <param name="miCorreo">El correo del estudiante que realiza la consulta</param>
         /// <param name="variable">El nombre o el correo del amigo a consultar</param>
         /// <returns></returns>
-        public List<BuscarAmigoView> buscarAmigo(string miCorreo, string variable)
+        /*public List<BuscarAmigoView> buscarAmigo(string miCorreo, string variable)
         {
             return _context.Set<BuscarAmigoView>().FromSqlRaw($"EXEC spBuscarAmigos " +
                             $"@miCorreo = {miCorreo}, @variable = {variable}").ToList();
-        }
+        }*/
 
         /// <summary>
         /// Metodo para buscar estudiantes por nombre o correo electronico e indica si es amigo o no
@@ -81,7 +82,7 @@ namespace TaskPlannerCE_API.Repositories
         /// <param name="miCorreo">El correo del que hace la consulta</param>
         /// <param name="variable">El correo o el nombre a buscar</param>
         /// <returns>lista de estudiantes encontrados</returns>
-        public List<BuscarEstudiantesDTO> buscarEstudiantes(string miCorreo, string variable)
+        /*public List<BuscarEstudiantesDTO> buscarEstudiantes(string miCorreo, string variable)
         {
             var estudiantesTotales = _context.Set<BuscarEstudiantesView>().FromSqlRaw($"EXEC spBuscarEstudiantes " +
                             $"@miCorreo = {miCorreo}, @variable = {variable}").ToList();
@@ -112,6 +113,18 @@ namespace TaskPlannerCE_API.Repositories
             }
 
             return resultado;
+        }*/
+
+        // <summary>
+        /// Método para acceder a otra api y retornar un resultado
+        /// </summary>
+        /// <param name="uri">La uri de la API a consultar</param>
+        /// <returns>El resultado de la petición</returns>
+        public async Task<string> GetAsync(string uri)
+        {
+            var httpClient = new HttpClient();
+            var content = await httpClient.GetStringAsync(uri);
+            return content;
         }
 
     }

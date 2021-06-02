@@ -51,6 +51,7 @@ namespace TaskPlannerCE_API
             services.AddScoped<EstadoRepo>();
             services.AddScoped<TableroRepo>();
             services.AddScoped<TareaRepo>();
+            services.AddScoped<LoginRepo>();
 
 
             services.AddControllers();
