@@ -37,10 +37,23 @@ VALUES	('sam.astua@estudiantec.cr', 'oscar.araya@estudiantec.cr'),
 		('kevinar51@estudiantec.cr', 'oscar.araya@estudiantec.cr'),
 		('oscar.araya@estudiantec.cr', 'kevinar51@estudiantec.cr');
 
+
+--TIPO_TABLERO
+INSERT INTO TIPO_TABLERO(nombre)
+VALUES	('Exámen'),
+		('Tarea'),
+		('Proyecto programación'),
+		('Reporte escrito'),
+		('Informe laboratorio'),
+		('Proyecto'),
+		('Actividad deportiva'),
+		('Actividad cultural'),
+		('Otro');
+
 -- TABLERO
 INSERT INTO TABLERO(correoEstudiante, nombre, tipo, descripcion, fechaCreacion)
 VALUES ('sam.astua@estudiantec.cr', 'Tablero 1', 'Tarea', 'Este es un tablero para probar funcionalidades', '2021-06-01'), -- SAYMON
-	   ('sam.astua@estudiantec.cr', 'Tablero 2', 'Reporte Escrito', 'Este es un tablero para probar funcionalidades','2021-06-01'),
+	   ('sam.astua@estudiantec.cr', 'Tablero 2', 'Reporte escrito', 'Este es un tablero para probar funcionalidades','2021-06-01'),
 	   ('oscar.araya@estudiantec.cr', 'SyS 2021', 'Exámen', 'Este es un tablero para probar funcionalidades','2021-06-01'), --OSCAR
 	   ('kevinar51@estudiantec.cr', 'Maluma 2021', 'Otro', 'Este es un tablero para probar funcionalidades','2021-06-01'); -- KEVIN
 

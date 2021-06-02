@@ -119,10 +119,16 @@ CREATE TABLE SOLICITUD(
 	PRIMARY KEY(correoEmisor, correoReceptor)
 );
 
+CREATE TABLE TIPO_TABLERO(
+	nombre VARCHAR(50) NOT NULL,
+	PRIMARY KEY(nombre)
+);
+
 -- SE AGREGAN LAS LLAVES FORÁNEAS
 
 ALTER TABLE TABLERO
-ADD FOREIGN KEY (correoEstudiante) REFERENCES ESTUDIANTE(correoInstitucional);
+ADD FOREIGN KEY (correoEstudiante) REFERENCES ESTUDIANTE(correoInstitucional),
+	FOREIGN KEY (tipo) REFERENCES TIPO_TABLERO(nombre);
 
 ALTER TABLE ESTADO
 ADD FOREIGN KEY	(correoEstudiante, nombreTablero) REFERENCES TABLERO(correoEstudiante, nombre);

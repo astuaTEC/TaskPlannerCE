@@ -80,6 +80,12 @@ namespace TaskPlannerCE_API.Repositories
             return tareaInfo;
         }
 
+        /// <summary>
+        /// Metodo para saber si una colaborador es responsable de una tarea
+        /// </summary>
+        /// <param name="nombre">el nombre del colaborador a consultar</param>
+        /// <param name="responsables">los responsables existentes</param>
+        /// <returns>true en caso de que sea responsable, false en caso contrario</returns>
         public bool verificarResponsable(string nombre, List<ColaboradoresView> responsables)
         {
             foreach(var responsable in responsables)
@@ -93,6 +99,12 @@ namespace TaskPlannerCE_API.Repositories
             return false;
         }
 
+        /// <summary>
+        /// Metodo para verificar si una tarea es dependiente de otra
+        /// </summary>
+        /// <param name="nombre">nombre de la tarea a consultar</param>
+        /// <param name="dependencias">las tareas que son dependientes</param>
+        /// <returns>un true en caso de que sea dependiente, false en caso contrario</returns>
         public bool verificarDependencia(string nombre, List<TareaSimpleView> dependencias)
         {
             foreach(var dependencia in dependencias)
