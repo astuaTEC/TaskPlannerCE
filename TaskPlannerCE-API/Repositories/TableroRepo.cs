@@ -107,14 +107,14 @@ namespace TaskPlannerCE_API.Repositories
                     EstadoDTO est = new EstadoDTO
                     {
                         nombre = tarea.nombreEstado,
-                        id = tarea.idEstado
+                        idEstado = tarea.idEstado
                     };
                     listaEstados.Add(est);
                 }
                 
                 foreach (var estado in listaEstados)
                 {
-                    if(tarea.idEstado == estado.id && tarea.nombreTarea != null)
+                    if(tarea.idEstado == estado.idEstado && tarea.nombreTarea != null)
                     {
                         estado.tareas.Add(tarea);
                         break;
@@ -135,7 +135,7 @@ namespace TaskPlannerCE_API.Repositories
         {
             foreach (var estado in estados)
             {
-                if (id == estado.id)
+                if (id == estado.idEstado)
                 {
                     return true;
                 }

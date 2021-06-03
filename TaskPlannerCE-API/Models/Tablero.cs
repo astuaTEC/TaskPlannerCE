@@ -21,6 +21,7 @@ namespace TaskPlannerCE_API.Models
         public DateTime FechaCreacion { get; set; }
 
         public virtual Estudiante CorreoEstudianteNavigation { get; set; }
+        public virtual TipoTablero TipoNavigation { get; set; }
         public virtual ICollection<Estado> Estados { get; set; }
         public virtual ICollection<EstudianteTablero> EstudianteTableros { get; set; }
         public virtual ICollection<TableroProfesor> TableroProfesors { get; set; }

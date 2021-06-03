@@ -14,7 +14,7 @@ namespace TaskPlannerCE_API.Models
 
         public string CorreoEstudiante { get; set; }
         public string NombreTablero { get; set; }
-        public string NombreEstado { get; set; }
+        public int IdEstado { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public DateTime FechaInicio { get; set; }
