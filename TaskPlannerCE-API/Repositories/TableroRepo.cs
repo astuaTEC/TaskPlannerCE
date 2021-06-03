@@ -102,18 +102,19 @@ namespace TaskPlannerCE_API.Repositories
             foreach (var tarea in tareasConEstado)
             { 
 
-                if(!verificarExistenciaEstado(tarea.nombreEstado, listaEstados))
+                if(!verificarExistenciaEstado(tarea.idEstado, listaEstados))
                 {
                     EstadoDTO est = new EstadoDTO
                     {
-                        nombre = tarea.nombreEstado
+                        nombre = tarea.nombreEstado,
+                        id = tarea.idEstado
                     };
                     listaEstados.Add(est);
                 }
                 
                 foreach (var estado in listaEstados)
                 {
-                    if(tarea.nombreEstado == estado.nombre && tarea.nombreTarea != null)
+                    if(tarea.idEstado == estado.id && tarea.nombreTarea != null)
                     {
                         estado.tareas.Add(tarea);
                         break;
@@ -127,14 +128,14 @@ namespace TaskPlannerCE_API.Repositories
         /// <summary>
         /// Metodo para verificar si existe un estado con un determinado nombre
         /// </summary>
-        /// <param name="nombre">el nombre a consultar</param>
+        /// <param name="id">el id a consultar</param>
         /// <param name="estados">la lista de estados para verificar</param>
         /// <returns>un true si existe, false en caso contrario</returns>
-        public bool verificarExistenciaEstado(string nombre, List<EstadoDTO> estados)
+        public bool verificarExistenciaEstado(int id, List<EstadoDTO> estados)
         {
             foreach (var estado in estados)
             {
-                if (nombre == estado.nombre)
+                if (id == estado.id)
                 {
                     return true;
                 }

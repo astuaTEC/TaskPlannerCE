@@ -11,6 +11,7 @@ namespace TaskPlannerCE_API.Models.Views
         public string? nombreTarea { get; set; }
 
         public string descripcion { get; set; }
+        public int idEstado { get; set; }
         public DateTime? fechaInicio { get; set; }
         public DateTime? fechaFinalizacion { get; set; }
     }

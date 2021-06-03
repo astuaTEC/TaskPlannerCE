@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskPlannerCE_API.Models;
 using TaskPlannerCE_API.Models.DTO;
+using TaskPlannerCE_API.Models.InObjects;
 using TaskPlannerCE_API.Models.Views;
 
 namespace TaskPlannerCE_API.Repositories
@@ -115,6 +116,22 @@ namespace TaskPlannerCE_API.Repositories
                 }
             }
             return false;
+        }
+
+        /// <summary>
+        /// Metodo para actualizar el estado de una tarea
+        /// </summary>
+        /// <param name="te"></param>
+        public void actualizarEstado(TareaEstadoIn te)
+        {
+            _context.Database.ExecuteSqlRaw("spActualizarEstadoTarea @p0, @p1, @p2, @p3",
+                te.correoEstudiante, te.nombreTablero, te.nombreTarea, te.idEstado);
+        }
+
+        // guarda los cambios en la base de datos
+        public bool SaveChanges()
+        {
+            return (_context.SaveChanges() >= 0);
         }
     }
 }

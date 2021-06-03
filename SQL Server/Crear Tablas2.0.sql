@@ -50,16 +50,17 @@ CREATE TABLE TABLERO (
 );
 
 CREATE TABLE ESTADO(
-	correoEstudiante		VARCHAR(50)		NOT NULL,
-	nombreTablero			VARCHAR(50)		NOT NULL,
-	nombre					VARCHAR(50)		NOT NULL,
-	PRIMARY KEY(correoEstudiante, nombreTablero, nombre)
+	Id						INT 				NOT NULL,
+	correoEstudiante		VARCHAR(50)			NOT NULL,
+	nombreTablero			VARCHAR(50)			NOT NULL,
+	nombre					VARCHAR(50)			NOT NULL,
+	PRIMARY KEY(correoEstudiante, nombreTablero, Id)
 );
 
 CREATE TABLE TAREA(
 	correoEstudiante		VARCHAR(50)		NOT NULL,
 	nombreTablero			VARCHAR(50)		NOT NULL,
-	nombreEstado			VARCHAR(50)		NOT NULL,
+	IdEstado				INT				NOT NULL,
 	nombre					VARCHAR(50)		NOT NULL,
 	descripcion				VARCHAR(200),
 	fechaInicio				DATE			NOT NULL,
@@ -109,6 +110,7 @@ CREATE TABLE ESTUDIANTE_TABLERO(
 CREATE TABLE NOTIFICACION(
 	correoEstudiante		VARCHAR(50)		NOT NULL,
 	descripcion				VARCHAR(200)	NOT NULL,
+	fecha					DATE,
 	PRIMARY KEY(correoEstudiante)
 );
 
@@ -134,8 +136,8 @@ ALTER TABLE ESTADO
 ADD FOREIGN KEY	(correoEstudiante, nombreTablero) REFERENCES TABLERO(correoEstudiante, nombre);
 
 ALTER TABLE TAREA
-ADD FOREIGN KEY (correoEstudiante, nombreTablero, nombreEstado)
-REFERENCES ESTADO(correoEstudiante, nombreTablero, nombre);
+ADD FOREIGN KEY (correoEstudiante, nombreTablero, IdEstado)
+REFERENCES ESTADO(correoEstudiante, nombreTablero, Id);
 
 ALTER TABLE TAREA_ESTUDIANTE
 ADD FOREIGN KEY (correoEstudiante, nombreTablero, nombreTarea)

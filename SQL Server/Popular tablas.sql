@@ -70,28 +70,28 @@ VALUES	('sam.astua@estudiantec.cr', 'Tablero 1', 'luisB@profextec.cr'),
 		('kevinar51@estudiantec.cr', 'Maluma 2021', 'luisB@profextec.cr');
 
 --ESTADO
-INSERT INTO ESTADO (correoEstudiante, nombreTablero, nombre)
-VALUES ('sam.astua@estudiantec.cr', 'Tablero 1', 'Estado A'), -- TABLERO 1 (SAYMON)
-	   ('sam.astua@estudiantec.cr', 'Tablero 1', 'Estado B'),
-	   ('sam.astua@estudiantec.cr', 'Tablero 1', 'Estado C'),
-	   ('oscar.araya@estudiantec.cr', 'SyS 2021', 'Estudiar'), -- SYS 2021 (OSCAR)
-	   ('oscar.araya@estudiantec.cr', 'SyS 2021', 'Estudiando'),
-	   ('oscar.araya@estudiantec.cr', 'SyS 2021', 'Aprendido'),
-	   ('kevinar51@estudiantec.cr', 'Maluma 2021', 'No me gusta'), -- MALUMA 2021 (KEVIN)
-	   ('kevinar51@estudiantec.cr', 'Maluma 2021', 'Me gusta'),
-	   ('kevinar51@estudiantec.cr', 'Maluma 2021', 'Me encanta');
+INSERT INTO ESTADO (Id, correoEstudiante, nombreTablero, nombre)
+VALUES (1, 'sam.astua@estudiantec.cr', 'Tablero 1', 'Estado A'), -- TABLERO 1 (SAYMON)
+	   (2, 'sam.astua@estudiantec.cr', 'Tablero 1', 'Estado B'),
+	   (3, 'sam.astua@estudiantec.cr', 'Tablero 1', 'Estado C'),
+	   (1, 'oscar.araya@estudiantec.cr', 'SyS 2021', 'Estudiar'), -- SYS 2021 (OSCAR)
+	   (2, 'oscar.araya@estudiantec.cr', 'SyS 2021', 'Estudiando'),
+	   (3, 'oscar.araya@estudiantec.cr', 'SyS 2021', 'Aprendido'),
+	   (1, 'kevinar51@estudiantec.cr', 'Maluma 2021', 'No me gusta'), -- MALUMA 2021 (KEVIN)
+	   (2, 'kevinar51@estudiantec.cr', 'Maluma 2021', 'Me gusta'),
+	   (3, 'kevinar51@estudiantec.cr', 'Maluma 2021', 'Me encanta');
 
 -- TAREA
-INSERT INTO TAREA(correoEstudiante, nombreTablero, nombreEstado, nombre, descripcion, fechaInicio, fechaFinalizacion)
-VALUES	('sam.astua@estudiantec.cr', 'Tablero 1', 'Estado A', 'Tarea 1', 'Hacer algo', '2021-05-29', '2021-06-06'), -- SAYMON
-		('sam.astua@estudiantec.cr', 'Tablero 1', 'Estado A', 'Tarea 2', 'Hacer algo en 2', '2021-05-29', '2021-06-08'),
-		('sam.astua@estudiantec.cr', 'Tablero 1', 'Estado B', 'Tarea 3', 'Hacer algo en 3', '2021-05-29', '2021-06-04'),
-		('oscar.araya@estudiantec.cr', 'SyS 2021', 'Estudiar', 'Tarea A', 'Estudiar esto', '2021-05-29', '2021-06-05'), --OSCAR
-		('oscar.araya@estudiantec.cr', 'SyS 2021', 'Estudiando', 'Tarea B', 'Estudiar esto otro', '2021-05-29', '2021-06-06'),
-		('oscar.araya@estudiantec.cr', 'SyS 2021', 'Aprendido', 'Tarea C', 'Estudiar esto otro', '2021-05-29', '2021-06-02'),
-		('kevinar51@estudiantec.cr', 'Maluma 2021', 'No me gusta', 'Perfecta', 'Escuchar esto', '2021-05-29', '2021-06-01'), -- KEVIN
-		('kevinar51@estudiantec.cr', 'Maluma 2021', 'Me gusta', 'Hawái', 'Escuchar esto', '2021-05-29', '2021-06-02'),
-		('kevinar51@estudiantec.cr', 'Maluma 2021', 'Me encanta', 'ADMV', 'Escuchar esto', '2021-05-29', '2021-06-03');
+INSERT INTO TAREA(correoEstudiante, nombreTablero, IdEstado, nombre, descripcion, fechaInicio, fechaFinalizacion)
+VALUES	('sam.astua@estudiantec.cr', 'Tablero 1', 1, 'Tarea 1', 'Hacer algo', '2021-05-29', '2021-06-06'), -- SAYMON
+		('sam.astua@estudiantec.cr', 'Tablero 1', 1, 'Tarea 2', 'Hacer algo en 2', '2021-05-29', '2021-06-08'),
+		('sam.astua@estudiantec.cr', 'Tablero 1', 2, 'Tarea 3', 'Hacer algo en 3', '2021-05-29', '2021-06-04'),
+		('oscar.araya@estudiantec.cr', 'SyS 2021', 1, 'Tarea A', 'Estudiar esto', '2021-05-29', '2021-06-05'), --OSCAR
+		('oscar.araya@estudiantec.cr', 'SyS 2021', 2, 'Tarea B', 'Estudiar esto otro', '2021-05-29', '2021-06-06'),
+		('oscar.araya@estudiantec.cr', 'SyS 2021', 3, 'Tarea C', 'Estudiar esto otro', '2021-05-29', '2021-06-02'),
+		('kevinar51@estudiantec.cr', 'Maluma 2021', 1, 'Perfecta', 'Escuchar esto', '2021-05-29', '2021-06-01'), -- KEVIN
+		('kevinar51@estudiantec.cr', 'Maluma 2021', 2, 'Hawái', 'Escuchar esto', '2021-05-29', '2021-06-02'),
+		('kevinar51@estudiantec.cr', 'Maluma 2021', 3, 'ADMV', 'Escuchar esto', '2021-05-29', '2021-06-03');
 
 -- TAREA_ESTUDIANTE
 INSERT INTO TAREA_ESTUDIANTE(correoEstudiante, nombreTablero, nombreTarea, correoResponsable)

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TaskPlannerCE_API.Models.InObjects;
 using TaskPlannerCE_API.Repositories;
 
 namespace TaskPlannerCE_API.Controllers
@@ -27,6 +28,14 @@ namespace TaskPlannerCE_API.Controllers
             if (resultado == null)
                 return BadRequest("Ha ocurrido un error");
             return Ok(resultado);
+        }
+
+        [HttpPost]
+        [Route("api/tarea/actualizarEstado")]
+        public IActionResult ActualizarEstado([FromBody] TareaEstadoIn te)
+        {
+            _repo.actualizarEstado(te);
+            return Ok("Estado actualizado correctamente");
         }
     }
 }
