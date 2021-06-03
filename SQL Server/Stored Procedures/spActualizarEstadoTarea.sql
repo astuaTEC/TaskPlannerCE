@@ -15,4 +15,4 @@ WHERE	correoEstudiante = @correo AND
 GO
 
 EXEC spActualizarEstadoTarea @correo = 'sam.astua@estudiantec.cr', @nombreTablero = 'Tablero 1',
-							@nombre = 'Tarea 1', @estado = 'Estado A';
+							@nombre = 'Tarea 1', @estado = 1;
