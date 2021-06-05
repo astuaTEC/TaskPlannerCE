@@ -21,6 +21,31 @@ namespace TaskPlannerCE_API.Repositories
         }
 
         /// <summary>
+        /// Metodo para agregar una lista de colaboradores a un tablero
+        /// </summary>
+        /// <param name="listaET">la lista de colaboradores a agregar</param>
+        public void AgregarColaboradores(List<EstudianteTablero> listaET)
+        {
+            if (listaET == null)
+                throw new ArgumentNullException(nameof(listaET));
+
+            _context.EstudianteTableros.AddRange(listaET);
+
+        }
+
+        /// <summary>
+        /// Metodo para eliminar a un colaborador de  un tablero específico
+        /// </summary>
+        /// <param name="correo">el correo del propietario del tablero</param>
+        /// <param name="nombreTablero">el nombre del tablero</param>
+        /// <param name="correoC">el correo del colaborador a eliminar</param>
+        public void EliminarColaborador(string correo, string nombreTablero, string correoC)
+        {
+            _context.Database.ExecuteSqlRaw("spEliminarColaborador @p0, @p1, @p2",
+                correo, nombreTablero, correoC);
+        }
+
+        /// <summary>
         /// Metodo para acceder a los tableros creados por determinado estudiante
         /// </summary>
         /// <param name="miCorreo">el correo del estudiante que hace la consulta</param>
@@ -215,6 +240,12 @@ namespace TaskPlannerCE_API.Repositories
             }
 
             return profesVisualizadores;
+        }
+
+        // guarda los cambios en la base de datos
+        public bool SaveChanges()
+        {
+            return (_context.SaveChanges() >= 0);
         }
     }
 }

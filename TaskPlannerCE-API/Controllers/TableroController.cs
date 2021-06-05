@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TaskPlannerCE_API.Models;
 using TaskPlannerCE_API.Repositories;
 
 namespace TaskPlannerCE_API.Controllers
@@ -86,6 +87,37 @@ namespace TaskPlannerCE_API.Controllers
             if (resultado == null)
                 return BadRequest("Ha ocurrido un error");
             return Ok(resultado);
+        }
+
+        [HttpPost]
+        [Route("api/tablero/agregarColaboradores")]
+        public IActionResult AgregarColaboradores([FromBody] List<EstudianteTablero> listaET)
+        {
+            try
+            {
+                _repo.AgregarColaboradores(listaET);
+                _repo.SaveChanges();
+                return Ok("Colaboradores agregados correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
+
+        [HttpDelete]
+        [Route("api/tablero/eliminarColaborador")]
+        public IActionResult EliminarColaborador([FromQuery] string correo, string nombreTablero, string correoC)
+        {
+            try
+            {
+                _repo.EliminarColaborador(correo, nombreTablero, correoC);
+                return Ok("Colaborador eliminado correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
         }
     }
 }
