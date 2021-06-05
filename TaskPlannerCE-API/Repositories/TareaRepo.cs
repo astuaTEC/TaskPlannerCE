@@ -20,6 +20,41 @@ namespace TaskPlannerCE_API.Repositories
             _context = context;
         }
 
+        public void AgregarDependencia(TareaDependencium td)
+        {
+            if (td == null)
+                throw new ArgumentNullException(nameof(td));
+
+            _context.TareaDependencia.Add(td);
+
+        }
+
+        /// <summary>
+        /// Metodo para agreagar una lista de dependencias relacionadas a una tarea
+        /// </summary>
+        /// <param name="ltd">Lista de dependencias a agregar</param>
+        public void AgregarDependencia(List<TareaDependencium> ltd)
+        {
+            if (ltd == null)
+                throw new ArgumentNullException(nameof(ltd));
+
+            _context.TareaDependencia.AddRange(ltd);
+
+        }
+
+        /// <summary>
+        /// Metodo para eliminar una dependencia de una tarea
+        /// </summary>
+        /// <param name="correo">El correo del propietario del tablero</param>
+        /// <param name="nombreTablero">el nombre del tablero</param>
+        /// <param name="nombreTarea">El nombre de la tarea que se edita</param>
+        /// <param name="nombreTareaD">el nombre de la tarea de la cual se quita la dependencia</param>
+        public void EliminarDependencia(string correo, string nombreTablero, string nombreTarea, string nombreTareaD)
+        {
+            _context.Database.ExecuteSqlRaw("spEliminarDependencia @p0, @p1, @p2, @p3",
+                correo, nombreTablero, nombreTarea, nombreTareaD);
+        }
+
         /// <summary>
         /// Metodo para acceder a los responsables y dependencias de una tarea específica
         /// </summary>
