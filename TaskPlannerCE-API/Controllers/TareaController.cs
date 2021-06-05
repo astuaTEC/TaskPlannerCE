@@ -48,6 +48,22 @@ namespace TaskPlannerCE_API.Controllers
             return Ok("Dependencias agregadas correctamente");
         }
 
+        [HttpPost]
+        [Route("api/tarea/agregarResponsables")]
+        public IActionResult AgregarResponsables([FromBody] List<TareaEstudiante> lte)
+        {
+            try
+            {
+                _repo.AgregarResponsables(lte);
+                _repo.SaveChanges();
+                return Ok("Responsables agregados correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
+
         [HttpDelete]
         [Route("api/tarea/eliminarDependencia")]
         public IActionResult EliminarDependencia([FromQuery] string correo, string nombreTablero,
@@ -57,6 +73,22 @@ namespace TaskPlannerCE_API.Controllers
             {
                 _repo.EliminarDependencia(correo, nombreTablero, nombreTarea, nombreTareaD);
                 return Ok("Dependencia eliminada correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
+
+        [HttpDelete]
+        [Route("api/tarea/eliminarResponsable")]
+        public IActionResult EliminarResponsable([FromQuery] string correo, string nombreTablero,
+            string nombreTarea, string correoR)
+        {
+            try
+            {
+                _repo.EliminarResponsable(correo, nombreTablero, nombreTarea, correoR);
+                return Ok("Responsable eliminado correctamente");
             }
             catch
             {

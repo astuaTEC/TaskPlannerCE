@@ -21,7 +21,7 @@ namespace TaskPlannerCE_API.Controllers
 
         [HttpPost]
         [Route("api/estado/actualizarNombre")]
-        public IActionResult ActualizarEstado([FromBody] EstadoIn ei)
+        public IActionResult ActualizarNombre([FromBody] EstadoIn ei)
         {
             _repo.actualizarNombreEstado(ei);
             return Ok("Estado actualizado correctamente");

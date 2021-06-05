@@ -43,6 +43,19 @@ namespace TaskPlannerCE_API.Repositories
         }
 
         /// <summary>
+        /// Metodo para agregar una lista de responsables
+        /// </summary>
+        /// <param name="lte">la lista de responsables a agregar</param>
+        public void AgregarResponsables(List<TareaEstudiante> lte)
+        {
+            if (lte == null)
+                throw new ArgumentNullException(nameof(lte));
+
+            _context.TareaEstudiantes.AddRange(lte);
+
+        }
+
+        /// <summary>
         /// Metodo para eliminar una dependencia de una tarea
         /// </summary>
         /// <param name="correo">El correo del propietario del tablero</param>
@@ -53,6 +66,19 @@ namespace TaskPlannerCE_API.Repositories
         {
             _context.Database.ExecuteSqlRaw("spEliminarDependencia @p0, @p1, @p2, @p3",
                 correo, nombreTablero, nombreTarea, nombreTareaD);
+        }
+
+        /// <summary>
+        /// Metodo para eliminar a un responsable de una tarea
+        /// </summary>
+        /// <param name="correo">l correo del propietario del tablero</param>
+        /// <param name="nombreTablero">el nombre del tablero</param>
+        /// <param name="nombreTarea">El nombre de la tarea que se edita</param>
+        /// <param name="correoR">El correo del responsable a eliminar</param>
+        public void EliminarResponsable(string correo, string nombreTablero, string nombreTarea, string correoR)
+        {
+            _context.Database.ExecuteSqlRaw("spEliminarResponsable @p0, @p1, @p2, @p3",
+                correo, nombreTablero, nombreTarea, correoR);
         }
 
         /// <summary>
