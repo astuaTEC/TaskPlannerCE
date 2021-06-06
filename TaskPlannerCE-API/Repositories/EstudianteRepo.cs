@@ -30,6 +30,47 @@ namespace TaskPlannerCE_API.Repositories
         {
             return _context.Estudiantes.Where(x => x.CorreoInstitucional == correoInstitucional).FirstOrDefault();
         }
+        public void EnviarSolicitudAmistad(Solicitud solicitud)
+        {
+            if (solicitud == null)
+                throw new ArgumentNullException(nameof(solicitud));
+
+            _context.Solicituds.Add(solicitud);
+
+        }
+
+        /// <summary>
+        /// Metodo para acceder a las solicitudes que posee un estudiante
+        /// </summary>
+        /// <param name="correo">el correo del estudiante que solicita</param>
+        /// <returns></returns>
+        public List<Solicitud> GetMisSolicitudes(string correo)
+        {
+            return _context.Set<Solicitud>().FromSqlRaw($"EXEC spGetMisSolicitudes " +
+                            $"@miCorreo = {correo}").ToList();
+        }
+
+        /// <summary>
+        /// Metodo para aceptar una solicitud de amistad
+        /// </summary>
+        /// <param name="correoE">El correo de quien había enviado la solicitud</param>
+        /// <param name="correoR">El correo de quien había recibido la solicitud</param>
+        public void AceptarSolicitud(string correoE, string correoR)
+        {
+            _context.Database.ExecuteSqlRaw("spActualizarEstadoSolicitud @p0, @p1, @p2",
+               correoE, correoR, "Aceptado");
+        }
+
+        /// <summary>
+        /// Metodo para rechazar una solicitud de amistad
+        /// </summary>
+        /// <param name="correoE">El correo de quien había enviado la solicitud</param>
+        /// <param name="correoR">El correo de quien había recibido la solicitud</param>
+        public void RechazarSolicitud(string correoE, string correoR)
+        {
+            _context.Database.ExecuteSqlRaw("spActualizarEstadoSolicitud @p0, @p1, @p2",
+               correoE, correoR, "Rechazado");
+        }
 
         /// <summary>
         /// Metodo para acceder a todos los estudiantes del sistema, menos al estudiante que realiza la consulta.
@@ -127,5 +168,10 @@ namespace TaskPlannerCE_API.Repositories
             return content;
         }
 
+        // guarda los cambios en la base de datos
+        public bool SaveChanges()
+        {
+            return (_context.SaveChanges() >= 0);
+        }
     }
 }

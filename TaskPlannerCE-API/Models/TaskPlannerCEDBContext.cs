@@ -205,10 +205,12 @@ namespace TaskPlannerCE_API.Models
 
             modelBuilder.Entity<Notificacion>(entity =>
             {
-                entity.HasKey(e => e.CorreoEstudiante)
-                    .HasName("PK__NOTIFICA__190729D2B778CC25");
+                entity.HasKey(e => new { e.Id, e.CorreoEstudiante })
+                    .HasName("PK__NOTIFICA__03849E9AEAC10AF6");
 
                 entity.ToTable("NOTIFICACION");
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.CorreoEstudiante)
                     .HasMaxLength(50)
@@ -226,10 +228,10 @@ namespace TaskPlannerCE_API.Models
                     .HasColumnName("fecha");
 
                 entity.HasOne(d => d.CorreoEstudianteNavigation)
-                    .WithOne(p => p.Notificacion)
-                    .HasForeignKey<Notificacion>(d => d.CorreoEstudiante)
+                    .WithMany(p => p.Notificacions)
+                    .HasForeignKey(d => d.CorreoEstudiante)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__NOTIFICAC__corre__49E3F248");
+                    .HasConstraintName("FK__NOTIFICAC__corre__573DED66");
             });
 
             modelBuilder.Entity<Profesor>(entity =>

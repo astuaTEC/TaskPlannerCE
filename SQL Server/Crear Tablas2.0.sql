@@ -108,10 +108,11 @@ CREATE TABLE ESTUDIANTE_TABLERO(
 );
 
 CREATE TABLE NOTIFICACION(
-	correoEstudiante		VARCHAR(50)		NOT NULL,
-	descripcion				VARCHAR(200)	NOT NULL,
+	Id						INT IDENTITY(1,1)	NOT NULL,
+	correoEstudiante		VARCHAR(50)			NOT NULL,
+	descripcion				VARCHAR(200)		NOT NULL,
 	fecha					DATE,
-	PRIMARY KEY(correoEstudiante)
+	PRIMARY KEY(Id, correoEstudiante)
 );
 
 CREATE TABLE SOLICITUD(

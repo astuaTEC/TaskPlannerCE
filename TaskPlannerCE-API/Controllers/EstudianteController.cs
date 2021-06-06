@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TaskPlannerCE_API.Models;
 using TaskPlannerCE_API.Repositories;
 
 namespace TaskPlannerCE_API.Controllers
@@ -68,14 +69,59 @@ namespace TaskPlannerCE_API.Controllers
             return Ok(resultado);
         }*/
 
-       /* [HttpGet]
-        [Route("api/estudiante/buscarEstudiante")]
-        public IActionResult BuscarEstudiantes([FromQuery] string correo, [FromQuery] string variable)
+        /* [HttpGet]
+         [Route("api/estudiante/buscarEstudiante")]
+         public IActionResult BuscarEstudiantes([FromQuery] string correo, [FromQuery] string variable)
+         {
+             var resultado = _repo.buscarEstudiantes(correo, variable);
+             if (resultado == null)
+                 return BadRequest("Ha ocurrido un error");
+             return Ok(resultado);
+         }*/
+
+        [HttpGet]
+        [Route("api/estudiante/misSolicitudes")]
+        public IActionResult GetMisSolicitudes([FromQuery] string correo)
         {
-            var resultado = _repo.buscarEstudiantes(correo, variable);
+            var resultado = _repo.GetMisSolicitudes(correo);
             if (resultado == null)
                 return BadRequest("Ha ocurrido un error");
             return Ok(resultado);
-        }*/
+        }
+
+        [HttpPost]
+        [Route("api/estudiante/enviarSolicitud")]
+        public IActionResult EnviarSolicitud([FromBody] Solicitud solicitud)
+        {
+            try
+            {
+                _repo.EnviarSolicitudAmistad(solicitud);
+                _repo.SaveChanges();
+                return Ok("Solicitud enviada correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
+
+        [HttpPost]
+        [Route("api/estudiante/aceptarRechazarSolicitud")]
+        public IActionResult AceptarRechazarSolicitud([FromBody] Solicitud solicitud)
+        {
+            try
+            {
+                if(solicitud.Estado == "Aceptado")
+                    _repo.AceptarSolicitud(solicitud.CorreoEmisor, solicitud.CorreoReceptor);
+                else if(solicitud.Estado == "Rechazado")
+                    _repo.RechazarSolicitud(solicitud.CorreoEmisor, solicitud.CorreoReceptor);
+
+                return Ok("Solicitud aceptada/rechazada correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
     }
 }
