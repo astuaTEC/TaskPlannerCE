@@ -73,6 +73,17 @@ namespace TaskPlannerCE_API.Repositories
         }
 
         /// <summary>
+        /// Metodo para eliminar a un amigo
+        /// </summary>
+        /// <param name="correoE">correo del estudiante que solicita la peticion</param>
+        /// <param name="correoA">correo del amigo a eliminar</param>
+        public void EliminarAmigo(string correoE, string correoA)
+        {
+            _context.Database.ExecuteSqlRaw("spEliminarAmigo @p0, @p1",
+               correoE, correoA);
+        }
+
+        /// <summary>
         /// Metodo para acceder a todos los estudiantes del sistema, menos al estudiante que realiza la consulta.
         /// </summary>
         /// <param name="correo">el estudiante que realiza la consulta</param>

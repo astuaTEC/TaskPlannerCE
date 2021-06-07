@@ -123,5 +123,20 @@ namespace TaskPlannerCE_API.Controllers
                 return BadRequest("Algo salio mal");
             }
         }
+
+        [HttpDelete]
+        [Route("api/estudiante/eliminarAmigo")]
+        public IActionResult EliminarAmigo([FromQuery] string correo, string correoA)
+        {
+            try
+            {
+                _repo.EliminarAmigo(correo, correoA);
+                return Ok("Amigo eliminado correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
     }
 }
