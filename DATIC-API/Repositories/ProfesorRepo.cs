@@ -21,5 +21,10 @@ namespace DATIC_API.Repositories
             return _context.Profesors.Where(x => x.CorreoInstitucional == correoInstitucional
             && x.Cedula == cedula).FirstOrDefault();
         }
+
+        public Profesor GetProfesor(string correoInstitucional)
+        {
+            return _context.Profesors.Where(x => x.CorreoInstitucional == correoInstitucional).FirstOrDefault();
+        }
     }
 }

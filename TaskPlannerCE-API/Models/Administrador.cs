@@ -5,13 +5,8 @@ using System.Collections.Generic;
 
 namespace TaskPlannerCE_API.Models
 {
-    public partial class Profesor
+    public partial class Administrador
     {
-        public Profesor()
-        {
-            TableroProfesors = new HashSet<TableroProfesor>();
-        }
-
         public string Carnet { get; set; }
         public string CorreoInstitucional { get; set; }
         public string PrimerNombre { get; set; }
@@ -19,7 +14,5 @@ namespace TaskPlannerCE_API.Models
         public string PrimerApellido { get; set; }
         public string SegundoApellido { get; set; }
         public string Telefono { get; set; }
-
-        public virtual ICollection<TableroProfesor> TableroProfesors { get; set; }
     }
 }

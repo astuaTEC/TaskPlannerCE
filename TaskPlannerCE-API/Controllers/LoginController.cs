@@ -45,8 +45,7 @@ namespace TaskPlannerCE_API.Controllers
                 return Ok("Estudiante registrado exitosaqmente");
             }
             else
-                return BadRequest("No se ha podido registrar el estudiante");
-                
+                return BadRequest("No se ha podido registrar el estudiante");  
         }
 
         [HttpPost]
@@ -58,10 +57,25 @@ namespace TaskPlannerCE_API.Controllers
             if (resultado == true)
             {
                 _repo.SaveChanges();
-                return Ok("Profesor registrado exitosaqmente");
+                return Ok("Profesor registrado exitosamente");
             }
             else
                 return BadRequest("No se ha podido registrar el profesor");
+        }
+
+        [HttpPost]
+        [Route("api/taskplanner/registrarAdmin")]
+        public IActionResult RegistrarAdmin([FromBody] Administrador administrador)
+        {
+            var resultado = _repo.RegistrarAdmin(administrador);
+
+            if (resultado == true)
+            {
+                _repo.SaveChanges();
+                return Ok("Administrador registrado exitosamente");
+            }
+            else
+                return BadRequest("No se ha podido registrar el administrador");
 
         }
     }

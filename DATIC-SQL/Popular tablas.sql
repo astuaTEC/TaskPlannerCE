@@ -20,4 +20,6 @@ VALUES	('sam.astua@estudiantec.cr', '2018143188', '123456', 'Ing. Computadores',
 INSERT INTO PROFESOR(correoInstitucional, cedula, contrasena)
 VALUES	('luisB@profextec.cr', '1111122222', '123456'),
 		('alfredo@profextec.cr', '3333344444', '123456'),
-		('juanki@profextec.cr', '5555566666', '123456');
+		('juanki@profextec.cr', '5555566666', '123456'),
+		('lnoguera@profextec.cr', '1010101010', '123456');
+

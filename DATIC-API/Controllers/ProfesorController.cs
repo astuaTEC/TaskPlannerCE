@@ -20,9 +20,19 @@ namespace DATIC_API.Controllers
 
         [HttpGet]
         [Route("api/datic/profesor")]
-        public IActionResult GetEstudiante([FromQuery] string correo, [FromQuery] string cedula)
+        public IActionResult GetProfesor([FromQuery] string correo, [FromQuery] string cedula)
         {
             var resultado = _repo.GetProfesor(correo, cedula);
+            if (resultado == null)
+                return BadRequest("Ha ocurrido un error");
+            return Ok(resultado);
+        }
+
+        [HttpGet]
+        [Route("api/datic/profesorSinCedula")]
+        public IActionResult GetProfesor([FromQuery] string correo)
+        {
+            var resultado = _repo.GetProfesor(correo);
             if (resultado == null)
                 return BadRequest("Ha ocurrido un error");
             return Ok(resultado);

@@ -52,7 +52,7 @@ namespace TaskPlannerCE_API.Repositories
                         // se crea el objeto a retornar
                         LoginReturn lr = new LoginReturn
                         {
-                            correoIstitucional = login.correoInstitucional,
+                            correoInstitucional = login.correoInstitucional,
                             estudiante = true,
                             profesor = false,
                             admin = false
@@ -86,14 +86,63 @@ namespace TaskPlannerCE_API.Repositories
                     //Se valida la contraseña
                     if (profDatic.contrasena == login.contrasena)
                     {
+                        //Se consulta a la base de datos de TaskPlannerCE a ver si es administrador
+                        Administrador adminP = _context.Administradors.Where(x => x.CorreoInstitucional == 
+                        login.correoInstitucional).FirstOrDefault();
+
                         // se crea el objeto a retornar
                         LoginReturn lr = new LoginReturn
                         {
-                            correoIstitucional = login.correoInstitucional,
+                            correoInstitucional = login.correoInstitucional,
                             estudiante = false,
-                            profesor = true,
-                            admin = prof.Administrador
+                            profesor = true
                         };
+
+                        if (adminP != null)
+                            lr.admin = true;
+                        else
+                            lr.admin = false;
+
+                        return lr;
+                    }
+                    return null;
+                }
+
+                return null;
+            }
+
+            // si no es ni estudiante ni profesor
+            //Se consulta a la base de datos de TaskPlannerCE
+            Administrador admin = _context.Administradors.Where(x => x.CorreoInstitucional ==
+                         login.correoInstitucional).FirstOrDefault();
+
+            //si el administrador existe en TaskPlanner
+            if (admin != null)
+            {
+                // se hace la consulta a DATIC
+                var responseTaskProf = GetAsync("https://datic.azurewebsites.net/api/datic/profesorSinCedula"
+                    + "?correo=" + login.correoInstitucional);
+
+                var result = responseTaskProf.Result;
+
+                // se se obtiene exito
+                if (result != null) // si el resultado no es nulo
+                {
+                    // se parsea el resultado
+                    ProfesorDatic profDatic = JsonConvert.DeserializeObject<ProfesorDatic>(result);
+
+                    //Se valida la contraseña
+                    if (profDatic.contrasena == login.contrasena)
+                    {
+                        // se crea el objeto a retornar
+                        LoginReturn lr = new LoginReturn
+                        {
+                            correoInstitucional = login.correoInstitucional,
+                            estudiante = false,
+                            profesor = false,
+                            admin = true
+                        };
+
                         return lr;
                     }
                     return null;
@@ -105,6 +154,11 @@ namespace TaskPlannerCE_API.Repositories
             return null;
         }
 
+        /// <summary>
+        /// Metodo para registar un estudiante en TaskPlannerCE
+        /// </summary>
+        /// <param name="estudiante">El estudiante a registrar</param>
+        /// <returns>Un true en caso de exito, false en caso contrario</returns>
         public bool RegistrarEstudiante(Estudiante estudiante)
         {
 
@@ -133,6 +187,11 @@ namespace TaskPlannerCE_API.Repositories
             return false;
         }
 
+        /// <summary>
+        /// Metodo para registrar un profesor en TaskPlannerCE
+        /// </summary>
+        /// <param name="profesor">El profesor a registrar</param>
+        /// <returns>Un true en caso de éxito, false en caso contrario</returns>
         public bool RegistrarProfesor(Profesor profesor)
         {
 
@@ -152,6 +211,34 @@ namespace TaskPlannerCE_API.Repositories
                     profesor.CorreoInstitucional == profDatic.correoInstitucional)
                 {
                     _context.Profesors.Add(profesor);
+                    return true;
+                }
+
+                return false;
+            }
+
+            return false;
+        }
+
+        public bool RegistrarAdmin(Administrador administrador)
+        {
+
+            // se le hace la consulta del estudiante a DATIC
+            var responseTaskProf = GetAsync("https://datic.azurewebsites.net/api/datic/profesor"
+               + "?correo=" + administrador.CorreoInstitucional + "&cedula=" + administrador.Carnet);
+
+            var resultProf = responseTaskProf.Result;
+
+            //Si se obtiene exito en la consulta
+            if (resultProf != null) // si el resultado no es nulo
+            {
+                // se parsea el resultado
+                ProfesorDatic profDatic = JsonConvert.DeserializeObject<ProfesorDatic>(resultProf);
+
+                if (administrador.Carnet == profDatic.cedula &&
+                    administrador.CorreoInstitucional == profDatic.correoInstitucional)
+                {
+                    _context.Administradors.Add(administrador);
                     return true;
                 }
 

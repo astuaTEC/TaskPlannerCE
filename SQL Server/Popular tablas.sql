@@ -23,7 +23,7 @@ VALUES ('2018143188', 'sam.astua@estudiantec.cr', 'Saymon', '', 'Astúa', 'Madrig
 
 --PROFESOR
 INSERT INTO PROFESOR(carnet, correoInstitucional, primerNombre,
-segundoNombre, primerApellido, segundoApellido, telefono, administrador)
+segundoNombre, primerApellido, segundoApellido, telefono)
 VALUES	('1111122222', 'luisB@profextec.cr', 'Luis', 'Antonio', 'Barquero', 'Villalobos', '+50688885555'),
 		('3333344444', 'alfredo@profextec.cr', 'Alfredito', '', 'Cruz', 'Rodríguez', '+50688886666'),
 		('5555566666', 'juanki@profextec.cr', 'Juan', 'Carlos', 'Abarca', 'Monge', '+50688881111');
@@ -31,7 +31,7 @@ VALUES	('1111122222', 'luisB@profextec.cr', 'Luis', 'Antonio', 'Barquero', 'Vill
 
 -- ADMINISTRADOR
 INSERT INTO ADMINISTRADOR(carnet, correoInstitucional, primerNombre,
-segundoNombre, primerApellido, segundoApellido, telefono, administrador)
+segundoNombre, primerApellido, segundoApellido, telefono)
 VALUES	('1010101010', 'lnoguera@profextec.cr', 'Luis', 'Diego', 'Noguera', 'Mena', '+50688888888');
 
 

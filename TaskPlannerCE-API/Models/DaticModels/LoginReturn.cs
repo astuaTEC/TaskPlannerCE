@@ -7,7 +7,7 @@ namespace TaskPlannerCE_API.Models.DaticModels
 {
     public class LoginReturn
     {
-        public string correoIstitucional { get; set; }
+        public string correoInstitucional { get; set; }
         public bool estudiante { get; set; }
         public bool profesor { get; set; }
         public bool admin { get; set; }
