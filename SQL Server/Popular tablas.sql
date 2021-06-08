@@ -24,9 +24,16 @@ VALUES ('2018143188', 'sam.astua@estudiantec.cr', 'Saymon', '', 'Astúa', 'Madrig
 --PROFESOR
 INSERT INTO PROFESOR(carnet, correoInstitucional, primerNombre,
 segundoNombre, primerApellido, segundoApellido, telefono, administrador)
-VALUES	('1111122222', 'luisB@profextec.cr', 'Luis', 'Antonio', 'Barquero', 'Villalobos', '+50688885555', 0),
-		('3333344444', 'alfredo@profextec.cr', 'Alfredito', '', 'Cruz', 'Rodríguez', '+50688886666', 0),
-		('5555566666', 'juanki@profextec.cr', 'Juan', 'Carlos', 'Abarca', 'Monge', '+50688881111', 0);
+VALUES	('1111122222', 'luisB@profextec.cr', 'Luis', 'Antonio', 'Barquero', 'Villalobos', '+50688885555'),
+		('3333344444', 'alfredo@profextec.cr', 'Alfredito', '', 'Cruz', 'Rodríguez', '+50688886666'),
+		('5555566666', 'juanki@profextec.cr', 'Juan', 'Carlos', 'Abarca', 'Monge', '+50688881111');
+
+
+-- ADMINISTRADOR
+INSERT INTO ADMINISTRADOR(carnet, correoInstitucional, primerNombre,
+segundoNombre, primerApellido, segundoApellido, telefono, administrador)
+VALUES	('1010101010', 'lnoguera@profextec.cr', 'Luis', 'Diego', 'Noguera', 'Mena', '+50688888888');
+
 
 -- ESTUDIANTE AMIGO
 INSERT INTO ESTUDIANTE_AMIGO(correoEstudiante, correoAmigo)

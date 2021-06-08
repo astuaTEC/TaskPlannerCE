@@ -10,5 +10,7 @@ namespace TaskPlannerCE_API.Models.DaticModels
         public string carnet { get; set; }
         public string correoInstitucional { get; set; }
         public string contrasena { get; set; }
+        public string carrera { get; set; }
+        public bool activo { get; set; }
     }
 }

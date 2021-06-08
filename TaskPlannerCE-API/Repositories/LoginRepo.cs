@@ -105,6 +105,62 @@ namespace TaskPlannerCE_API.Repositories
             return null;
         }
 
+        public bool RegistrarEstudiante(Estudiante estudiante)
+        {
+
+            // se le hace la consulta del estudiante a DATIC
+            var responseTaskEst = GetAsync("https://datic.azurewebsites.net/api/datic/estudiante"
+               + "?correo=" + estudiante.CorreoInstitucional + "&carnet=" + estudiante.Carnet);
+
+            var resultEst = responseTaskEst.Result;
+
+            //Si se obtiene exito en la consulta
+            if (resultEst != null) // si el resultado no es nulo
+            {
+                // se parsea el resultado
+                EstudianteDatic estDatic = JsonConvert.DeserializeObject<EstudianteDatic>(resultEst);
+
+                if(estudiante.CarreraMatriculada == estDatic.carrera &&
+                    estDatic.activo)
+                {
+                    _context.Estudiantes.Add(estudiante);
+                    return true;
+                }
+
+                return false;
+            }
+
+            return false;
+        }
+
+        public bool RegistrarProfesor(Profesor profesor)
+        {
+
+            // se le hace la consulta del estudiante a DATIC
+            var responseTaskProf = GetAsync("https://datic.azurewebsites.net/api/datic/profesor"
+               + "?correo=" + profesor.CorreoInstitucional + "&cedula=" + profesor.Carnet);
+
+            var resultProf = responseTaskProf.Result;
+
+            //Si se obtiene exito en la consulta
+            if (resultProf != null) // si el resultado no es nulo
+            {
+                // se parsea el resultado
+                ProfesorDatic profDatic = JsonConvert.DeserializeObject<ProfesorDatic>(resultProf);
+
+                if (profesor.Carnet == profDatic.cedula &&
+                    profesor.CorreoInstitucional == profDatic.correoInstitucional)
+                {
+                    _context.Profesors.Add(profesor);
+                    return true;
+                }
+
+                return false;
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// Método para acceder a otra api y retornar un resultado
         /// </summary>
@@ -115,6 +171,12 @@ namespace TaskPlannerCE_API.Repositories
             var httpClient = new HttpClient();
             var content = await httpClient.GetStringAsync(uri);
             return content;
+        }
+
+        // guarda los cambios en la base de datos
+        public bool SaveChanges()
+        {
+            return (_context.SaveChanges() >= 0);
         }
     }
 }

@@ -34,8 +34,19 @@ CREATE TABLE PROFESOR(
 	segundoNombre			VARCHAR(50),
 	primerApellido			VARCHAR(50)			NOT NULL,
 	segundoApellido			VARCHAR(50)			NOT NULL,
-	telefono				VARCHAR(12)			NOT NULL,
-	administrador			BIT,
+	telefono				VARCHAR(12)			NOT NULL
+	PRIMARY KEY(correoInstitucional)
+);
+
+
+CREATE TABLE ADMINISTRADOR(
+	carnet					VARCHAR(10)			NOT NULL,
+	correoInstitucional		VARCHAR(50)			NOT NULL,
+	primerNombre			VARCHAR(50)			NOT NULL,
+	segundoNombre			VARCHAR(50),
+	primerApellido			VARCHAR(50)			NOT NULL,
+	segundoApellido			VARCHAR(50)			NOT NULL,
+	telefono				VARCHAR(12)			NOT NULL
 	PRIMARY KEY(correoInstitucional)
 );
 
