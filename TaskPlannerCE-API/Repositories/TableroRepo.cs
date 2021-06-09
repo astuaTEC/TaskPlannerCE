@@ -19,6 +19,14 @@ namespace TaskPlannerCE_API.Repositories
         {
             _context = context;
         }
+        public void CrearTablero(Tablero tablero)
+        {
+            if (tablero == null)
+                throw new ArgumentNullException(nameof(tablero));
+
+            _context.Tableros.Add(tablero);
+
+        }
 
         /// <summary>
         /// Metodo para agregar una lista de colaboradores a un tablero

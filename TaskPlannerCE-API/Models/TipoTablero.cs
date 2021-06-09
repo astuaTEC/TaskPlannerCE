@@ -10,10 +10,12 @@ namespace TaskPlannerCE_API.Models
         public TipoTablero()
         {
             Tableros = new HashSet<Tablero>();
+            TipoTableroEstados = new HashSet<TipoTableroEstado>();
         }
 
         public string Nombre { get; set; }
 
         public virtual ICollection<Tablero> Tableros { get; set; }
+        public virtual ICollection<TipoTableroEstado> TipoTableroEstados { get; set; }
     }
 }

@@ -220,6 +220,11 @@ namespace TaskPlannerCE_API.Repositories
             return false;
         }
 
+        /// <summary>
+        /// Método para registar a un administrador
+        /// </summary>
+        /// <param name="administrador">El administrador a registar</param>
+        /// <returns>Un true en caso de éxito, un false en caso contrario</returns>
         public bool RegistrarAdmin(Administrador administrador)
         {
 

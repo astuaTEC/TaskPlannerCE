@@ -90,6 +90,22 @@ namespace TaskPlannerCE_API.Controllers
         }
 
         [HttpPost]
+        [Route("api/tablero/crear")]
+        public IActionResult CrearTablero([FromBody] Tablero tablero)
+        {
+            try
+            {
+                _repo.CrearTablero(tablero);
+                _repo.SaveChanges();
+                return Ok("Tablero creado correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
+
+        [HttpPost]
         [Route("api/tablero/agregarColaboradores")]
         public IActionResult AgregarColaboradores([FromBody] List<EstudianteTablero> listaET)
         {
