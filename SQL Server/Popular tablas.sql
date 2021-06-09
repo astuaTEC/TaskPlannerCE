@@ -36,13 +36,13 @@ VALUES	('1010101010', 'lnoguera@profextec.cr', 'Luis', 'Diego', 'Noguera', 'Mena
 
 
 -- ESTUDIANTE AMIGO
-INSERT INTO ESTUDIANTE_AMIGO(correoEstudiante, correoAmigo)
-VALUES	('sam.astua@estudiantec.cr', 'oscar.araya@estudiantec.cr'),
-		('oscar.araya@estudiantec.cr', 'sam.astua@estudiantec.cr'),
-		('sam.astua@estudiantec.cr', 'kevinar51@estudiantec.cr'),
-		('kevinar51@estudiantec.cr','sam.astua@estudiantec.cr'),
-		('kevinar51@estudiantec.cr', 'oscar.araya@estudiantec.cr'),
-		('oscar.araya@estudiantec.cr', 'kevinar51@estudiantec.cr');
+INSERT INTO ESTUDIANTE_AMIGO(correoEstudiante, correoAmigo, fecha)
+VALUES	('sam.astua@estudiantec.cr', 'oscar.araya@estudiantec.cr', '2021-06-01'),
+		('oscar.araya@estudiantec.cr', 'sam.astua@estudiantec.cr', '2021-06-01'),
+		('sam.astua@estudiantec.cr', 'kevinar51@estudiantec.cr', '2021-06-01'),
+		('kevinar51@estudiantec.cr','sam.astua@estudiantec.cr', '2021-06-01'),
+		('kevinar51@estudiantec.cr', 'oscar.araya@estudiantec.cr', '2021-06-01'),
+		('oscar.araya@estudiantec.cr', 'kevinar51@estudiantec.cr', '2021-06-01');
 
 
 --TIPO_TABLERO

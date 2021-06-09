@@ -59,6 +59,25 @@ namespace TaskPlannerCE_API.Controllers
             return Ok(resultado);
         }
 
+        [HttpGet]
+        [Route("api/estudiante/ultimosAmigos")]
+        public IActionResult GetUltimosCincoAmigos([FromQuery] string correo)
+        {
+            var resultado = _repo.GetUltimosCincoAmigos(correo);
+            if (resultado == null)
+                return BadRequest("Ha ocurrido un error");
+            return Ok(resultado);
+        }
+
+        [HttpGet]
+        [Route("api/estudiante/getNumeroTableros")]
+        public IActionResult GetNumeroDeTableros([FromQuery] string correo)
+        {
+            var resultado = _repo.GetNumeroDeTableros(correo);
+            if (resultado == null)
+                return BadRequest("Ha ocurrido un error");
+            return Ok(resultado);
+        }
         /*[HttpGet]
         [Route("api/estudiante/buscarAmigo")]
         public IActionResult BuscarAmigo([FromQuery] string correo, [FromQuery] string variable)

@@ -135,5 +135,20 @@ namespace TaskPlannerCE_API.Controllers
                 return BadRequest("Algo salio mal");
             }
         }
+
+        [HttpDelete]
+        [Route("api/tablero/eliminar")]
+        public IActionResult EliminarTablero([FromQuery] string correo, string nombre)
+        {
+            try
+            {
+                _repo.EliminarTablero(correo, nombre);
+                return Ok("Tablero eliminado correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace TaskPlannerCE_API.Models
     {
         public string CorreoEstudiante { get; set; }
         public string CorreoAmigo { get; set; }
+        public DateTime Fecha { get; set; }
 
         public virtual Estudiante CorreoAmigoNavigation { get; set; }
         public virtual Estudiante CorreoEstudianteNavigation { get; set; }

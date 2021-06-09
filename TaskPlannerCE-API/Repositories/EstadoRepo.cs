@@ -27,5 +27,11 @@ namespace TaskPlannerCE_API.Repositories
             _context.Database.ExecuteSqlRaw("spActualizarNombreEstado @p0, @p1, @p2, @p3",
                 ei.correoEstudiante, ei.nombreTablero, ei.nombre, ei.idEstado);
         }
+
+        public void EliminarEstado(int id, string correo, string nombreTablero)
+        {
+            _context.Database.ExecuteSqlRaw("spEliminarEstado @p0, @p1, @p2",
+                id, correo, nombreTablero);
+        }
     }
 }

@@ -20,6 +20,12 @@ namespace TaskPlannerCE_API.Repositories
             _context = context;
         }
 
+        public void EliminarTarea(string correo, string nombreTablero, string nombre)
+        {
+            _context.Database.ExecuteSqlRaw("spEliminarTarea @p0, @p1, @p2",
+                correo, nombreTablero, nombre);
+        }
+
         public void AgregarDependencia(TareaDependencium td)
         {
             if (td == null)

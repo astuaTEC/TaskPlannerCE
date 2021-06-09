@@ -21,9 +21,9 @@ BEGIN
 			INSERT INTO NOTIFICACION(correoEstudiante, descripcion, fecha)
 			VALUES	(@correoE, @correoR + ' ha aceptado tu solicitud de amistad', GETDATE());
 
-			INSERT INTO ESTUDIANTE_AMIGO(correoEstudiante, correoAmigo)
-			VALUES	(@correoE, @correoR),
-					(@correoR, @correoE);
+			INSERT INTO ESTUDIANTE_AMIGO(correoEstudiante, correoAmigo, fecha)
+			VALUES	(@correoE, @correoR, GETDATE()),
+					(@correoR, @correoE, GETDATE());
 
 			-- se eliminan solicitudes en ambos sentidos
 			DELETE SOLICITUD

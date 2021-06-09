@@ -96,5 +96,21 @@ namespace TaskPlannerCE_API.Controllers
             }
         }
 
+        [HttpDelete]
+        [Route("api/tarea/eliminar")]
+        public IActionResult EliminarTarea([FromQuery] string correo, string nombreTablero,
+            string nombre)
+        {
+            try
+            {
+                _repo.EliminarTarea(correo, nombreTablero, nombre);
+                return Ok("Tarea eliminada correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
+
     }
 }

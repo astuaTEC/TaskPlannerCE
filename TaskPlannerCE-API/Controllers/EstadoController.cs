@@ -26,5 +26,22 @@ namespace TaskPlannerCE_API.Controllers
             _repo.actualizarNombreEstado(ei);
             return Ok("Estado actualizado correctamente");
         }
+
+
+        [HttpDelete]
+        [Route("api/estado/eliminar")]
+        public IActionResult EliminarEstado([FromQuery] string correo, string nombreTablero, int id)
+        {
+            try
+            {
+                _repo.EliminarEstado(id, correo, nombreTablero);
+                return Ok("Estado eliminado correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
+
     }
 }

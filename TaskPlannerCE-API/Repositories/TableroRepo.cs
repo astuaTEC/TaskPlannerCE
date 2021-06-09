@@ -28,6 +28,12 @@ namespace TaskPlannerCE_API.Repositories
 
         }
 
+        public void EliminarTablero(string correo, string nombre)
+        {
+            _context.Database.ExecuteSqlRaw("spEliminarTablero @p0, @p1",
+                correo, nombre);
+        }
+
         /// <summary>
         /// Metodo para agregar una lista de colaboradores a un tablero
         /// </summary>

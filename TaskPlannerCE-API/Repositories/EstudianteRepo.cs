@@ -30,6 +30,22 @@ namespace TaskPlannerCE_API.Repositories
         {
             return _context.Estudiantes.Where(x => x.CorreoInstitucional == correoInstitucional).FirstOrDefault();
         }
+
+        /// <summary>
+        /// Metoododo para acceder a los ultimos 5 amigos de un estudiante
+        /// </summary>
+        /// <param name="correo">el correo del estudiante que solicita la petición</param>
+        /// <returns>La lista con los últimos cinco amigos</returns>
+        public List<UltimosAmigosView> GetUltimosCincoAmigos(string correo)
+        {
+            return _context.Set<UltimosAmigosView>().FromSqlRaw($"EXEC spGetUltimosCincoAmigos " +
+                            $"@correo = {correo}").ToList();
+        }
+
+        /// <summary>
+        /// Metodo para enviar una solicitud de amistad
+        /// </summary>
+        /// <param name="solicitud">La solicitud a enviar</param>
         public void EnviarSolicitudAmistad(Solicitud solicitud)
         {
             if (solicitud == null)
@@ -48,6 +64,17 @@ namespace TaskPlannerCE_API.Repositories
         {
             return _context.Set<Solicitud>().FromSqlRaw($"EXEC spGetMisSolicitudes " +
                             $"@miCorreo = {correo}").ToList();
+        }
+
+        /// <summary>
+        /// Metodo para acceder al número de tableros de un estudiante
+        /// </summary>
+        /// <param name="correo">El estudiante que realiza la consulta</param>
+        /// <returns>El objeto número con el numero de tableros </returns>
+        public int GetNumeroDeTableros(string correo)
+        {
+            return _context.Set<MisTablerosView>().FromSqlRaw($"EXEC spGetmisTableros " +
+                            $"@miCorreo = {correo}").ToList().Count();
         }
 
         /// <summary>

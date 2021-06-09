@@ -84,6 +84,7 @@ CREATE TABLE TAREA(
 CREATE TABLE ESTUDIANTE_AMIGO(
 	correoEstudiante		VARCHAR(50)		NOT NULL,
 	correoAmigo				VARCHAR(50)		NOT NULL,
+	fecha					DATE			NOT NULL,
 	PRIMARY KEY(correoEstudiante, correoAmigo)
 );
 
