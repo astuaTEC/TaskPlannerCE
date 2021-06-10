@@ -31,6 +31,12 @@ namespace TaskPlannerCE_API.Repositories
             return _context.Estudiantes.Where(x => x.CorreoInstitucional == correoInstitucional).FirstOrDefault();
         }
 
+        public void EliminarUsuario(string correo)
+        {
+            _context.Database.ExecuteSqlRaw("spEliminarUsuario @p0",
+               correo);
+        }
+
         /// <summary>
         /// Metoododo para acceder a los ultimos 5 amigos de un estudiante
         /// </summary>
@@ -40,6 +46,26 @@ namespace TaskPlannerCE_API.Repositories
         {
             return _context.Set<UltimosAmigosView>().FromSqlRaw($"EXEC spGetUltimosCincoAmigos " +
                             $"@correo = {correo}").ToList();
+        }
+
+        public List<TablerosXmesDTO> GetTablerosPorMes(string correo)
+        {
+            var resultado = _context.Set<TablerosXmesView>().FromSqlRaw($"EXEC spGetTablerosPorMes " +
+                            $"@correo = {correo}").ToList();
+
+            var lista = new List<TablerosXmesDTO>();
+
+            foreach (var r in resultado)
+            {
+                var estadistica = new TablerosXmesDTO()
+                {
+                    mes = GenerarMes(r.mes),
+                    cantidad = r.cantidad
+                };
+                lista.Add(estadistica);
+            }
+
+            return lista;
         }
 
         /// <summary>
@@ -143,57 +169,6 @@ namespace TaskPlannerCE_API.Repositories
                             $"@miCorreo = {miCorreo}").ToList();
         }
 
-        /// <summary>
-        /// Metodo para buscar un amigo por nombre o por correo institucional
-        /// </summary>
-        /// <param name="miCorreo">El correo del estudiante que realiza la consulta</param>
-        /// <param name="variable">El nombre o el correo del amigo a consultar</param>
-        /// <returns></returns>
-        /*public List<BuscarAmigoView> buscarAmigo(string miCorreo, string variable)
-        {
-            return _context.Set<BuscarAmigoView>().FromSqlRaw($"EXEC spBuscarAmigos " +
-                            $"@miCorreo = {miCorreo}, @variable = {variable}").ToList();
-        }*/
-
-        /// <summary>
-        /// Metodo para buscar estudiantes por nombre o correo electronico e indica si es amigo o no
-        /// </summary>
-        /// <param name="miCorreo">El correo del que hace la consulta</param>
-        /// <param name="variable">El correo o el nombre a buscar</param>
-        /// <returns>lista de estudiantes encontrados</returns>
-        /*public List<BuscarEstudiantesDTO> buscarEstudiantes(string miCorreo, string variable)
-        {
-            var estudiantesTotales = _context.Set<BuscarEstudiantesView>().FromSqlRaw($"EXEC spBuscarEstudiantes " +
-                            $"@miCorreo = {miCorreo}, @variable = {variable}").ToList();
-
-            var amigos = _context.Set<BuscarAmigoView>().FromSqlRaw($"EXEC spGetAmigos " +
-                            $"@miCorreo = {miCorreo}").ToList();
-
-            List<BuscarEstudiantesDTO> resultado = new List<BuscarEstudiantesDTO>();
-
-            foreach(var estudiante in estudiantesTotales)
-            {
-                var est = new BuscarEstudiantesDTO
-                {
-                    correoInstitucional = estudiante.correoInstitucional,
-                    carnet = estudiante.correoInstitucional,
-                    nombre = estudiante.nombre
-                };
-
-                foreach (var amigo in amigos)
-                {
-                    if(estudiante.correoInstitucional == amigo.correoAmigo)
-                    {
-                        est.amigo = true;
-                        break;
-                    }
-                }
-                resultado.Add(est);
-            }
-
-            return resultado;
-        }*/
-
         // <summary>
         /// Método para acceder a otra api y retornar un resultado
         /// </summary>
@@ -204,6 +179,43 @@ namespace TaskPlannerCE_API.Repositories
             var httpClient = new HttpClient();
             var content = await httpClient.GetStringAsync(uri);
             return content;
+        }
+
+        /// <summary>
+        /// Metodo para asignar el nombre del mes de acuerdo a un número ingresado
+        /// </summary>
+        /// <param name="mes">El numero de mes</param>
+        /// <returns>El nombre correspondiente al mes</returns>
+        public string GenerarMes(int mes)
+        {
+            switch (mes)
+            {
+                case 1:
+                    return "Enero";
+                case 2:
+                    return "Febrero";
+                case 3:
+                    return "Marzo";
+                case 4:
+                    return "Abril";
+                case 5:
+                    return "Mayo";
+                case 6:
+                    return "Junio";
+                case 7:
+                    return "Julio";
+                case 8:
+                    return "Agosto";
+                case 9:
+                    return "Setiembre";
+                case 10:
+                    return "Octubre";
+                case 11:
+                    return "Noviembre";
+                case 12:
+                    return "Diciembre";
+            }
+            return null;
         }
 
         // guarda los cambios en la base de datos

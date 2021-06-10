@@ -615,6 +615,7 @@ namespace TaskPlannerCE_API.Models
             modelBuilder.Entity<TareaView>().HasNoKey().ToView(null);
             modelBuilder.Entity<TareaSimpleView>().HasNoKey().ToView(null);
             modelBuilder.Entity<UltimosAmigosView>().HasNoKey().ToView(null);
+            modelBuilder.Entity<TablerosXmesView>().HasNoKey().ToView(null);
 
             OnModelCreatingPartial(modelBuilder);
         }

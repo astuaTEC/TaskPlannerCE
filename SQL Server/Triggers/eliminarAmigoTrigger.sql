@@ -1,26 +1,22 @@
 USE TaskPlannerCEDB;
 GO
 
-CREATE TRIGGER eliminarAmigoTrigger
+ALTER TRIGGER eliminarAmigoTrigger
 ON ESTUDIANTE_AMIGO
 AFTER DELETE
 AS
 BEGIN
 	SET NOCOUNT ON;
-
-		DECLARE @correoE VARCHAR(50),
-				@correoA VARCHAR(50);
-
-		SET @correoE = (SELECT correoEstudiante from deleted);
-		SET @correoA = (SELECT correoAmigo from deleted);
 		
 		DELETE	ESTUDIANTE_TABLERO
-		WHERE	(@correoE = correoEstudiante AND
-				@correoA = correoColaborador) OR
-				(@correoA = correoEstudiante AND
-				@correoE = correoColaborador);
+		WHERE	(correoEstudiante IN (SELECT correoEstudiante from deleted) AND
+				correoColaborador IN (SELECT correoAmigo from deleted)) OR
+				(correoEstudiante IN (SELECT correoAmigo from deleted) AND
+				correoColaborador IN (SELECT correoEstudiante from deleted));
 
 		DELETE	ESTUDIANTE_AMIGO
-		WHERE	(@correoA = correoEstudiante AND
-				@correoE = correoAmigo); 
+		WHERE	(correoEstudiante IN (SELECT correoEstudiante from deleted) AND
+				correoAmigo IN (SELECT correoAmigo from deleted)) OR
+				(correoAmigo IN (SELECT correoEstudiante from deleted) AND
+				correoEstudiante IN (SELECT correoAmigo from deleted)); 
 END
