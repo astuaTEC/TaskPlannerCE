@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TaskPlannerCE_API.Models;
 using TaskPlannerCE_API.Models.InObjects;
 using TaskPlannerCE_API.Repositories;
 
@@ -27,6 +28,21 @@ namespace TaskPlannerCE_API.Controllers
             return Ok("Estado actualizado correctamente");
         }
 
+        [HttpPost]
+        [Route("api/estado/asociarAtipo")]
+        public IActionResult AgregarEstadosAtipo([FromBody] List<TipoTableroEstado> tte)
+        {
+            try
+            {
+                _repo.AgregarEstadosAtipo(tte);
+                _repo.SaveChanges();
+                return Ok("Estados creados correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
 
         [HttpDelete]
         [Route("api/estado/eliminar")]

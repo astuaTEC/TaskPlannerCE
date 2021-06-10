@@ -89,6 +89,33 @@ namespace TaskPlannerCE_API.Controllers
             return Ok(resultado);
         }
 
+        [HttpGet]
+        [Route("api/tablero/tipos")]
+        public IActionResult GetTipos()
+        {
+            var resultado = _repo.GetTipos();
+            if (resultado == null)
+                return BadRequest("Ha ocurrido un error");
+            return Ok(resultado);
+        }
+
+        [HttpPost]
+        [Route("api/tablero/crearTipo")]
+        public IActionResult CrearTipoTablero([FromBody] TipoTablero tipo)
+        {
+            try
+            {
+                _repo.CrearTipoTablero(tipo);
+                _repo.SaveChanges();
+                return Ok("Tipo de tablero creado correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
+
+
         [HttpPost]
         [Route("api/tablero/crear")]
         public IActionResult CrearTablero([FromBody] Tablero tablero)

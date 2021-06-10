@@ -28,6 +28,15 @@ namespace TaskPlannerCE_API.Repositories
 
         }
 
+        public void CrearTipoTablero(TipoTablero tipo)
+        {
+            if (tipo == null)
+                throw new ArgumentNullException(nameof(tipo));
+
+            _context.TipoTableros.Add(tipo);
+
+        }
+
         public void EliminarTablero(string correo, string nombre)
         {
             _context.Database.ExecuteSqlRaw("spEliminarTablero @p0, @p1",
@@ -123,6 +132,15 @@ namespace TaskPlannerCE_API.Repositories
         {
             return _context.Set<ColaboradoresView>().FromSqlRaw($"EXEC spGetVisualizadoresTablero " +
                             $"@correo = {correo}, @nombre = {nombreTablero}").ToList();
+        }
+
+        /// <summary>
+        /// Método para acceder a todos los tipos de tableros
+        /// </summary>
+        /// <returns>La lista con los tipos de tableros</returns>
+        public List<TipoTablero> GetTipos()
+        {
+            return _context.TipoTableros.ToList();
         }
 
         /// <summary>
