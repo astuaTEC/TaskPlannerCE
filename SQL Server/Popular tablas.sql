@@ -15,11 +15,11 @@ GO
 INSERT INTO ESTUDIANTE (carnet, correoInstitucional, primerNombre, segundoNombre, primerApellido, 
 segundoApellido, telefono, carreraMatriculada, provinciaResidencia, provinciaUniversidad, areaDeInteres)
 VALUES ('2018143188', 'sam.astua@estudiantec.cr', 'Saymon', '', 'Astúa', 'Madrigal', 
-		'+50685681546', 'Ing. Computadores', 'San José', 'Cartago', 'Deportiva'),
+		'+50685681546', 'Ingeniería en Computadores', 'San José', 'Cartago', 'Deportiva'),
 	   ('2018002998', 'oscar.araya@estudiantec.cr', 'Oscar', 'Fernando', 'Araya', 'Garbanzo', 
-		'+50660255252', 'Ing. Computadores', 'San José', 'Cartago', 'Académica'),
+		'+50660255252', 'Ingeniería en Computadores', 'San José', 'Cartago', 'Académica'),
 	   ('2018148661', 'kevinar51@estudiantec.cr', 'Kevin', 'Francisco', 'Acevedo', 'Rodríguez', 
-		'+50683488906', 'Ing. Computadores', 'San José', 'Cartago', 'Cultural');
+		'+50683488906', 'Ingeniería en Computadores', 'San José', 'Cartago', 'Cultural');
 
 --PROFESOR
 INSERT INTO PROFESOR(carnet, correoInstitucional, primerNombre,

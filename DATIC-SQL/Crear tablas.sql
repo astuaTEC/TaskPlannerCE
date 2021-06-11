@@ -11,7 +11,7 @@ CREATE TABLE ESTUDIANTE(
 	correoInstitucional		VARCHAR(50)		NOT NULL,
 	carnetInstitucional		VARCHAR(10)		NOT NULL,
 	contrasena				VARCHAR(50)		NOT NULL,
-	carrera					VARCHAR(50)		NOT NULL,
+	carrera					VARCHAR(100)	NOT NULL,
 	activo					BIT				NOT NULL,
 	PRIMARY KEY(correoInstitucional, carnetInstitucional)
 );

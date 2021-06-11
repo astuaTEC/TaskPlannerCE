@@ -45,7 +45,7 @@ namespace DATIC_API.Models
 
                 entity.Property(e => e.Carrera)
                     .IsRequired()
-                    .HasMaxLength(50)
+                    .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("carrera");
 

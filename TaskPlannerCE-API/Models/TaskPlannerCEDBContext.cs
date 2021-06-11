@@ -144,7 +144,7 @@ namespace TaskPlannerCE_API.Models
 
                 entity.Property(e => e.CarreraMatriculada)
                     .IsRequired()
-                    .HasMaxLength(50)
+                    .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("carreraMatriculada");
 

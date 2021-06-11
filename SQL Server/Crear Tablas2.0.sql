@@ -19,7 +19,7 @@ CREATE TABLE ESTUDIANTE(
 	primerApellido			VARCHAR(50)			NOT NULL,
 	segundoApellido			VARCHAR(50)			NOT NULL,
 	telefono				VARCHAR(12)			NOT NULL,
-	carreraMatriculada		VARCHAR(50)			NOT NULL,
+	carreraMatriculada		VARCHAR(100)		NOT NULL,
 	provinciaResidencia		VARCHAR(50)			NOT NULL,
 	provinciaUniversidad	VARCHAR(50)			NOT NULL,
 	areaDeInteres			VARCHAR(50)			NOT NULL,
