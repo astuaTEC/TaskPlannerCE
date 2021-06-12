@@ -12,22 +12,20 @@ namespace TaskPlannerCE_API.CPM
             this.dependencias = new List<TareaCPM>();
         }
 
-        public TareaCPM(string nombre, int dur)
+        public TareaCPM(string nombre, int dur, DateTime fechaI, DateTime fechaF)
         {
             this.nombre = nombre;
             this.dur = dur;
+            this.fechaInicio = fechaI;
+            this.fechaFinalizacion = fechaF;
             this.dependencias = new List<TareaCPM>();
         }
         public string nombre { get; set; }
-        public int earlyStart { get; set; }
-
-        public int earlyFinish { get; set; }
-
-        public int latestStart { get; set; }
-
-        public int latestFinish { get; set; }
 
         public int dur;
+
+        public DateTime fechaInicio { get; set; }
+        public DateTime fechaFinalizacion { get; set; }
 
         public List<TareaCPM> dependencias { get; set; }
     }

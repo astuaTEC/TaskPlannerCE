@@ -99,6 +99,16 @@ namespace TaskPlannerCE_API.Controllers
             return Ok(resultado);
         }
 
+        [HttpGet]
+        [Route("api/tablero/rutaCritica")]
+        public IActionResult GetRutaCritica([FromQuery] string correo, [FromQuery] string nombreTablero)
+        {
+            var resultado = _repo.rutaCritica(correo, nombreTablero);
+            if (resultado == null)
+                return BadRequest("Ha ocurrido un error");
+            return Ok(resultado);
+        }
+
         [HttpPost]
         [Route("api/tablero/crearTipo")]
         public IActionResult CrearTipoTablero([FromBody] TipoTablero tipo)

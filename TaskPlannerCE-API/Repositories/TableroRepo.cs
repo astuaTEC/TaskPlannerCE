@@ -294,14 +294,21 @@ namespace TaskPlannerCE_API.Repositories
             return profesVisualizadores;
         }
 
-        public void rutaCritica(string correo, string nombreTablero)
+        public Ruta rutaCritica(string correo, string nombreTablero)
         {
             var tareasConDependencias = _context.Set<TareaCPMView>().FromSqlRaw($"EXEC spGetTareasCPM " +
                             $"@correo = {correo}, @nombreTablero = {nombreTablero}").ToList();
+            
+            if(tareasConDependencias.Count == 0)
+            {
+                return new Ruta();
+            }
 
             var tareasCPM = generarTareasParaAlgoritmo(tareasConDependencias);
 
             var algoritmo = new AlgoritmoCPM();
+
+            return algoritmo.ejecutarAlgoritmo(tareasCPM);
         }
 
         public List<TareaCPM> generarTareasParaAlgoritmo(List<TareaCPMView> tareasBD)
@@ -312,9 +319,10 @@ namespace TaskPlannerCE_API.Repositories
             // se crean nuevas tareas y se agregan a una lista
             foreach (var t in tareasBD)
             {
-                if(!verificarExistencia(listaTareas, t.nombre))
+                if (!verificarExistencia(listaTareas, t.nombre))
                 {
-                    var nuevaTarea = new TareaCPM(t.nombre, (t.fechaFinalizacion - t.fechaInicio).Days);
+                    var nuevaTarea = new TareaCPM(t.nombre, (t.fechaFinalizacion - t.fechaInicio).Days, 
+                        t.fechaInicio, t.fechaFinalizacion);
                     listaTareas.Add(nuevaTarea);
                 }
                 
