@@ -177,5 +177,20 @@ namespace TaskPlannerCE_API.Controllers
                 return BadRequest("Algo salio mal");
             }
         }
+
+        [HttpDelete]
+        [Route("api/tablero/eliminarTipo")]
+        public IActionResult EliminarTipoTablero([FromQuery] string nombre)
+        {
+            try
+            {
+                _repo.EliminarTipoTablero(nombre);
+                return Ok("Tipo de tablero eliminado correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
     }
 }

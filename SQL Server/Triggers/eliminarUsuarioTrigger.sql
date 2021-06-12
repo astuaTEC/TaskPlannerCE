@@ -1,7 +1,7 @@
 USE TaskPlannerCEDB;
 GO
 
-alter TRIGGER eliminarUsuarioTrigger
+CREATE TRIGGER eliminarUsuarioTrigger
 ON ESTUDIANTE
 INSTEAD OF DELETE
 AS

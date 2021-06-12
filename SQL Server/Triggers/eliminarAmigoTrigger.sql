@@ -1,7 +1,7 @@
 USE TaskPlannerCEDB;
 GO
 
-ALTER TRIGGER eliminarAmigoTrigger
+CREATE TRIGGER eliminarAmigoTrigger
 ON ESTUDIANTE_AMIGO
 AFTER DELETE
 AS

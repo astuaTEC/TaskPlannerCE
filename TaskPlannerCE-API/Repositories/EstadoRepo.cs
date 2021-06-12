@@ -41,6 +41,17 @@ namespace TaskPlannerCE_API.Repositories
         }
 
         /// <summary>
+        /// Método para eliminar un estado asociado a un tipo de tablero
+        /// </summary>
+        /// <param name="nombreTipo">El nombre del tipo al que está asociado el estado</param>
+        /// <param name="nombreEstado">El nombre del estado a eliminar</param>
+        public void EliminarEstadoDeTipo(string nombreTipo, string nombreEstado)
+        {
+            _context.Database.ExecuteSqlRaw("spEliminarEstadoTipo @p0, @p1",
+                nombreTipo, nombreEstado);
+        }
+
+        /// <summary>
         /// Metodo para asociar una lista de estados predeterminados a un tipo de tablero
         /// </summary>
         /// <param name="tte">La lista de estados</param>

@@ -59,5 +59,20 @@ namespace TaskPlannerCE_API.Controllers
             }
         }
 
+        [HttpDelete]
+        [Route("api/estado/eliminarDeTipo")]
+        public IActionResult EliminarEstadoDeTipo([FromQuery] string nombreTipo, string nombreEstado)
+        {
+            try
+            {
+                _repo.EliminarEstadoDeTipo(nombreTipo, nombreEstado);
+                return Ok("Estado eliminado correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
+
     }
 }

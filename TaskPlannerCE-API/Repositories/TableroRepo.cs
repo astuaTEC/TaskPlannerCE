@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TaskPlannerCE_API.CPM;
 using TaskPlannerCE_API.Models;
 using TaskPlannerCE_API.Models.DTO;
 using TaskPlannerCE_API.Models.Views;
@@ -28,6 +29,10 @@ namespace TaskPlannerCE_API.Repositories
 
         }
 
+        /// <summary>
+        /// Metodo para crear un tipo de tablero nuevo
+        /// </summary>
+        /// <param name="tipo">El tipo de tablero a crear</param>
         public void CrearTipoTablero(TipoTablero tipo)
         {
             if (tipo == null)
@@ -37,10 +42,25 @@ namespace TaskPlannerCE_API.Repositories
 
         }
 
+        /// <summary>
+        /// Metodo para eliminar un tablero específico
+        /// </summary>
+        /// <param name="correo">El correo del propietario del tablero</param>
+        /// <param name="nombre">el nombre del tablero a eliminar</param>
         public void EliminarTablero(string correo, string nombre)
         {
             _context.Database.ExecuteSqlRaw("spEliminarTablero @p0, @p1",
                 correo, nombre);
+        }
+
+        /// <summary>
+        /// Metodo para eliminar un tipo de tablero
+        /// </summary>
+        /// <param name="nombre">El nombre del tipo a eliminar</param>
+        public void EliminarTipoTablero(string nombre)
+        {
+            _context.Database.ExecuteSqlRaw("spEliminarTipoTablero @p0",
+                nombre);
         }
 
         /// <summary>
@@ -272,6 +292,67 @@ namespace TaskPlannerCE_API.Repositories
             }
 
             return profesVisualizadores;
+        }
+
+        public void rutaCritica(string correo, string nombreTablero)
+        {
+            var tareasConDependencias = _context.Set<TareaCPMView>().FromSqlRaw($"EXEC spGetTareasCPM " +
+                            $"@correo = {correo}, @nombreTablero = {nombreTablero}").ToList();
+
+            var tareasCPM = generarTareasParaAlgoritmo(tareasConDependencias);
+
+            var algoritmo = new AlgoritmoCPM();
+        }
+
+        public List<TareaCPM> generarTareasParaAlgoritmo(List<TareaCPMView> tareasBD)
+        {
+            List<TareaCPM> listaTareas = new List<TareaCPM>();
+            List<TareaCPM> listaTemp;
+
+            // se crean nuevas tareas y se agregan a una lista
+            foreach (var t in tareasBD)
+            {
+                if(!verificarExistencia(listaTareas, t.nombre))
+                {
+                    var nuevaTarea = new TareaCPM(t.nombre, (t.fechaFinalizacion - t.fechaInicio).Days);
+                    listaTareas.Add(nuevaTarea);
+                }
+                
+            }
+
+            // se agregan las dependencias a cada tarea
+            listaTemp = listaTareas;
+            foreach(var tarea in listaTareas)
+            {
+                foreach(var t in tareasBD)
+                {
+                    if (t.nombre == tarea.nombre)
+                    {
+                        foreach (var temp in listaTemp)
+                        {
+                            if(temp.nombre == t.dependencia)
+                            {
+                                tarea.dependencias.Add(temp);
+                            }
+                        }
+                    }
+                    
+                }
+            }
+
+            return listaTareas;
+        }
+
+        public bool verificarExistencia(List<TareaCPM> lista, string nombre)
+        {
+            foreach(var t in lista)
+            {
+                if (t.nombre.Equals(nombre))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         // guarda los cambios en la base de datos

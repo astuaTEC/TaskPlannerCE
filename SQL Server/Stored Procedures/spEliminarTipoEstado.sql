@@ -1,7 +1,7 @@
 USE TaskPlannerCEDB;
 GO
 
-CREATE PROCEDURE spEliminarEstado(
+CREATE PROCEDURE spEliminarTipoTablero(
 @id INT,
 @correo VARCHAR(50),
 @nombreTablero VARCHAR(50))
