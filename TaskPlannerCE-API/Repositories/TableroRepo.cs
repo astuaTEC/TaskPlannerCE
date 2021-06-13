@@ -294,8 +294,15 @@ namespace TaskPlannerCE_API.Repositories
             return profesVisualizadores;
         }
 
+        /// <summary>
+        /// Metodo para acceder a la ruta crítica específica para un tablero
+        /// </summary>
+        /// <param name="correo">El correo del propietario del tablero</param>
+        /// <param name="nombreTablero">El nombre del tablero a consultar</param>
+        /// <returns>La ruta crítica</returns>
         public Ruta rutaCritica(string correo, string nombreTablero)
         {
+            // se consulta la base de datos por las tareas y sus dependencias
             var tareasConDependencias = _context.Set<TareaCPMView>().FromSqlRaw($"EXEC spGetTareasCPM " +
                             $"@correo = {correo}, @nombreTablero = {nombreTablero}").ToList();
             
@@ -304,13 +311,21 @@ namespace TaskPlannerCE_API.Repositories
                 return new Ruta();
             }
 
+            // se llama al método que convierte lo retornado por la base de datos
+            // en objetos que puede manejar el algoritmo
             var tareasCPM = generarTareasParaAlgoritmo(tareasConDependencias);
 
             var algoritmo = new AlgoritmoCPM();
 
+            // se ejecuta el algoritmo y se retorna el resultado
             return algoritmo.ejecutarAlgoritmo(tareasCPM);
         }
 
+        /// <summary>
+        /// Metodo para convertir el resultado de la base de datos en objetos que usa el algoritmo
+        /// </summary>
+        /// <param name="tareasBD">Las tareas provenientes de la base de datos</param>
+        /// <returns>La lista de objetos preparados para el algoritmo</returns>
         public List<TareaCPM> generarTareasParaAlgoritmo(List<TareaCPMView> tareasBD)
         {
             List<TareaCPM> listaTareas = new List<TareaCPM>();
@@ -319,7 +334,7 @@ namespace TaskPlannerCE_API.Repositories
             // se crean nuevas tareas y se agregan a una lista
             foreach (var t in tareasBD)
             {
-                if (!verificarExistencia(listaTareas, t.nombre))
+                if (!verificarExistencia(listaTareas, t.nombre)) // si la tarea no ha sido agregada, entonces se agrega
                 {
                     var nuevaTarea = new TareaCPM(t.nombre, (t.fechaFinalizacion - t.fechaInicio).Days, 
                         t.fechaInicio, t.fechaFinalizacion);
@@ -351,6 +366,12 @@ namespace TaskPlannerCE_API.Repositories
             return listaTareas;
         }
 
+        /// <summary>
+        /// Metodo para verificar la existencia de una tareaCPM dentro de una lista
+        /// </summary>
+        /// <param name="lista">La lista a revisar</param>
+        /// <param name="nombre">El nombre de la tarea a verificar</param>
+        /// <returns>Un true si se encuentra, un false en caso contrario</returns>
         public bool verificarExistencia(List<TareaCPM> lista, string nombre)
         {
             foreach(var t in lista)

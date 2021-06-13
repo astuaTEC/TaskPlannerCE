@@ -42,7 +42,7 @@ namespace TaskPlannerCE_API.Controllers
             if (resultado == true)
             {
                 _repo.SaveChanges();
-                return Ok("Estudiante registrado exitosaqmente");
+                return Ok("Estudiante registrado exitosamente");
             }
             else
                 return BadRequest("No se ha podido registrar el estudiante");  
