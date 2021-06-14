@@ -64,6 +64,22 @@ namespace TaskPlannerCE_API.Controllers
             }
         }
 
+        [HttpPut]
+        [Route("api/tarea/actualizar")]
+        public IActionResult ActualizarTarea([FromBody] Tarea tarea)
+        {
+            try
+            {
+                _repo.ActualizarTarea(tarea);
+                _repo.SaveChanges();
+                return Ok("Tarea actualizada correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
+
         [HttpDelete]
         [Route("api/tarea/eliminarDependencia")]
         public IActionResult EliminarDependencia([FromQuery] string correo, string nombreTablero,

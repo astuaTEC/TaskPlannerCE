@@ -109,6 +109,24 @@ namespace TaskPlannerCE_API.Controllers
             return Ok(resultado);
         }
 
+
+        [HttpPut]
+        [Route("api/tablero/actualizar")]
+        public IActionResult ActualizarTablero([FromBody] Tablero tablero)
+        {
+            try
+            {
+                _repo.ActualizarTablero(tablero);
+                _repo.SaveChanges();
+                return Ok("Tablero actualizado correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
+
+
         [HttpPost]
         [Route("api/tablero/crearTipo")]
         public IActionResult CrearTipoTablero([FromBody] TipoTablero tipo)

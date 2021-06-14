@@ -26,6 +26,18 @@ namespace TaskPlannerCE_API.Repositories
                 correo, nombreTablero, nombre);
         }
 
+        /// <summary>
+        /// Metodo para actualizar una tarea, excepto su nombre
+        /// </summary>
+        /// <param name="tarea">La tarea actualizada</param>
+        public void ActualizarTarea(Tarea tarea)
+        {
+            if (tarea == null)
+                throw new ArgumentNullException(nameof(tarea));
+
+            _context.Tareas.Update(tarea);
+        }
+
         public void AgregarDependencia(TareaDependencium td)
         {
             if (td == null)

@@ -20,6 +20,12 @@ namespace TaskPlannerCE_API.Repositories
         {
             _context = context;
         }
+
+
+        /// <summary>
+        /// Metodo para crear un tablero nuevo
+        /// </summary>
+        /// <param name="tablero">El tablero a crear</param>
         public void CrearTablero(Tablero tablero)
         {
             if (tablero == null)
@@ -27,6 +33,18 @@ namespace TaskPlannerCE_API.Repositories
 
             _context.Tableros.Add(tablero);
 
+        }
+
+        /// <summary>
+        /// Metodo para actualizar un tablero específico
+        /// </summary>
+        /// <param name="tablero">El tablero a actualizar</param>
+        public void ActualizarTablero(Tablero tablero)
+        {
+            if (tablero == null)
+                throw new ArgumentNullException(nameof(tablero));
+
+            _context.Tableros.Update(tablero);
         }
 
         /// <summary>
