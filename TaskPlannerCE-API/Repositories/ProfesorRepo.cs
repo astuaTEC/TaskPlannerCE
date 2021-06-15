@@ -26,6 +26,25 @@ namespace TaskPlannerCE_API.Repositories
         {
             return _context.Set<ColaboradoresView>().FromSqlRaw($"EXEC spGetTodosProfes").ToList();
         }
-        
+
+        /// <summary>
+        /// Metodo para actualizar un profesor específico
+        /// </summary>
+        /// <param name="profesor">El profesor a actualizar</param>
+        public void ActualizarProfesor(Profesor profesor)
+        {
+            if (profesor == null)
+                throw new ArgumentNullException(nameof(profesor));
+
+            _context.Profesors.Update(profesor);
+        }
+
+
+        // guarda los cambios en la base de datos
+        public bool SaveChanges()
+        {
+            return (_context.SaveChanges() >= 0);
+        }
+
     }
 }

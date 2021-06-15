@@ -88,25 +88,6 @@ namespace TaskPlannerCE_API.Controllers
                 return BadRequest("Ha ocurrido un error");
             return Ok(resultado);
         }
-        /*[HttpGet]
-        [Route("api/estudiante/buscarAmigo")]
-        public IActionResult BuscarAmigo([FromQuery] string correo, [FromQuery] string variable)
-        {
-            var resultado = _repo.buscarAmigo(correo, variable);
-            if (resultado == null)
-                return BadRequest("Ha ocurrido un error");
-            return Ok(resultado);
-        }*/
-
-        /* [HttpGet]
-         [Route("api/estudiante/buscarEstudiante")]
-         public IActionResult BuscarEstudiantes([FromQuery] string correo, [FromQuery] string variable)
-         {
-             var resultado = _repo.buscarEstudiantes(correo, variable);
-             if (resultado == null)
-                 return BadRequest("Ha ocurrido un error");
-             return Ok(resultado);
-         }*/
 
         [HttpGet]
         [Route("api/estudiante/misSolicitudes")]
@@ -116,6 +97,22 @@ namespace TaskPlannerCE_API.Controllers
             if (resultado == null)
                 return BadRequest("Ha ocurrido un error");
             return Ok(resultado);
+        }
+
+        [HttpPut]
+        [Route("api/estudiante/actualizar")]
+        public IActionResult ActualizarEstudiante([FromBody] Estudiante estudiante)
+        {
+            try
+            {
+                _repo.ActualizarEstudiante(estudiante);
+                _repo.SaveChanges();
+                return Ok("Perfil actualizado correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
         }
 
         [HttpPost]

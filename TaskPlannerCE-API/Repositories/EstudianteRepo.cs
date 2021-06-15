@@ -31,10 +31,26 @@ namespace TaskPlannerCE_API.Repositories
             return _context.Estudiantes.Where(x => x.CorreoInstitucional == correoInstitucional).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Metodo para eliminar a un usuario específico
+        /// </summary>
+        /// <param name="correo">El correo del usuario a eliminar</param>
         public void EliminarUsuario(string correo)
         {
             _context.Database.ExecuteSqlRaw("spEliminarUsuario @p0",
                correo);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tarea"></param>
+        public void ActualizarEstudiante(Estudiante estudiante)
+        {
+            if (estudiante == null)
+                throw new ArgumentNullException(nameof(estudiante));
+
+            _context.Estudiantes.Update(estudiante);
         }
 
         /// <summary>
