@@ -9,6 +9,7 @@ namespace TaskPlannerCE_API.Models
     {
         public Tarea()
         {
+            TareaDependencia = new HashSet<TareaDependencium>();
             TareaEstudiantes = new HashSet<TareaEstudiante>();
         }
 
@@ -21,7 +22,7 @@ namespace TaskPlannerCE_API.Models
         public DateTime FechaFinalizacion { get; set; }
 
         public virtual Estado Estado { get; set; }
-        public virtual TareaDependencium TareaDependencium { get; set; }
+        public virtual ICollection<TareaDependencium> TareaDependencia { get; set; }
         public virtual ICollection<TareaEstudiante> TareaEstudiantes { get; set; }
     }
 }

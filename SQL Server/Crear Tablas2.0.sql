@@ -109,7 +109,7 @@ CREATE TABLE TAREA_DEPENDENCIA(
 	nombreTablero			VARCHAR(50)		NOT NULL,
 	nombreTarea				VARCHAR(50)		NOT NULL,
 	nombreTareaDependiente	VARCHAR(50)		NOT NULL,
-	PRIMARY KEY(correoEstudiante, nombreTablero, nombreTarea)
+	PRIMARY KEY(correoEstudiante, nombreTablero, nombreTarea, nombreTareaDependiente)
 );
 
 CREATE TABLE ESTUDIANTE_TABLERO(
