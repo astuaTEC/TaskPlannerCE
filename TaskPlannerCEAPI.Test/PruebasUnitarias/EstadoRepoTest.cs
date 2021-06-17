@@ -37,7 +37,7 @@ namespace TaskPlannerCEAPI.Test.PruebasUnitarias
             var repo = new EstadoRepo(contexto);
             string nombreEsperado = "Nuevo Estado";
             repo.CrearEstado(estado);
-            contexto.SaveChanges();
+            repo.SaveChanges();
             var resultado = contexto.Estados.Find("sam.astua@estudiantec.cr", "Tablero 1", 1);
 
             //validación

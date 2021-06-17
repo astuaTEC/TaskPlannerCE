@@ -56,6 +56,7 @@ namespace TaskPlannerCEAPI.Test.PruebasUnitarias
             var nombreEsperado = "Nuevo segundoNombre";
             profe.SegundoNombre = "Nuevo segundoNombre";
             repo.ActualizarProfesor(profe);
+            repo.SaveChanges();
             var resultado = contexto.Profesors.Find("alfredo@profextec.cr");
 
             //verificacion

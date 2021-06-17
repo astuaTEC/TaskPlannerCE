@@ -77,6 +77,7 @@ namespace TaskPlannerCEAPI.Test.PruebasUnitarias
             var nombreEsperado = "Nuevo segundoNombre";
             estudiante.SegundoNombre = "Nuevo segundoNombre";
             repo.ActualizarEstudiante(estudiante);
+            repo.SaveChanges();
             var resultado = contexto.Estudiantes.Find("sam.astua@estudiantec.cr");
 
 
@@ -102,6 +103,7 @@ namespace TaskPlannerCEAPI.Test.PruebasUnitarias
             //prueba
             var repo = new EstudianteRepo(contexto);
             repo.EnviarSolicitudAmistad(solicitud);
+            repo.SaveChanges();
             var resultado = contexto.Solicituds.Find("sam.astua@estudiantec.cr", "kevinar51@estudiantec.cr");
 
             //verificación

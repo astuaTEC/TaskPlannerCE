@@ -33,6 +33,12 @@ namespace TaskPlannerCE_API.Repositories
 
         }
 
+        /// <summary>
+        /// Método para eliminar una tarea específica
+        /// </summary>
+        /// <param name="correo">El correo del dueño del tablero</param>
+        /// <param name="nombreTablero">El nombre del tablero</param>
+        /// <param name="nombre">El nombre de la tarea a eliminar</param>
         public void EliminarTarea(string correo, string nombreTablero, string nombre)
         {
             _context.Database.ExecuteSqlRaw("spEliminarTarea @p0, @p1, @p2",
@@ -51,6 +57,10 @@ namespace TaskPlannerCE_API.Repositories
             _context.Tareas.Update(tarea);
         }
 
+        /// <summary>
+        /// Metodo para agreagar una dependencia a una tarea
+        /// </summary>
+        /// <param name="td">La dependencia a agregar</param>
         public void AgregarDependencia(TareaDependencium td)
         {
             if (td == null)

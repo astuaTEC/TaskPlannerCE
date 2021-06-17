@@ -173,6 +173,7 @@ namespace TaskPlannerCEAPI.Test.PruebasUnitarias
             // prueba
             var repo = new LoginRepo(contexto);
             var respuesta = repo.RegistrarEstudiante(estudiante);
+            repo.SaveChanges();
 
             //verificacion
             Assert.IsTrue(respuesta);
@@ -204,6 +205,7 @@ namespace TaskPlannerCEAPI.Test.PruebasUnitarias
             // prueba
             var repo = new LoginRepo(contexto);
             var respuesta = repo.RegistrarEstudiante(estudiante);
+            repo.SaveChanges();
 
             //verificacion
             Assert.IsFalse(respuesta);
@@ -231,6 +233,8 @@ namespace TaskPlannerCEAPI.Test.PruebasUnitarias
             // prueba
             var repo = new LoginRepo(contexto);
             var respuesta = repo.RegistrarProfesor(profesor);
+            repo.SaveChanges();
+
 
             //verificación
             Assert.IsTrue(respuesta);
@@ -258,6 +262,8 @@ namespace TaskPlannerCEAPI.Test.PruebasUnitarias
             // prueba
             var repo = new LoginRepo(contexto);
             var respuesta = repo.RegistrarProfesor(profesor);
+            repo.SaveChanges();
+
 
             //verificación
             Assert.IsFalse(respuesta);
@@ -285,6 +291,8 @@ namespace TaskPlannerCEAPI.Test.PruebasUnitarias
             // prueba
             var repo = new LoginRepo(contexto);
             var respuesta = repo.RegistrarAdmin(admin);
+            repo.SaveChanges();
+
 
             //verificación
             Assert.IsTrue(respuesta);
@@ -312,6 +320,8 @@ namespace TaskPlannerCEAPI.Test.PruebasUnitarias
             // prueba
             var repo = new LoginRepo(contexto);
             var respuesta = repo.RegistrarAdmin(admin);
+            repo.SaveChanges();
+
 
             //verificación
             Assert.IsFalse(respuesta);
