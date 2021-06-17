@@ -51,7 +51,6 @@ C:\Users\samas\Documents\GitHub\TaskPlannerCE\DATIC-API\bin\Release\netcoreapp3.
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\DATIC-API\bin\Release\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\DATIC-API\bin\Release\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\DATIC-API\bin\Release\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\samas\Documents\GitHub\TaskPlannerCE\DATIC-API\obj\Release\netcoreapp3.1\DATIC-API.csprojAssemblyReference.cache
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\DATIC-API\obj\Release\netcoreapp3.1\DATIC-API.AssemblyInfoInputs.cache
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\DATIC-API\obj\Release\netcoreapp3.1\DATIC-API.AssemblyInfo.cs
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\DATIC-API\obj\Release\netcoreapp3.1\DATIC-API.csproj.CoreCompileInputs.cache
@@ -64,3 +63,4 @@ C:\Users\samas\Documents\GitHub\TaskPlannerCE\DATIC-API\obj\Release\netcoreapp3.
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\DATIC-API\obj\Release\netcoreapp3.1\DATIC-API.dll
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\DATIC-API\obj\Release\netcoreapp3.1\DATIC-API.pdb
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\DATIC-API\obj\Release\netcoreapp3.1\DATIC-API.genruntimeconfig.cache
+C:\Users\samas\Documents\GitHub\TaskPlannerCE\DATIC-API\obj\Release\netcoreapp3.1\DATIC-API.csproj.AssemblyReference.cache

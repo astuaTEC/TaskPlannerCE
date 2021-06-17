@@ -169,7 +169,7 @@ namespace TaskPlannerCE_API.Repositories
             var resultEst = responseTaskEst.Result;
 
             //Si se obtiene exito en la consulta
-            if (resultEst != null) // si el resultado no es nulo
+            if (resultEst != null && resultEst != "") // si el resultado no es nulo
             {
                 // se parsea el resultado
                 EstudianteDatic estDatic = JsonConvert.DeserializeObject<EstudianteDatic>(resultEst);
@@ -202,7 +202,7 @@ namespace TaskPlannerCE_API.Repositories
             var resultProf = responseTaskProf.Result;
 
             //Si se obtiene exito en la consulta
-            if (resultProf != null) // si el resultado no es nulo
+            if (resultProf != null && resultProf != "") // si el resultado no es nulo
             {
                 // se parsea el resultado
                 ProfesorDatic profDatic = JsonConvert.DeserializeObject<ProfesorDatic>(resultProf);
@@ -235,7 +235,7 @@ namespace TaskPlannerCE_API.Repositories
             var resultProf = responseTaskProf.Result;
 
             //Si se obtiene exito en la consulta
-            if (resultProf != null) // si el resultado no es nulo
+            if (resultProf != null && resultProf != "") // si el resultado no es nulo
             {
                 // se parsea el resultado
                 ProfesorDatic profDatic = JsonConvert.DeserializeObject<ProfesorDatic>(resultProf);

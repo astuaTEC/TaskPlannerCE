@@ -29,6 +29,22 @@ namespace TaskPlannerCE_API.Controllers
         }
 
         [HttpPost]
+        [Route("api/estado/agregar")]
+        public IActionResult AgregarEstado([FromBody] Estado estado)
+        {
+            try
+            {
+                _repo.CrearEstado(estado);
+                _repo.SaveChanges();
+                return Ok("Estado creado correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
+
+        [HttpPost]
         [Route("api/estado/asociarAtipo")]
         public IActionResult AgregarEstadosAtipo([FromBody] List<TipoTableroEstado> tte)
         {

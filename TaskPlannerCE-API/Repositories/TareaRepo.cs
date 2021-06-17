@@ -20,6 +20,19 @@ namespace TaskPlannerCE_API.Repositories
             _context = context;
         }
 
+        /// <summary>
+        /// Metodo para crear una nueva tarea
+        /// </summary>
+        /// <param name="tarea">La tarea nueva</param>
+        public void CrearTarea(Tarea tarea)
+        {
+            if (tarea == null)
+                throw new ArgumentNullException(nameof(tarea));
+
+            _context.Tareas.Add(tarea);
+
+        }
+
         public void EliminarTarea(string correo, string nombreTablero, string nombre)
         {
             _context.Database.ExecuteSqlRaw("spEliminarTarea @p0, @p1, @p2",

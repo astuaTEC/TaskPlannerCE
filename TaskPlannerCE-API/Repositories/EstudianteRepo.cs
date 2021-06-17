@@ -42,9 +42,9 @@ namespace TaskPlannerCE_API.Repositories
         }
 
         /// <summary>
-        /// 
+        /// Metodo para actualizar un estudiante en la base de datos
         /// </summary>
-        /// <param name="tarea"></param>
+        /// <param name="estudiante">El estudiante a actualizar</param>
         public void ActualizarEstudiante(Estudiante estudiante)
         {
             if (estudiante == null)
@@ -183,18 +183,6 @@ namespace TaskPlannerCE_API.Repositories
         {
             return _context.Set<BuscarEstudiantesView>().FromSqlRaw($"EXEC spGetEstudiantesNoAmigos " +
                             $"@miCorreo = {miCorreo}").ToList();
-        }
-
-        // <summary>
-        /// Método para acceder a otra api y retornar un resultado
-        /// </summary>
-        /// <param name="uri">La uri de la API a consultar</param>
-        /// <returns>El resultado de la petición</returns>
-        public async Task<string> GetAsync(string uri)
-        {
-            var httpClient = new HttpClient();
-            var content = await httpClient.GetStringAsync(uri);
-            return content;
         }
 
         /// <summary>

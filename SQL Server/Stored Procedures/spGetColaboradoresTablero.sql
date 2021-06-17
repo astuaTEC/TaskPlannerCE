@@ -8,9 +8,15 @@ AS
 SELECT	(E.primerNombre + ' ' + E.segundoNombre  + ' ' + E.primerApellido + ' ' + E.segundoApellido) AS nombre,
 		E.correoInstitucional
 FROM	ESTUDIANTE AS E, ESTUDIANTE_TABLERO AS ET 
-WHERE	ET.correoEstudiante = @correo AND
+WHERE	(ET.correoEstudiante = @correo AND
 		ET.nombreTablero = @nombre AND
-		ET.correoColaborador = E.correoInstitucional;
+		ET.correoColaborador = E.correoInstitucional)
+UNION
+SELECT	(E.primerNombre + ' ' + E.segundoNombre  + ' ' + E.primerApellido + ' ' + E.segundoApellido) AS nombre,
+		E.correoInstitucional
+FROM	ESTUDIANTE AS E
+WHERE	E.correoInstitucional = @correo;
+
 
 GO
 

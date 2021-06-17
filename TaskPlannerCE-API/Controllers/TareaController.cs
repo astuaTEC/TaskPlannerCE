@@ -40,6 +40,22 @@ namespace TaskPlannerCE_API.Controllers
         }
 
         [HttpPost]
+        [Route("api/tarea/agregar")]
+        public IActionResult AgregarTarea([FromBody] Tarea tarea)
+        {
+            try
+            {
+                _repo.CrearTarea(tarea);
+                _repo.SaveChanges();
+                return Ok("Tarea agregada correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
+
+        [HttpPost]
         [Route("api/tarea/agregarDependencias")]
         public IActionResult AgregarDependencias([FromBody] List<TareaDependencium> ltd)
         {

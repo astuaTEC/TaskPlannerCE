@@ -23,8 +23,6 @@ namespace DATIC_API.Controllers
         public IActionResult GetProfesor([FromQuery] string correo, [FromQuery] string cedula)
         {
             var resultado = _repo.GetProfesor(correo, cedula);
-            if (resultado == null)
-                return BadRequest("Ha ocurrido un error");
             return Ok(resultado);
         }
 

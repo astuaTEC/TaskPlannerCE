@@ -19,6 +19,19 @@ namespace TaskPlannerCE_API.Repositories
         }
 
         /// <summary>
+        /// Metodo para crear un nuevo estado de completitud
+        /// </summary>
+        /// <param name="estado">El nuevo estado</param>
+        public void CrearEstado(Estado estado)
+        {
+            if (estado == null)
+                throw new ArgumentNullException(nameof(estado));
+
+            _context.Estados.Add(estado);
+
+        }
+
+        /// <summary>
         /// Metodo para cambiarle el nombre a un estado
         /// </summary>
         /// <param name="ei">El objeto estado a actualizar</param>

@@ -51,7 +51,6 @@ C:\Users\samas\Documents\GitHub\TaskPlannerCE\TaskPlannerCE-API\bin\Release\netc
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\TaskPlannerCE-API\bin\Release\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\TaskPlannerCE-API\bin\Release\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\TaskPlannerCE-API\bin\Release\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\samas\Documents\GitHub\TaskPlannerCE\TaskPlannerCE-API\obj\Release\netcoreapp3.1\TaskPlannerCE-API.csprojAssemblyReference.cache
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\TaskPlannerCE-API\obj\Release\netcoreapp3.1\TaskPlannerCE-API.AssemblyInfoInputs.cache
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\TaskPlannerCE-API\obj\Release\netcoreapp3.1\TaskPlannerCE-API.AssemblyInfo.cs
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\TaskPlannerCE-API\obj\Release\netcoreapp3.1\TaskPlannerCE-API.csproj.CoreCompileInputs.cache
@@ -64,3 +63,4 @@ C:\Users\samas\Documents\GitHub\TaskPlannerCE\TaskPlannerCE-API\obj\Release\netc
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\TaskPlannerCE-API\obj\Release\netcoreapp3.1\TaskPlannerCE-API.dll
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\TaskPlannerCE-API\obj\Release\netcoreapp3.1\TaskPlannerCE-API.pdb
 C:\Users\samas\Documents\GitHub\TaskPlannerCE\TaskPlannerCE-API\obj\Release\netcoreapp3.1\TaskPlannerCE-API.genruntimeconfig.cache
+C:\Users\samas\Documents\GitHub\TaskPlannerCE\TaskPlannerCE-API\obj\Release\netcoreapp3.1\TaskPlannerCE-API.csproj.AssemblyReference.cache
