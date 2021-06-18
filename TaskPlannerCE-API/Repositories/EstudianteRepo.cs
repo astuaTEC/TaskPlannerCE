@@ -102,10 +102,43 @@ namespace TaskPlannerCE_API.Repositories
         /// </summary>
         /// <param name="correo">el correo del estudiante que solicita</param>
         /// <returns></returns>
-        public List<Solicitud> GetMisSolicitudes(string correo)
+        public List<SolicitudView> GetMisSolicitudes(string correo)
         {
-            return _context.Set<Solicitud>().FromSqlRaw($"EXEC spGetMisSolicitudes " +
+            return _context.Set<SolicitudView>().FromSqlRaw($"EXEC spGetMisSolicitudes " +
                             $"@miCorreo = {correo}").ToList();
+        }
+
+        /// <summary>
+        /// Metodo para acceder a solicitudes pendientes que he enviado o me han enviado
+        /// </summary>
+        /// <param name="correo">el correo del solicitante</param>
+        /// <returns>La lista de solicitudes</returns>
+        public List<SolicitudPendienteView> GetSolicitudesPendientes(string correo)
+        {
+            return _context.Set<SolicitudPendienteView>().FromSqlRaw($"EXEC spGetSolicitudesPendientes " +
+                            $"@miCorreo = {correo}").ToList();
+        }
+
+        /// <summary>
+        /// Metodo para acceder a todas las notificaciones de un estudiante
+        /// </summary>
+        /// <param name="correo">Correo del estudiante que consulta</param>
+        /// <returns>La lista de notificaciones</returns>
+        public List<Notificacion> GetNotificaciones(string correo)
+        {
+            return _context.Set<Notificacion>().FromSqlRaw($"EXEC spGetMisNotificaciones " +
+                            $"@miCorreo = {correo}").ToList();
+        }
+
+        /// <summary>
+        /// Metodo para eliminar una notificacion específica
+        /// </summary>
+        /// <param name="correo">El correo del que hace la consulta</param>
+        /// <param name="id">El id de la notificacion</param>
+        public void eliminarNotificacion(string correo, int id)
+        {
+            _context.Database.ExecuteSqlRaw("spEliminarNotificacion @p0, @p1",
+              correo, id, "Rechazado");
         }
 
         /// <summary>

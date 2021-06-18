@@ -157,7 +157,23 @@ namespace TaskPlannerCEAPI.Test.PruebasUnitarias
             var resultado = repo.GetMisSolicitudes("sam.astua@estudiantec.cr");
 
             //validacion
-            Assert.AreEqual(typeof(List<Solicitud>), resultado.GetType());
+            Assert.AreEqual(typeof(List<SolicitudView>), resultado.GetType());
+        }
+
+        [TestMethod]
+        public void AccederALasSolicitudesPendientes()
+        {
+            //preparación
+            var nombre = Guid.NewGuid().ToString();
+
+            var contexto = ConstruirContext(nombre);
+
+            //prueba
+            var repo = new EstudianteRepo(contexto);
+            var resultado = repo.GetSolicitudesPendientes("sam.astua@estudiantec.cr");
+
+            //validacion
+            Assert.AreEqual(typeof(List<SolicitudPendienteView>), resultado.GetType());
         }
 
         [TestMethod]

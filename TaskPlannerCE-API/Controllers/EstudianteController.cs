@@ -99,6 +99,28 @@ namespace TaskPlannerCE_API.Controllers
             return Ok(resultado);
         }
 
+        [HttpGet]
+        [Route("api/estudiante/solicitudesPendientes")]
+        public IActionResult GetSolicitudesPendientes([FromQuery] string correo)
+        {
+            var resultado = _repo.GetSolicitudesPendientes(correo);
+            if (resultado == null)
+                return BadRequest("Ha ocurrido un error");
+            return Ok(resultado);
+        }
+
+        [HttpGet]
+        [Route("api/estudiante/notificaciones")]
+        public IActionResult GetMisNotificaciones([FromQuery] string correo)
+        {
+            var resultado = _repo.GetNotificaciones(correo);
+            if (resultado == null)
+                return BadRequest("Ha ocurrido un error");
+            return Ok(resultado);
+        }
+
+
+
         [HttpPut]
         [Route("api/estudiante/actualizar")]
         public IActionResult ActualizarEstudiante([FromBody] Estudiante estudiante)
@@ -173,6 +195,21 @@ namespace TaskPlannerCE_API.Controllers
             {
                 _repo.EliminarUsuario(correo);
                 return Ok("Usuario eliminado correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
+
+        [HttpDelete]
+        [Route("api/estudiante/eliminarNotificacion")]
+        public IActionResult EliminarNotificacion([FromQuery] string correo, [FromQuery] int id)
+        {
+            try
+            {
+                _repo.eliminarNotificacion(correo, id);
+                return Ok("Notificacion eliminada correctamente");
             }
             catch
             {

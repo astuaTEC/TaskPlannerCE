@@ -1,7 +1,7 @@
 USE TaskPlannerCEDB;
 GO
 
-CREATE TRIGGER eliminarTareaTrigger
+ALTER TRIGGER eliminarTareaTrigger
 ON TAREA
 INSTEAD OF DELETE
 AS
@@ -12,7 +12,8 @@ BEGIN
 		DELETE	TAREA_DEPENDENCIA
 		WHERE	correoEstudiante IN (SELECT correoEstudiante FROM deleted) AND
 				nombreTablero IN (SELECT nombreTablero FROM deleted) AND
-				nombreTareaDependiente IN (SELECT nombre FROM deleted);
+				(nombreTareaDependiente IN (SELECT nombre FROM deleted) OR
+				nombreTarea IN (SELECT nombre FROM deleted) );
 
 		-- se eliminan los responsables de la tarea
 		DELETE	TAREA_ESTUDIANTE

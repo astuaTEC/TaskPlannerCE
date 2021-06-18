@@ -12,3 +12,5 @@ WHERE	@correo = correoEstudiante AND
 		@nombre = nombre;
 
 GO
+
+EXEC spEliminarTarea @correo = 'kevinar51@estudiantec.cr', @nombreTablero = 'Maluma 2021', @nombre = 'Perfecta';

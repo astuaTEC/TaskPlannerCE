@@ -1,13 +1,14 @@
 USE TaskPlannerCEDB;
 GO
 
-CREATE PROCEDURE spGetMisSolicitudes(
+ALTER PROCEDURE spGetMisSolicitudes(
 @miCorreo VARCHAR(50))
 AS
-SELECT correoEmisor, correoReceptor, estado
-FROM SOLICITUD 
-WHERE correoReceptor = @miCorreo;
+SELECT correoEmisor, correoReceptor, estado, (primerNombre + ' ' + segundoNombre + ' ' + primerApellido + ' ' + segundoApellido) AS nombre
+FROM SOLICITUD, ESTUDIANTE
+WHERE correoReceptor = @miCorreo AND
+	  correoEmisor = correoInstitucional;
 
 GO
 
-EXEC spGetMisSolicitudes @miCorreo = 'ejemplo@estudiantec.cr';
+EXEC spGetMisSolicitudes @miCorreo = 'kevinar51@estudiantec.cr';
