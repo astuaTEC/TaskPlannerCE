@@ -155,6 +155,18 @@ namespace TaskPlannerCE_API.Repositories
         }
 
         /// <summary>
+        /// Método para acceder a un tablero específico con su información
+        /// </summary>
+        /// <param name="correo">El correo del propietario del tablero</param>
+        /// <param name="nombre">El nombre del tablero</param>
+        /// <returns>El tablero con su respectiva información</returns>
+        public MisTablerosView getTablero(string correo, string nombre)
+        {
+            return _context.Set<MisTablerosView>().FromSqlRaw($"EXEC spGetTablero " +
+                            $"@correo = {correo}, @nombre = {nombre}").ToList().FirstOrDefault();
+        }
+
+        /// <summary>
         /// Metodo para acceder a los colaboradores y visualizadores de un tablero específico
         /// </summary>
         /// <param name="correo">correo del propietario del tablero</param>

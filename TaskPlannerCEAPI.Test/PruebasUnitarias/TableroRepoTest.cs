@@ -245,7 +245,7 @@ namespace TaskPlannerCEAPI.Test.PruebasUnitarias
         }
 
         [TestMethod]
-        public void AccederInformacionDeTablero()
+        public void AccederColaboradoresYobservadoresDelTablero()
         {
             //preparación
             var nombre = Guid.NewGuid().ToString();
@@ -257,6 +257,33 @@ namespace TaskPlannerCEAPI.Test.PruebasUnitarias
 
             //verificacion
             Assert.AreEqual(typeof(TableroInfoDTO), resultado.GetType());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void AccederDetallesDeTablero()
+        {
+            //preparación
+            var nombre = Guid.NewGuid().ToString();
+            var contexto = ConstruirContext(nombre);
+
+            contexto.Tableros.Add(new Tablero()
+            {
+                CorreoEstudiante = "sam.astua@estudiantec.cr",
+                Nombre = "Tablero 1",
+                Tipo = "Académico",
+                Descripcion = "Este es un nuevo tablero de prueba",
+                FechaCreacion = DateTime.Now
+            });
+
+            contexto.SaveChanges();
+
+            //prueba
+            var repo = new TableroRepo(contexto);
+            var resultado = repo.getTablero("sam.astua@estudiantec.cr", "Tablero 1");
+
+            //verificacion
+            Assert.AreEqual(typeof(MisTablerosView), resultado.GetType());
         }
 
         [TestMethod]
