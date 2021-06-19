@@ -1,0 +1,77 @@
+<ion-content>
+  <ion-row class="nombre ion-justify-content-center">
+    <ion-col class="ion-text-center ion-align-self-center">
+      <b>{{tablero.nombre}}</b>
+    </ion-col>
+  </ion-row>
+
+  <ion-grid>
+    <ion-row class="tipo ion-justify-content-center">
+      <ion-col class="ion-text-start ion-align-self-center">
+        Tipo:
+      </ion-col>
+      <ion-col class="ion-text-end ion-align-self-center">
+        {{tablero.tipo}}
+      </ion-col>
+    </ion-row>
+    <ion-row class="creador ion-justify-content-center">
+      <ion-col class="ion-text-start ion-align-self-center">
+        Creador:
+      </ion-col>
+      <ion-col class="ion-text-end ion-align-self-center">
+        {{tablero.creador}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row class="titulo-descripcion ion-justify-content-center">
+      <ion-col class="ion-text-center ion-align-self-center">
+        <b>Descripción</b>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row class="descripcion ion-justify-content-center">
+      <ion-col class="ion-text-center ion-align-self-center">
+        <p>{{tablero.descripcion}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-list class="lista-colaboradores">
+      <ion-list-header lines="inset" class="ion-text-center">
+        <ion-label><b>Colaboradores</b></ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let colaborador of tablero.colaboradores">
+        <ion-row class="ion-justify-content-center">
+          <ion-col class="ion-align-self-center">
+            {{colaborador.nombre}}
+          </ion-col>
+          <ion-col class="ion-align-self-center">
+            <i>{{colaborador.correoInstitucional}}</i>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-list class="lista-profesores">
+      <ion-list-header lines="inset" class="ion-text-center">
+        <ion-label><b>Profesores observadores</b></ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let observador of tablero.observadores">
+        <ion-row class="ion-justify-content-center">
+          <ion-col class="ion-align-self-center">
+            {{observador.nombre}}
+          </ion-col>
+          <ion-col class="ion-align-self-center">
+            <i>{{observador.correo}}</i>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+    
+  </ion-grid>
+</ion-content>

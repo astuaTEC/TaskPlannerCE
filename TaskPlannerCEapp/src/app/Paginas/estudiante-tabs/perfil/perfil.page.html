@@ -1,0 +1,115 @@
+<ion-row class="ion-justify-content-center titulo">
+    <ion-col class="ion-align-self-center ion-text-start cabecera">
+      <b>Perfil</b>
+    </ion-col>
+    <ion-col class="ion-align-self-center ion-text-end">
+        <ion-button color="danger" (click)="cerrarSesion()">Cerrar sesión</ion-button>
+    </ion-col>
+</ion-row>
+
+<ion-content>
+    <ion-list class="lista">
+        <ion-item class="ion-text-center">
+            <ion-grid>
+                <ion-row class="ion-justify-content-center">
+                    <ion-col class="ion-align-self-center ion-text-start">
+                        <b>Nombre</b>
+                    </ion-col>
+                    <ion-col class="ion-align-self-center ion-text-end">
+                        {{perfilEstudiante.nombre}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+        <ion-item class="ion-text-center">
+            <ion-grid>
+                <ion-row class="ion-justify-content-center">
+                    <ion-col class="ion-align-self-center ion-text-start">
+                        <b>Carné estudiantil</b>
+                    </ion-col>
+                    <ion-col class="ion-align-self-center ion-text-end">
+                        {{perfilEstudiante.carnet}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+        <ion-item class="ion-text-center">
+            <ion-grid>
+                <ion-row class="ion-justify-content-center">
+                    <ion-col class="ion-align-self-center ion-text-start">
+                        <b>Correo institucional</b>
+                    </ion-col>
+                    <ion-col class="ion-align-self-center ion-text-end">
+                        {{perfilEstudiante.correoInstitucional}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+        <ion-item class="ion-text-center">
+            <ion-grid>
+                <ion-row class="ion-justify-content-center">
+                    <ion-col class="ion-align-self-center ion-text-start">
+                        <b>Teléfono</b>
+                    </ion-col>
+                    <ion-col class="ion-align-self-center ion-text-end">
+                        {{perfilEstudiante.telefono}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+        <ion-item class="ion-text-center">
+            <ion-grid>
+                <ion-row class="ion-justify-content-center">
+                    <ion-col class="ion-align-self-center ion-text-start">
+                        <b>Carrera</b>
+                    </ion-col>
+                    <ion-col class="ion-align-self-center ion-text-end">
+                        {{perfilEstudiante.carrera}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+        <ion-item class="ion-text-center">
+            <ion-grid>
+                <ion-row class="ion-justify-content-center">
+                    <ion-col class="ion-align-self-center ion-text-start">
+                        <b>Provincia de residencia actual</b>
+                    </ion-col>
+                    <ion-col class="ion-align-self-center ion-text-end">
+                        {{perfilEstudiante.provinciaResidencia}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+        <ion-item class="ion-text-center">
+            <ion-grid>
+                <ion-row class="ion-justify-content-center">
+                    <ion-col class="ion-align-self-center ion-text-start">
+                        <b>Provincia en la que cursa</b>
+                    </ion-col>
+                    <ion-col class="ion-align-self-center ion-text-end">
+                        {{perfilEstudiante.provinciaCursa}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+        <ion-item class="ion-text-center">
+            <ion-grid>
+                <ion-row class="ion-justify-content-center">
+                    <ion-col class="ion-align-self-center ion-text-start">
+                        <b>Área de interes</b>
+                    </ion-col>
+                    <ion-col class="ion-align-self-center ion-text-end">
+                        {{perfilEstudiante.areaInteres}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+    </ion-list>
+
+    <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="4">
+          <ion-button color="medium" expand="block" (click)="goToEditarPerfil()">editar</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-content>

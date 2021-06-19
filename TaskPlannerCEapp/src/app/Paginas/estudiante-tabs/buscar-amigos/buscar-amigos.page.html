@@ -1,0 +1,68 @@
+<ion-row class="ion-justify-content-center cabecera">
+  <ion-col class="ion-align-self-center" size="1">
+    <ion-icon name="arrow-back-circle" style="zoom:1.7;" (click)="goToAmigos()"></ion-icon>
+  </ion-col>
+  <ion-col class="ion-align-self-center" size="8" offset="1">
+    <ion-item class="input-icon">
+      <ion-input class="searchTerm" clear-input="false" type="text"
+      placeholder="Nombre o correo institucional" name="searchTerm" id="searchTerm"
+      [(ngModel)]="searchTerm" (input)="search($event.target.value)">
+     </ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="2" class="ion-align-self-center"> 
+    <ion-icon name="close-circle" style="zoom:1.7;" (click)="limpiarBusqueda()"></ion-icon>
+  </ion-col>
+</ion-row>
+
+
+<ion-footer>
+  <ion-row class="ion-justify-content-center fila">
+    <ion-col size="8" class="titulo ion-text-start ion-align-self-center">
+      <b>Estudiantes</b> 
+    </ion-col>
+    <ion-col size="4" class="ion-text-end ion-align-self-center">
+      <b>Cantidad: {{estudiantesFiltro.length}}</b> 
+    </ion-col>
+  </ion-row>
+
+  <ion-grid>
+    <ion-list class="lista">
+      <ion-item *ngFor="let estudiante of estudiantesFiltro">
+        <ion-card class="carta">
+          <ion-card-header>
+           <ion-row class="ion-justify-content-center">
+             <ion-col class="subtitulo ion-text-start ion-align-self-center">
+              <b>{{estudiante.nombre}}</b> 
+             </ion-col>
+           </ion-row>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-row class="ion-justify-content-center">
+              <ion-col class="ion-text-start ion-align-self-center" size="10">
+                <i>{{estudiante.correoAmigo}}</i>
+              </ion-col>
+               <ion-col class="ion-align-self-center ion-text-end" size="2">
+                <ng-template [ngIf]="estudiante.estado == 'Amigo'">
+                  <ion-icon name="trash" style="zoom:1.7;" (click)="eliminarAmigo(estudiante)"></ion-icon>
+                </ng-template>
+
+                <ng-template [ngIf]="estudiante.estado  == 'NoAmigo'">
+                  <ion-icon name="person-add" style="zoom:1.7;" (click)="enviarSolicitudAmistad(estudiante.correoAmigo)"></ion-icon>
+                </ng-template>
+
+                <ng-template [ngIf]="estudiante.estado  == 'Pendiente'">
+                  <ion-icon name="notifications-circle" style="zoom:1.7;" (click)="notificarEstudiantePendiente()"></ion-icon>
+                </ng-template>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+
+        </ion-card>
+      </ion-item>
+
+    </ion-list>
+  </ion-grid>
+</ion-footer>
+

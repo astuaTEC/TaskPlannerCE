@@ -37,6 +37,22 @@
     border-radius: 20px;
   }
 
+  .loading-k {
+    --background: #979b67;
+    --spinner-color: rgb(168, 245, 27);
+    color: rgb(24, 5, 5);
+  }
+
+  ion-toggle {
+    --background: #000;
+    --background-checked: #7a49a5;
+  
+    --handle-background: #7a49a5;
+    --handle-background-checked: #000;
+  }
+
+  
+
 
 
 

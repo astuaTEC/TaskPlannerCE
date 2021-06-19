@@ -1,0 +1,24 @@
+<ion-content>
+  <ion-row class=" fila-titulo ion-justify-content-center">
+      <ion-col class="ion-align-self-center">
+          <h1>Registrarse como</h1>
+      </ion-col>
+  </ion-row>
+
+  <ion-row>
+      <ion-col>
+          <ion-card (click)="goToRegister('estudiante')">
+              <ion-card-content>
+                  <ion-card-title>Estudiante</ion-card-title>
+              </ion-card-content>
+            </ion-card>
+      </ion-col>
+      <ion-col>
+          <ion-card (click)="goToRegister('profesor')">
+              <ion-card-content>
+                  <ion-card-title>Profesor</ion-card-title>
+              </ion-card-content>
+            </ion-card>
+      </ion-col>
+  </ion-row>
+</ion-content>

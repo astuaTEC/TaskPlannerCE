@@ -1,0 +1,95 @@
+<ion-row class="ion-justify-content-center cabecera">
+  <ion-col class="ion-align-self-center" size="1">
+    <ion-icon name="arrow-back-circle" style="zoom:1.7;" (click)="goToAmigos()"></ion-icon>
+  </ion-col>
+  <ion-col class="ion-align-self-center ion-text-center titulo">
+    <b>Notificaciones</b>
+  </ion-col>
+  <ion-col class="ion-align-self-center" size="1">
+  </ion-col>
+</ion-row>
+
+<ion-footer>
+  <ion-row class="ion-justify-content-center fila">
+    <ion-col size="9" class="titulo ion-text-start ion-align-self-center">
+     <b>Solicitudes de amistad</b> 
+    </ion-col>
+    <ion-col size="3" class="ion-text-start ion-align-self-center">
+      <b>Cantidad: {{solicitudesAmistad.length}}</b> 
+    </ion-col>
+  </ion-row>
+
+  <ion-grid class="contenedor-tus-tableros">
+    <ion-list class="lista">
+      <ion-item *ngFor="let solicitud of solicitudesAmistad">
+        <ion-card class="carta">
+   
+          <ion-card-content>
+            <ion-row class="ion-justify-content-center">
+              <ion-col style="font-size: 17px;" class="ion-text-start ion-align-self-center" size="10">
+               <b>{{solicitud.nombre}}</b>
+              </ion-col>
+              <ion-col class="ion-text-end ion-align-self-center" size="2">
+                <ion-icon name="checkmark-circle" style="zoom:1.7;" (click)="aceptarSolicitud(solicitud.correoInstitucional, solicitud.nombre)"></ion-icon>
+               </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+              <ion-col class="ion-text-start ion-align-self-center" size="10">
+                <i>{{solicitud.correoInstitucional}}</i>
+              </ion-col>
+              <ion-col class="ion-text-end ion-align-self-center" size="2">
+                <ion-icon name="close-circle" style="zoom:1.7;" (click)="rechazarSolicitud(solicitud.correoInstitucional, solicitud.nombre)"></ion-icon>
+               </ion-col>
+            </ion-row>
+   
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+
+  <ion-row class="ion-justify-content-center fila">
+    <ion-col size="9" class="titulo ion-text-start ion-align-self-center">
+      <b>Tus notificaciones</b> 
+    </ion-col>
+    <ion-col size="3" class="ion-text-start ion-align-self-center">
+      <b>Cantidad: {{notificaciones.length}}</b> 
+    </ion-col>
+  </ion-row>
+
+  <ion-grid class="contenedor-tus-tableros">
+
+    <ion-list class="lista">
+      <ion-item *ngFor="let notificacion of notificaciones">
+        <ion-card class="carta">
+          <ion-card-content>
+            <ion-row class="ion-justify-content-center">
+              <ion-col class="ion-text-start ion-align-self-center">
+               {{notificacion.descripcion}}
+              </ion-col>
+
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+              <ion-col class="ion-text-start ion-align-self-center" size="2">
+               Fecha:
+              </ion-col>
+              <ion-col class="ion-text-start ion-align-self-center" size="8">
+                {{notificacion.fecha}}
+               </ion-col>
+               <ion-col class="ion-align-self-center ion-text-end" size="2">
+                <ion-icon name="trash" style="zoom:1.7;" (click)="eliminarNotificacion(notificacion)"></ion-icon>
+              </ion-col>
+            </ion-row>
+   
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+
+</ion-footer>
+
+
+
+
+

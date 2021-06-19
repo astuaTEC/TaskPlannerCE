@@ -1,0 +1,100 @@
+<ion-row class="ion-justify-content-center cabecera">
+  <ion-col class="ion-align-self-center" size="1">
+  </ion-col>
+  <ion-col class="ion-align-self-center ion-text-center titulo">
+    <b>Editar {{nombreTablero}}</b>
+  </ion-col>
+  <ion-col class="ion-align-self-center ion-text-center" size="2">
+    <ion-icon name="close" style="zoom:1.7;" (click)="dimiss()"></ion-icon>
+  </ion-col>
+</ion-row>
+
+<ion-content>
+  <form #form="ngForm" novalidate>
+    <ion-grid class="contenedor">
+      <ion-row class="ion-justify-content-center fila">
+        <ion-col class="ion-align-self-center" size="9">
+            <h5>Tipo de tablero</h5>
+          <ion-item class="ion-margin input-icon">
+            <ion-select placeholder="Tipos" name="tipoTablero" [(ngModel)]="tipoTablero" (ionChange)="cambiosRealizadosTablero()">
+              <ion-select-option *ngFor="let tipo of tiposTableros" [value]="tipo">{{tipo}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center fila">
+        <ion-col class="ion-align-self-center" size="9">
+            <h5>Descripción</h5>
+            <ion-item class="input-icon">
+              <ion-textarea rows="3" cols="20" required name="descripcion" [(ngModel)]="descripcion" (ionChange)="cambiosRealizadosTablero()"></ion-textarea>
+            </ion-item>
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+
+      <ion-grid class="contenedor">
+        <ion-row class="colaboradores ion-justify-content-center fila">
+          <ion-col class="ion-align-self-center ion-text-center">
+              <h5>Colaboradores</h5>
+          </ion-col>
+        </ion-row>
+  
+        <table mat-table [dataSource]="amigos" class="mat-elevation-z8">
+
+          <!-- Amigo Column -->
+          <ng-container matColumnDef="Amigo">
+            <th mat-header-cell *matHeaderCellDef> Amigo </th>
+            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+          </ng-container>
+        
+          <!-- Seleccionar Column -->
+          <ng-container matColumnDef="Seleccionar">
+            <th mat-header-cell *matHeaderCellDef> Seleccionar </th>
+            <td mat-cell *matCellDef="let element"> <ion-toggle  color="dark" [name]="element.nombre" [(ngModel)]="element.seleccionado" (click)="cambioRealizadoAmigo(element)"></ion-toggle> </td>
+          </ng-container>
+      
+        
+          <tr mat-header-row *matHeaderRowDef="columnasAmigos"></tr>
+          <tr mat-row *matRowDef="let row; columns: columnasAmigos;"></tr>
+        </table>
+      </ion-grid>
+
+      <ion-grid  class="contenedor">
+        <ion-row class="profesores ion-justify-content-center fila">
+          <ion-col class="ion-align-self-center" size="8">
+            <ion-text>
+              <h5>Profesores observadores</h5>
+            </ion-text>
+          </ion-col>
+
+        </ion-row>
+
+        <table mat-table [dataSource]="profesores" class="mat-elevation-z8">
+
+          <!-- Profesor Column -->
+          <ng-container matColumnDef="Profesor">
+            <th mat-header-cell *matHeaderCellDef> Profesor </th>
+            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+          </ng-container>
+        
+          <!-- Seleccionar Column -->
+          <ng-container matColumnDef="Seleccionar">
+            <th mat-header-cell *matHeaderCellDef> Seleccionar </th>
+            <td mat-cell *matCellDef="let element"> <ion-toggle  color="dark" [name]="element.nombre" [(ngModel)]="element.seleccionado" (click)="cambioRealizadoProfesor(element)"></ion-toggle> </td>
+          </ng-container>
+      
+        
+          <tr mat-header-row *matHeaderRowDef="columnasProfesores"></tr>
+          <tr mat-row *matRowDef="let row; columns: columnasProfesores;"></tr>
+        </table>
+      </ion-grid>
+
+      <ion-row class="fila-boton ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="7">
+          <ion-button type="submit" [disabled]="form.invalid" expand="block" (click)="editarTablero()">Guardar</ion-button>
+        </ion-col>
+      </ion-row>
+
+  </form>
+</ion-content>

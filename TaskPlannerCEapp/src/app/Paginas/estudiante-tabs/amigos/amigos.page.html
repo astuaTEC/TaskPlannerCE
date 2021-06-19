@@ -1,0 +1,49 @@
+<ion-row class="ion-justify-content-center">
+    <ion-col class="ion-align-self-center" size="2">
+        <ion-icon name="notifications" style="zoom:2;" (click)="goToNotificaciones()"></ion-icon>
+      </ion-col>
+      <ion-col size="2" offset="8" class="ion-align-self-center ion-text-end"> 
+        <ion-icon name="add" style="zoom:2;" (click)="goToBuscarAmigos()"></ion-icon>
+      </ion-col>
+</ion-row>
+
+<ion-footer>
+    <ion-row class="ion-justify-content-center fila">
+        <ion-col size="6" class="titulo ion-text-start ion-align-self-center">
+          <b>Tus amigos</b> 
+        </ion-col>
+        <ion-col size="3" offset="3" class="ion-text-start ion-align-self-center">
+          <b>Cantidad: {{listaAmigos.length}}</b> 
+        </ion-col>
+      </ion-row>
+    
+      <ion-grid>
+    
+        <ion-list class="lista">
+          <ion-item *ngFor="let amigo of listaAmigos">
+            <ion-card class="carta">
+              <ion-card-header>
+               <ion-row class="ion-justify-content-center">
+                 <ion-col class="subtitulo ion-text-start ion-align-self-center">
+                  <b>{{amigo.nombre}}</b> 
+                 </ion-col>
+               </ion-row>
+              </ion-card-header>
+            
+              <ion-card-content>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col class="ion-text-start ion-align-self-center" size="10">
+                    <i>{{amigo.correoAmigo}}</i>
+                  </ion-col>
+                   <ion-col class="ion-align-self-center ion-text-end" size="2">
+                    <ion-icon name="trash" style="zoom:1.7;" (click)="eliminarAmigo(amigo)"></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+
+            </ion-card>
+          </ion-item>
+    
+        </ion-list>
+      </ion-grid>
+</ion-footer>

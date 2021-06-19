@@ -10,20 +10,32 @@ const routes: Routes = [
   },
   {
     path: 'estudiante-tabs',
-    loadChildren: () => import('./estudiante-tabs/estudiante-tabs.module').then( m => m.EstudianteTabsPageModule)
+    loadChildren: () => import('./Paginas/estudiante-tabs/estudiante-tabs.module').then( m => m.EstudianteTabsPageModule)
   },
   {
     path: 'login-tabs',
-    loadChildren: () => import('./Inicio/login-tabs/login-tabs.module').then( m => m.LoginTabsPageModule)
+    loadChildren: () => import('./Paginas/Inicio/login-tabs/login-tabs.module').then( m => m.LoginTabsPageModule)
   },
   {
     path: 'registro-estudiante',
-    loadChildren: () => import('./Inicio/registro-estudiante/registro-estudiante.module').then( m => m.RegistroEstudiantePageModule)
+    loadChildren: () => import('./Paginas/Inicio/registro-estudiante/registro-estudiante.module').then( m => m.RegistroEstudiantePageModule)
   },
   {
     path: 'registro-profesor',
-    loadChildren: () => import('./Inicio/registro-profesor/registro-profesor.module').then( m => m.RegistroProfesorPageModule)
+    loadChildren: () => import('./Paginas/Inicio/registro-profesor/registro-profesor.module').then( m => m.RegistroProfesorPageModule)
   },
+  {
+    path: 'crear-tarea',
+    loadChildren: () => import('./Paginas/estudiante-tabs/crear-tarea/crear-tarea.module').then( m => m.CrearTareaPageModule)
+  },
+  {
+    path: 'editar-tarea',
+    loadChildren: () => import('./Paginas/estudiante-tabs/editar-tarea/editar-tarea.module').then( m => m.EditarTareaPageModule)
+  },
+  {
+    path: 'crear-tablero',
+    loadChildren: () => import('./Paginas/estudiante-tabs/crear-tablero/crear-tablero.module').then( m => m.CrearTableroPageModule)
+  }
 ];
 
 @NgModule({

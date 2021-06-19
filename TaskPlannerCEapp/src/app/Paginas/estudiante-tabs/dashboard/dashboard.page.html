@@ -1,0 +1,69 @@
+<ion-row class="ion-justify-content-center cabecera">
+    <ion-col class="ion-align-self-center ion-text-center">
+      <b>Indicadores personales</b>
+    </ion-col>
+</ion-row>
+
+<ion-footer>
+    <ion-row class="ion-justify-content-center titulo">
+        <ion-col class="ion-align-self-center ion-text-center">
+          <b>Cantidad de tableros actuales</b>
+        </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center cantidad-fila">
+      <div class="numberCircle">{{c}}</div>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center titulo">
+        <ion-col class="ion-align-self-center ion-text-center">
+          <b>Los últimos 5 amigos agregados</b>
+        </ion-col>
+    </ion-row>
+
+    <ion-grid>
+        <ion-slides pager="true" [options]="slideOpts">
+            <ion-slide *ngFor="let amigo of amigos">
+                <ion-card class="carta">
+                    <ion-card-header>
+                     <ion-row class="ion-justify-content-center">
+                       <ion-col class="subtitulo ion-text-center ion-align-self-center">
+                        <b>Nombre</b> 
+                       </ion-col>
+              
+                     </ion-row>
+                    </ion-card-header>
+                  
+                    <ion-card-content>
+                      <ion-row class="ion-justify-content-center">
+                        <ion-col class="ion-text-center ion-align-self-center">
+                          <i>{{amigo.correoInstitucional}}</i>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row class="ion-justify-content-center">
+                        <ion-col class="ion-text-center ion-align-self-center">
+                          Ingeniería en Computadores
+                        </ion-col>
+                      </ion-row>
+                    </ion-card-content>
+                  </ion-card>
+            </ion-slide>
+           
+          </ion-slides>
+    </ion-grid>
+
+    <ion-row class="ion-justify-content-center titulo">
+        <ion-col class="ion-align-self-center ion-text-center">
+          <b>Cantidad de tableros en los últimos 6 meses</b>
+        </ion-col>
+    </ion-row>
+
+    <ion-grid class="bar-container">
+      <ion-card class="carta">
+        <ion-card-content>
+          <canvas #barCanvas style="position:relative; height: 100%; width: 100%;"></canvas>
+        </ion-card-content>
+      </ion-card>
+    </ion-grid>
+    
+</ion-footer>

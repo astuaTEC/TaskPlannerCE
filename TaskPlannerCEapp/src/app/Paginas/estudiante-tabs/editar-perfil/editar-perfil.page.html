@@ -1,0 +1,204 @@
+<ion-row class="ion-justify-content-center cabecera">
+  <ion-col class="ion-align-self-center" size="1">
+    <ion-icon name="arrow-back-circle" style="zoom:1.7;" (click)="goToPerfil()"></ion-icon>
+  </ion-col>
+  <ion-col class="ion-align-self-center ion-text-center titulo">
+    <b>Editar perfil</b>
+  </ion-col>
+  <ion-col class="ion-align-self-center" size="1">
+  </ion-col>
+</ion-row>
+
+
+<ion-content>
+  <form #formRE="ngForm" novalidate>
+    <ion-grid>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center">
+          <ion-text>
+            <h5>Primer nombre</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text" required
+            name="primerNombre" [(ngModel)]="primerNombre">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col class="ion-align-self-center">
+          <ion-text>
+            <h5>Segundo nombre</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text"
+            name="segundoNombre" [(ngModel)]="segundoNombre">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center">
+          <ion-text>
+            <h5>Primer apellido</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text" required
+            name="primerApellido" [(ngModel)]="primerApellido">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col class="ion-align-self-center">
+          <ion-text>
+            <h5>Segundo apellido</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text" required
+            name="segundoApellido" [(ngModel)]="segundoApellido">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="9">
+          <ion-text>
+            <h5>Carné estudiantil</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text" required disabled
+            name="carnet" [(ngModel)]="carnet">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="9">
+          <ion-text>
+            <h5>Correo estudiantil</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text" required disabled
+            name="correo" [(ngModel)]="correoEstudiantil">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="9">
+          <ion-text>
+            <h5>Número de teléfono</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="number" required
+            name="telefono" [(ngModel)]="telefono">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="9">
+          <ion-text>
+            <h5>Carrera matriculada</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-select placeholder="carreras" name="carrera" [(ngModel)]="carreraMatriculada" disabled>
+              <ion-select-option value="Ingeniería en Computadores">Ingeniería en Computadores</ion-select-option>
+              <ion-select-option value="Ingeniería en Electrónica">Ingeniería en Electrónica</ion-select-option>
+              <ion-select-option value="Arquitectura">Arquitectura</ion-select-option>
+              <ion-select-option value="Enseñanza de la Matemática con Entornos Tecnológicos">Enseñanza de la Matemática con Entornos Tecnológicos</ion-select-option>
+              <ion-select-option value="Gestión del Turismo Rural Sostenible">Gestión del Turismo Rural Sostenible</ion-select-option>
+              <ion-select-option value="Ingeniería en Administración de Tecnología de Información">Ingeniería en Administración de Tecnología de Información</ion-select-option>
+              <ion-select-option value="Ingeniería Agrícola">Ingeniería Agrícola</ion-select-option>
+              <ion-select-option value="Ingeniería en Agronegocios">Ingeniería en Agronegocios</ion-select-option>
+              <ion-select-option value="Ingeniería en Agronomía">Ingeniería en Agronomía</ion-select-option>
+              <ion-select-option value="Ingeniería Ambiental">Ingeniería Ambiental</ion-select-option>
+              <ion-select-option value="Ingeniería en Biotecnología">Ingeniería en Biotecnología</ion-select-option>
+              <ion-select-option value="Ingeniería en Computación">Ingeniería en Computación</ion-select-option>
+              <ion-select-option value="Ingeniería en Construcción">Ingeniería en Construcción</ion-select-option>
+              <ion-select-option value="Ingeniería en Diseño Industrial">Ingeniería en Diseño Inductrial</ion-select-option>
+              <ion-select-option value="Ingeniería Física">Ingeniería Física</ion-select-option>
+              <ion-select-option value="Ingeniería Forestal">Ingeniería Forestal</ion-select-option>
+              <ion-select-option value="Ingeniería en Mantenimiento Industrial">Ingeniería en Mantenimiento Industrial</ion-select-option>
+              <ion-select-option value="Ingeniería en Materiales">Ingeniería en Materiales</ion-select-option>
+              <ion-select-option value="Ingeniería Mecatrónica">Ingeniería Mecatrónica</ion-select-option>
+              <ion-select-option value="Ingeniería en Producción Industrial">Ingeniería en Producción Industrial</ion-select-option>
+              <ion-select-option value="Ingeniería en Seguridad Laboral e Higiene Ambiental">Ingeniería en Seguridad Laboral e Higiene Ambiental</ion-select-option>
+              <ion-select-option value="Administración de Empresas">Administración de Empresas</ion-select-option>
+
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="9">
+          <ion-text>
+            <h5>Provincia de redidencia actual</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-select placeholder="provincias" name="provinciaResidencia" [(ngModel)]="provinciaResidencia">
+              <ion-select-option value="Guanacaste">Guanacaste</ion-select-option>
+              <ion-select-option value="San José">San José</ion-select-option>
+              <ion-select-option value="Cartago">Cartago</ion-select-option>
+              <ion-select-option value="Alajuela">Alajuela</ion-select-option>
+              <ion-select-option value="Heredia">Heredia</ion-select-option>
+              <ion-select-option value="Limón">Limón</ion-select-option>
+              <ion-select-option value="Puntarenas">Puntarenas</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="9">
+          <ion-text>
+            <h5>Provincia en la que se cursa en la universidad</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-select placeholder="provincias" name="provinciaUniversidad" [(ngModel)]="provinciaUniversidad">
+              <ion-select-option value="Guanacaste">Guanacaste</ion-select-option>
+              <ion-select-option value="San José">San José</ion-select-option>
+              <ion-select-option value="Cartago">Cartago</ion-select-option>
+              <ion-select-option value="Alajuela">Alajuela</ion-select-option>
+              <ion-select-option value="Heredia">Heredia</ion-select-option>
+              <ion-select-option value="Limón">Limón</ion-select-option>
+              <ion-select-option value="Puntarenas">Puntarenas</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="9">
+          <ion-text>
+            <h5>Área de interes</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-select placeholder="área de interes" name="areaInteres" [(ngModel)]="areaInteres">
+              <ion-select-option value="Académica">Académica</ion-select-option>
+              <ion-select-option value="Deportiva">Deportiva</ion-select-option>
+              <ion-select-option value="Cultural">Cultural</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="fila-boton ion-justify-content-center">
+        <ion-col class="ion-align-self-center">
+          <ion-button type="submit" [disabled]="formRE.invalid" expand="block" (click)="guardar()">Guardar</ion-button>
+        </ion-col>
+
+        <ion-col class="ion-align-self-center">
+          <ion-button color="danger"  expand="block" >Eliminar cuenta</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </form>
+</ion-content>
+

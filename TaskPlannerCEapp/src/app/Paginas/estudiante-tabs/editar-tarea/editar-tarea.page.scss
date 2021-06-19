@@ -1,0 +1,40 @@
+.input-icon{
+    border-radius: 2vh;
+    color: #ffff;
+}
+
+.cabecera{
+    padding-bottom: 2%;
+    font-size: 20px;
+}
+
+.fila{
+    padding-top: 5vh;
+}
+
+
+.lista{
+    max-height: 20vh;
+    min-height: 20vh;
+    overflow-y: scroll;
+    border-radius: 20px;
+}
+
+.lista-dependencias{
+    max-height: 20vh;
+    min-height: 20vh;
+    border-radius: 20px;
+    overflow-y: scroll;
+}
+
+ion-grid{
+    border-style: groove;
+}
+
+table {
+    width: 100%;
+    border-radius: 20px;
+  }
+
+
+
