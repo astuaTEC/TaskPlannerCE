@@ -95,6 +95,20 @@ namespace TaskPlannerCE_API.Repositories
         }
 
         /// <summary>
+        /// Metodo para agregar una lista de observadores a un tablero
+        /// </summary>
+        /// <param name="listaTP">La lista de observadores a agregar</param>
+        public void AgregarObservadores(List<TableroProfesor> listaTP)
+        {
+            if (listaTP == null)
+                throw new ArgumentNullException(nameof(listaTP));
+
+            _context.TableroProfesors.AddRange(listaTP);
+
+        }
+
+
+        /// <summary>
         /// Metodo para eliminar a un colaborador de  un tablero específico
         /// </summary>
         /// <param name="correo">el correo del propietario del tablero</param>
@@ -104,6 +118,18 @@ namespace TaskPlannerCE_API.Repositories
         {
             _context.Database.ExecuteSqlRaw("spEliminarColaborador @p0, @p1, @p2",
                 correo, nombreTablero, correoC);
+        }
+
+        /// <summary>
+        /// Metodo para eliminar un observador específico
+        /// </summary>
+        /// <param name="correo">El correo del propietario del tablero</param>
+        /// <param name="nombreTablero">El nombre del tablero</param>
+        /// <param name="correoO">El correo del observador a eliminar</param>
+        public void EliminarObservador(string correo, string nombreTablero, string correoO)
+        {
+            _context.Database.ExecuteSqlRaw("spEliminarObservador @p0, @p1, @p2",
+                correo, nombreTablero, correoO);
         }
 
         /// <summary>

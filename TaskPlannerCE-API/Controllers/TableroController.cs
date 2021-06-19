@@ -176,6 +176,22 @@ namespace TaskPlannerCE_API.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("api/tablero/agregarObservadores")]
+        public IActionResult AgregarObservadores([FromBody] List<TableroProfesor> listaTP)
+        {
+            try
+            {
+                _repo.AgregarObservadores(listaTP);
+                _repo.SaveChanges();
+                return Ok("Observadores agregados correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
+
         [HttpDelete]
         [Route("api/tablero/eliminarColaborador")]
         public IActionResult EliminarColaborador([FromQuery] string correo, string nombreTablero, string correoC)
@@ -184,6 +200,21 @@ namespace TaskPlannerCE_API.Controllers
             {
                 _repo.EliminarColaborador(correo, nombreTablero, correoC);
                 return Ok("Colaborador eliminado correctamente");
+            }
+            catch
+            {
+                return BadRequest("Algo salio mal");
+            }
+        }
+
+        [HttpDelete]
+        [Route("api/tablero/eliminarObservador")]
+        public IActionResult EliminarObservador([FromQuery] string correo, string nombreTablero, string correoO)
+        {
+            try
+            {
+                _repo.EliminarObservador(correo, nombreTablero, correoO);
+                return Ok("Observador eliminado correctamente");
             }
             catch
             {

@@ -158,6 +158,63 @@ namespace TaskPlannerCEAPI.Test.PruebasUnitarias
         }
 
         [TestMethod]
+        public void AgregarObservador()
+        {
+            //preparación
+            var nombre = Guid.NewGuid().ToString();
+            var contexto = ConstruirContext(nombre);
+            var lista = new List<TableroProfesor>();
+
+            contexto.TipoTableros.Add(new TipoTablero() { Nombre = "Académico" });
+            contexto.SaveChanges();
+
+            var tablero = new Tablero()
+            {
+                CorreoEstudiante = "sam.astua@estudiantec.cr",
+                Nombre = "Nuevo Tablero",
+                Tipo = "Académico",
+                Descripcion = "Este es un nuevo tablero de prueba",
+                FechaCreacion = DateTime.Now
+            };
+            contexto.Tableros.Add(tablero);
+            contexto.SaveChanges();
+
+            var observador1 = new TableroProfesor()
+            {
+                CorreoEstudiante = "sam.astua@estudiantec.cr",
+                NombreTablero = "Nuevo Tablero",
+                CorreoProfesor = "alfredo@profextec.cr"
+            };
+
+            var observador2 = new TableroProfesor()
+            {
+                CorreoEstudiante = "sam.astua@estudiantec.cr",
+                NombreTablero = "Nuevo Tablero",
+                CorreoProfesor = "luisB@profextec.cr"
+            };
+
+            lista.Add(observador1);
+            lista.Add(observador2);
+
+            //prueba
+            var repo = new TableroRepo(contexto);
+            repo.AgregarObservadores(lista);
+            repo.SaveChanges();
+            var resultadoEsperado1 = "alfredo@profextec.cr";
+            var resultadoEsperado2 = "luisB@profextec.cr";
+
+            var resultado1 = contexto.TableroProfesors.Find("sam.astua@estudiantec.cr",
+                "Nuevo Tablero", "alfredo@profextec.cr");
+
+            var resultado2 = contexto.TableroProfesors.Find("sam.astua@estudiantec.cr",
+                "Nuevo Tablero", "luisB@profextec.cr");
+
+            //verificación
+            Assert.AreEqual(resultadoEsperado1, resultado1.CorreoProfesor);
+            Assert.AreEqual(resultadoEsperado2, resultado2.CorreoProfesor);
+        }
+
+        [TestMethod]
         public void AccederMisTableros()
         {
             //preparación
