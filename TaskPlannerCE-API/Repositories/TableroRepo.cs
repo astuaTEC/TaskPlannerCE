@@ -255,7 +255,7 @@ namespace TaskPlannerCE_API.Repositories
             {
                 foreach (var estado in listaDeEstados)
                 {
-                    if (tipo.nombre == estado.NombreTipo)
+                    if (tipo.nombre == estado.NombreTipo && !estado.NombreEstado.Equals(""))
                     {
                         tipo.estados.Add(new EstadoAsociadoDTO() { nombre = estado.NombreEstado });
                     }
