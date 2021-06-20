@@ -19,6 +19,16 @@ namespace TaskPlannerCE_API.Repositories
         }
 
         /// <summary>
+        /// Metodo para acceder a la información del perfil de un profesor
+        /// </summary>
+        /// <param name="correoInstitucional">El correo del profesor a consultar</param>
+        /// <returns>El profesor con su información</returns>
+        public Profesor GetMiInfo(string correoInstitucional)
+        {
+            return _context.Profesors.Where(x => x.CorreoInstitucional == correoInstitucional).FirstOrDefault();
+        }
+
+        /// <summary>
         /// Metodo para acceder a todos los profesores del sistema
         /// </summary>
         /// <returns>la lista de profesores correspondiente</returns>

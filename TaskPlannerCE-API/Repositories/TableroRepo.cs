@@ -144,6 +144,17 @@ namespace TaskPlannerCE_API.Repositories
         }
 
         /// <summary>
+        /// Metodo para acceder a los tableros en los que soy observador
+        /// </summary>
+        /// <param name="correo">El correo del profesor solicitante</param>
+        /// <returns>La lista de tableros observados</returns>
+        public List<MisTablerosView> getMisTablerosObservados(string correo)
+        {
+            return _context.Set<MisTablerosView>().FromSqlRaw($"EXEC spGetMisTablerosObservador " +
+                            $"@correo = {correo}").ToList();
+        }
+
+        /// <summary>
         /// Metodo para acceder a los tableros en los que un estudiante es colaborador
         /// </summary>
         /// <param name="miCorreo">el correo del estudiante a consultar</param>
@@ -220,6 +231,41 @@ namespace TaskPlannerCE_API.Repositories
         }
 
         /// <summary>
+        /// Metodo para acceder a los tipos de tablero con sus respectivos estados predeterminados
+        /// </summary>
+        /// <returns>La lista de tipos con sus respectivos estados</returns>
+        public List<TipoEstadoDTO> GetTiposConEstadosAsociados()
+        {
+            var listaDeEstados = _context.Set<TipoTableroEstado>().FromSqlRaw($"EXEC spGetTiposConEstado").ToList();
+
+            var tiposConEstado = new List<TipoEstadoDTO>();
+
+            foreach(var te in listaDeEstados)
+            {
+                if(!verificarExistenciaTipo(te.NombreTipo, tiposConEstado))
+                {
+                    tiposConEstado.Add(new TipoEstadoDTO()
+                    {
+                        nombre = te.NombreTipo
+                    });
+                }
+            }
+            
+            foreach (var tipo in tiposConEstado)
+            {
+                foreach (var estado in listaDeEstados)
+                {
+                    if (tipo.nombre == estado.NombreTipo)
+                    {
+                        tipo.estados.Add(new EstadoAsociadoDTO() { nombre = estado.NombreEstado });
+                    }
+                }
+            }
+
+            return tiposConEstado;
+        }
+
+        /// <summary>
         /// Metodo para acceder a todos los estados con sus respectivas tareas
         /// </summary>
         /// <param name="correo">correo del propietario del tablero</param>
@@ -269,6 +315,24 @@ namespace TaskPlannerCE_API.Repositories
             foreach (var estado in estados)
             {
                 if (id == estado.idEstado)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Metodo para verificar la existencia de un tipo de tablero con determinado nombre
+        /// </summary>
+        /// <param name="nombre">El nombre a consultar</param>
+        /// <param name="tipos">La lista con los tipos de tableros existentes</param>
+        /// <returns>Un true si existe, un false en caso contrario</returns>
+        public bool verificarExistenciaTipo(string nombre, List<TipoEstadoDTO> tipos)
+        {
+            foreach (var tipo in tipos)
+            {
+                if (nombre == tipo.nombre)
                 {
                     return true;
                 }

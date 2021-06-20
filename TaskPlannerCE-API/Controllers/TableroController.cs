@@ -30,6 +30,16 @@ namespace TaskPlannerCE_API.Controllers
         }
 
         [HttpGet]
+        [Route("api/tablero/misTablerosObservados")]
+        public IActionResult GetMisTablerosObservados([FromQuery] string correo)
+        {
+            var resultado = _repo.getMisTablerosObservados(correo);
+            if (resultado == null)
+                return BadRequest("Ha ocurrido un error");
+            return Ok(resultado);
+        }
+
+        [HttpGet]
         [Route("api/tablero/tablerosColaborador")]
         public IActionResult GetTablerosColaborador([FromQuery] string correo)
         {
@@ -104,6 +114,16 @@ namespace TaskPlannerCE_API.Controllers
         public IActionResult GetTipos()
         {
             var resultado = _repo.GetTipos();
+            if (resultado == null)
+                return BadRequest("Ha ocurrido un error");
+            return Ok(resultado);
+        }
+
+        [HttpGet]
+        [Route("api/tablero/tiposConEstado")]
+        public IActionResult GetTiposConEstado()
+        {
+            var resultado = _repo.GetTiposConEstadosAsociados();
             if (resultado == null)
                 return BadRequest("Ha ocurrido un error");
             return Ok(resultado);

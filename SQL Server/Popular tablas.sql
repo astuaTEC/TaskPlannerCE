@@ -61,7 +61,31 @@ VALUES	('Exámen'),
 INSERT INTO TIPO_TABLERO_ESTADO(nombreTipo, nombreEstado)
 VALUES	('Reporte escrito', 'Introducción'),
 		('Reporte escrito', 'Desarrollo'),
-		('Reporte escrito', 'Conclusión');
+		('Reporte escrito', 'Conclusión'), --Reporte escrito
+		('Exámen', 'Falta por estudiar'),
+		('Exámen', 'Estudiando'),
+		('Exámen', 'Temas estudiados'),  --Exámen
+		('Tarea', 'Pendientes'),
+		('Tarea', 'En proceso'),
+		('Tarea', 'Finalizadas'), -- Tarea
+		('Proyecto programación', 'Proceso de aprendizaje'),
+		('Proyecto programación', 'En proceso'),
+		('Proyecto programación', 'Finalizado'), -- Proyecto programación
+		('Informe laboratorio', 'Mediciones'),
+		('Informe laboratorio', 'Parte escrita'),
+		('Informe laboratorio', 'Partes finalizadas'), -- Informe laboratorio
+		('Proyecto', 'Partes por investigar'),
+		('Proyecto', 'En proceso'),
+		('Proyecto', 'Partes finalizadas'), -- Proyecto
+		('Actividad deportiva', 'Entrenamiento'),
+		('Actividad deportiva', 'Competencia'),
+		('Actividad deportiva', 'Recreativo'), -- Actividad deportiva
+		('Actividad cultural', 'Ensayos'),
+		('Actividad cultural', 'En proceso'),
+		('Actividad cultural', 'Terminado'), -- Actividad cultural
+		('Otro', 'Pendiente'),
+		('Otro', 'En proceso'),
+		('Otro', 'Finalizado'); -- Otro
 
 -- TABLERO
 INSERT INTO TABLERO(correoEstudiante, nombre, tipo, descripcion, fechaCreacion)

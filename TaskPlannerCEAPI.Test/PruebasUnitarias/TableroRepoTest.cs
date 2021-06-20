@@ -230,6 +230,21 @@ namespace TaskPlannerCEAPI.Test.PruebasUnitarias
         }
 
         [TestMethod]
+        public void AccederMisTablerosObservados()
+        {
+            //preparación
+            var nombre = Guid.NewGuid().ToString();
+            var contexto = ConstruirContext(nombre);
+
+            //prueba
+            var repo = new TableroRepo(contexto);
+            var resultado = repo.getMisTablerosObservados("alfredo@profextec.cr");
+
+            //verificacion
+            Assert.AreEqual(typeof(List<MisTablerosView>), resultado.GetType());
+        }
+
+        [TestMethod]
         public void AccederTablerosEnLosQueColaboro()
         {
             //preparación
@@ -316,6 +331,21 @@ namespace TaskPlannerCEAPI.Test.PruebasUnitarias
 
             //verificación
             Assert.AreEqual(1, resultado.Count);
+        }
+
+        [TestMethod]
+        public void AccederTiposDeTableroConSusEstados()
+        {
+            //preparación
+            var nombre = Guid.NewGuid().ToString();
+            var contexto = ConstruirContext(nombre);
+
+            //prueba
+            var repo = new TableroRepo(contexto);
+            var resultado = repo.GetTiposConEstadosAsociados();
+
+            //verificación
+            Assert.AreEqual(typeof(List<TipoEstadoDTO>), resultado.GetType());
         }
 
         [TestMethod]

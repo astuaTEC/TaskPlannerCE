@@ -9,8 +9,9 @@ SELECT	(P.primerNombre + ' ' + P.segundoNombre  + ' ' + P.primerApellido + ' ' +
 		P.correoInstitucional
 FROM	PROFESOR AS P, TABLERO_PROFESOR AS TP 
 WHERE	TP.correoEstudiante = @correo AND
+		TP.nombreTablero = @nombre AND
 		TP.correoProfesor = P.correoInstitucional;
 
 GO
 
-EXEC spGetVisualizadoresTablero @correo = 'kevinar51@estudiantec.cr', @nombre = 'Maluma 2021';
+EXEC spGetVisualizadoresTablero @correo = 'sam.astua@estudiantec.cr', @nombre = 'Run';

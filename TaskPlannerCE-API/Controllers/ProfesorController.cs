@@ -20,6 +20,16 @@ namespace TaskPlannerCE_API.Controllers
         }
 
         [HttpGet]
+        [Route("api/profesor/getMiInfo")]
+        public IActionResult GetMiInfo([FromQuery] string correo)
+        {
+            var resultado = _repo.GetMiInfo(correo);
+            if (resultado == null)
+                return BadRequest("Ha ocurrido un error");
+            return Ok(resultado);
+        }
+
+        [HttpGet]
         [Route("api/profesor/getTodos")]
         public IActionResult GetTodosProfes()
         {
