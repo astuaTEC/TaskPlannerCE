@@ -1,7 +1,12 @@
 <ion-content>
   <ion-row class="nombre ion-justify-content-center">
+    <ion-col class="ion-align-self-center ion-text-center" size="2">
+    </ion-col>
     <ion-col class="ion-text-center ion-align-self-center">
       <b>{{tarea.nombre}}</b>
+    </ion-col>
+    <ion-col class="ion-align-self-center ion-text-center" size="2">
+      <ion-icon name="close" style="zoom:1.7;" (click)="dimiss()"></ion-icon>
     </ion-col>
   </ion-row>
 

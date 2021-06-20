@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { RutaCriticaPageRoutingModule } from './ruta-critica-routing.module';
 
 import { RutaCriticaPage } from './ruta-critica.page';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RutaCriticaPageRoutingModule
+    RutaCriticaPageRoutingModule,
+    NgApexchartsModule
+
   ],
   declarations: [RutaCriticaPage]
 })

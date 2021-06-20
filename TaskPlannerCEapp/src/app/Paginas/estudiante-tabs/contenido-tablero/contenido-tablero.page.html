@@ -21,7 +21,7 @@
     <ion-button color="medium" size="small" (click)="nuevaTarea()">nueva tarea</ion-button>
   </ion-col>
   <ion-col class="ion-align-self-center ion-text-center">
-    <ion-button color="medium" size="small">generar ruta crítica</ion-button>
+    <ion-button color="medium" size="small" (click)="rutaCritica()">generar ruta crítica</ion-button>
   </ion-col>
 </ion-row>
 
@@ -42,36 +42,34 @@
         </ion-row>
       </div>
       <ion-list class="lista" (cdkDropListDropped)="drop($event)" [cdkDropListData]="estado.tareas" cdkDropListSortingDisabled cdkDropList [id]="estado.id">
-        <ion-item class="tarea" *ngFor="let tarea of estado.tareas"  [cdkDragStartDelay]="500" cdkDragBoundary=".scrolling-wrapper" cdkDrag [cdkDragData]="tarea">
-          <ion-grid>
-            <ion-row class="ion-justify-content-center">
-              <ion-col class="ion-align-self-center ion-text-center cabecera-carta">
-                <b>{{tarea.nombre}}</b>
-              </ion-col>
-            </ion-row>
-            <ion-row class="ion-justify-content-center"  style="font-size: 10px;">
-              <ion-col class="ion-align-self-center ion-text-center">
-                Inicio: {{tarea.fechaInicio}}
-              </ion-col>
-            </ion-row>
-            <ion-row class="ion-justify-content-center" style="font-size: 10px;">
-              <ion-col class="ion-align-self-center ion-text-center">
-                Fin: {{tarea.fechaFinalizacion}}
-              </ion-col>
-            </ion-row>
-            <ion-row class="ion-justify-content-center" style="font-size: 10px;">
-              <ion-col class="ion-align-self-center ion-text-start">
-                <ion-icon name="create" style="zoom:1.7;" (click)="seleccionarTareaEditar(tarea); editarTarea()"></ion-icon>
-              </ion-col>
-              <ion-col class="ion-align-self-center ion-text-center">
-                <ion-icon name="information-circle" style="zoom:1.7;" (click)="seleccionarTareaInfo(tarea); informacionTarea()"></ion-icon>
-              </ion-col>
-              <ion-col class="ion-align-self-center ion-text-end">
-                <ion-icon name="trash" style="zoom:1.7;" (click)="eliminarTarea(tarea)"></ion-icon>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-item>
+        <ion-card class="tarea" *ngFor="let tarea of estado.tareas"  [cdkDragStartDelay]="500" cdkDragBoundary=".scrolling-wrapper" cdkDrag [cdkDragData]="tarea">
+          <ion-row class="ion-justify-content-center">
+            <ion-col class="ion-align-self-center ion-text-center cabecera-carta">
+              <b>{{tarea.nombre}}</b>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-justify-content-center"  style="font-size: 12px;">
+            <ion-col class="ion-align-self-center ion-text-center">
+              Inicio: {{tarea.fechaInicio}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-justify-content-center" style="font-size: 12px;">
+            <ion-col class="ion-align-self-center ion-text-center">
+              Fin: {{tarea.fechaFinalizacion}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-justify-content-center" style="font-size: 10px;">
+            <ion-col class="ion-align-self-center ion-text-start">
+              <ion-icon name="create" style="zoom:1.7;" (click)="seleccionarTareaEditar(tarea); editarTarea()"></ion-icon>
+            </ion-col>
+            <ion-col class="ion-align-self-center ion-text-center">
+              <ion-icon name="information-circle" style="zoom:1.7;" (click)="seleccionarTareaInfo(tarea); informacionTarea()"></ion-icon>
+            </ion-col>
+            <ion-col class="ion-align-self-center ion-text-end">
+              <ion-icon name="trash" style="zoom:1.7;" (click)="eliminarTarea(tarea)"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-card>
       </ion-list>
     </div>
   </div>

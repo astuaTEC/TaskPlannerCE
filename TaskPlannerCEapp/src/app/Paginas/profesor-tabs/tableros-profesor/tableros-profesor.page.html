@@ -1,0 +1,70 @@
+<ion-row class="ion-justify-content-center">
+  <ion-col class="ion-align-self-center" size="8">
+    <ion-item class="ion-margin input-icon">
+      <ion-input clear-input="false" type="text"
+      placeholder="Nombre del tablero" name="searchTerm" id="searchTerm"
+      [(ngModel)]="searchTerm" (input)="search($event.target.value)">
+     </ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="2" class="ion-align-self-center"> 
+    <ion-icon name="close-circle" style="zoom:1.7;" (click)="limpiarBusqueda()"></ion-icon>
+  </ion-col>
+</ion-row>
+
+<ion-footer>
+  <ion-row class="ion-justify-content-center fila">
+    <ion-col class="titulo ion-text-start ion-align-self-center">
+      <b>Tableros observables</b> 
+    </ion-col>
+    <ion-col size="4" class="ion-text-end ion-align-self-center">
+      <b>Cantidad: {{tableros.length}}</b> 
+    </ion-col>
+  </ion-row>
+
+  <ion-grid class="contenedor-tus-tableros">
+
+    <ion-list class="lista">
+      <ion-item *ngFor="let tablero of tablerosFiltro"> 
+        <ion-card class="carta">
+          <ion-card-header>
+           <ion-row class="ion-justify-content-center">
+             <ion-col class="subtitulo ion-text-start ion-align-self-center" size="10" (click)="goToContenidoTablero(tablero.nombre, tablero.creador)">
+              <b>{{tablero.nombre}}</b> 
+             </ion-col>
+             <ion-col class="ion-align-self-center ion-text-end" size="2">
+              <ion-icon name="information-circle" style="zoom:1.7;" (click)="seleccionarTablero(tablero); informacionTablero()"></ion-icon>
+            </ion-col>
+           </ion-row>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-row class="ion-justify-content-center" (click)="goToContenidoTablero(tablero.nombre, tablero.creador)">
+              <ion-col class="ion-text-start ion-align-self-center" size="3">
+               Tipo:
+              </ion-col>
+              <ion-col class="ion-text-start ion-align-self-center" size="9">
+                {{tablero.tipo}}
+               </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+              <ion-col class="ion-text-start ion-align-self-center" size="3" (click)="goToContenidoTablero(tablero.nombre, tablero.creador)">
+               Creador:
+              </ion-col>
+              <ion-col class="ion-text-start ion-align-self-center" size="9" (click)="goToContenidoTablero(tablero.nombre, tablero.creador)">
+                {{tablero.creador}}
+               </ion-col>
+            </ion-row>
+   
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+
+    </ion-list>
+  </ion-grid>
+</ion-footer>
+
+
+
+
+

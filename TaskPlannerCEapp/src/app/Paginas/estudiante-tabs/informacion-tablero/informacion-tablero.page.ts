@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams } from '@ionic/angular';
+import { NavParams, PopoverController } from '@ionic/angular';
 import { Tablero } from 'src/app/Clases/tablero';
 
 @Component({
@@ -11,10 +11,14 @@ export class InformacionTableroPage implements OnInit {
 
   tablero: Tablero = null;
 
-  constructor(public navParams: NavParams) { }
+  constructor(public navParams: NavParams, private popoverController: PopoverController) { }
 
   ngOnInit() {
     this.tablero = this.navParams.get('tablero');
+  }
+
+  dimiss(){
+    this.popoverController.dismiss();
   }
 
 }

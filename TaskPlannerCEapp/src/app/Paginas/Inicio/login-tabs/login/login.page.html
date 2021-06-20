@@ -18,7 +18,7 @@
           <ion-item class="input-icon">
             <ion-input clear-input="true" type="text" required
              placeholder="Correo institucional" name="correo" id="correoID"
-             [(ngModel)]="usuarioEstudiante.correoInstitucional">
+             [(ngModel)]="usuario.correoInstitucional">
             </ion-input>
           </ion-item>
         </ion-col>
@@ -32,7 +32,7 @@
           <ion-item class="input-icon">
             <ion-input clear-input="true" type="password" required  
              placeholder="Contraseña" name="contrasena" id="contrasenaID"
-             [(ngModel)]="usuarioEstudiante.contrasena">
+             [(ngModel)]="usuario.contrasena">
             </ion-input>
           </ion-item>
         </ion-col>
@@ -40,7 +40,7 @@
       
       <ion-row class="fila-boton ion-justify-content-center">
         <ion-col class="ion-align-self-center" size="7">
-          <ion-button type="submit" [disabled]="form.invalid" expand="block" (click)="goToEstudianteHome()">Iniciar sesión</ion-button>
+          <ion-button type="submit" [disabled]="form.invalid" expand="block" (click)="login()">Iniciar sesión</ion-button>
         </ion-col>
       </ion-row>
 

@@ -200,4 +200,8 @@ cambiosRealizadosDependencia(dependencia: Dependencia){
   } 
 }
 
+dimiss(){
+  this.popoverController.dismiss();
+}
+
 }

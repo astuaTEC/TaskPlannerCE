@@ -32,7 +32,7 @@
               }
             ],
             "styles": ["./node_modules/@angular/material/prebuilt-themes/purple-green.css", "src/theme/variables.scss", "src/global.scss"],
-            "scripts": [],
+            "scripts": ["node_modules/apexcharts/dist/apexcharts.min.js"],
             "aot": false,
             "vendorChunk": true,
             "extractLicenses": false,

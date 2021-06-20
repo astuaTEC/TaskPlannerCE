@@ -1,0 +1,51 @@
+<ion-row class="ion-justify-content-center cabecera">
+  <ion-col class="ion-align-self-center" size="1">
+    <ion-icon name="arrow-back-circle" style="zoom:1.7;" (click)="goToTableros()"></ion-icon>
+  </ion-col>
+  <ion-col class="ion-align-self-center ion-text-center titulo">
+    <b>{{nombreTablero}}</b>
+  </ion-col>
+  <ion-col class="ion-align-self-center" size="1">
+    <ion-icon name="information-circle" style="zoom:1.7;" (click)="informacionTablero()"></ion-icon>
+  </ion-col>
+</ion-row>
+
+<ion-footer>
+  <div class="scrolling-wrapper">
+    <div class="estado" *ngFor="let estado of estadosCompletitud">
+      <div>
+        <ion-row class="ion-justify-content-center cabecera-estado">
+          <ion-col class="ion-align-self-center ion-text-center">
+            <b>{{estado.nombre}}</b>
+          </ion-col>
+        </ion-row>
+      </div>
+      <ion-list class="lista">
+        <ion-card class="tarea" *ngFor="let tarea of estado.tareas">
+          <ion-row class="ion-justify-content-center">
+            <ion-col class="ion-align-self-center ion-text-center cabecera-carta">
+              <b>{{tarea.nombre}}</b>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-justify-content-center"  style="font-size: 12px;">
+            <ion-col class="ion-align-self-center ion-text-center">
+              Inicio: {{tarea.fechaInicio}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-justify-content-center" style="font-size: 12px;">
+            <ion-col class="ion-align-self-center ion-text-center">
+              Fin: {{tarea.fechaFinalizacion}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-justify-content-center" style="font-size: 10px;">
+            <ion-col class="ion-align-self-center ion-text-center">
+              <ion-icon name="information-circle" style="zoom:1.7;" (click)="seleccionarTareaInfo(tarea); informacionTarea()"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-list>
+    </div>
+  </div>
+
+
+</ion-footer>

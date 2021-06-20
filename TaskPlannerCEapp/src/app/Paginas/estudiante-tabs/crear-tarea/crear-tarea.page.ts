@@ -152,4 +152,8 @@ export class CrearTareaPage implements OnInit {
   }
 }
 
+dimiss(){
+  this.popoverController.dismiss();
+}
+
 }

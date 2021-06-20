@@ -1,0 +1,60 @@
+<ion-row class="ion-justify-content-center titulo">
+  <ion-col class="ion-align-self-center ion-text-start">
+    <b>{{correoInstitucional}}</b>
+  </ion-col>
+  <ion-col class="ion-align-self-center ion-text-end">
+      <ion-button color="danger" (click)="cerrarSesion()">Cerrar sesión</ion-button>
+  </ion-col>
+</ion-row>
+
+<ion-content>
+  <ion-row class="ion-justify-content-center titulo">
+    <ion-col class="ion-align-self-center ion-text-center cabecera">
+      <b>Tipos de tableros</b>
+    </ion-col>
+  </ion-row>
+  <!-- fab placed to the bottom start -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="light" (click)="crearTipoTablero()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-grid *ngFor="let tipo of tiposTableros">
+    <ion-row class="ion-justify-content-center tipoTablero">
+      <ion-col class="ion-align-self-center ion-text-start">
+        <ng-template [ngIf]="!tipo.abierto">
+          <ion-icon name="chevron-forward" style="zoom:1.7;" (click)="abrirEstados(tipo)"></ion-icon>
+        </ng-template>
+
+        <ng-template [ngIf]="tipo.abierto">
+          <ion-icon name="chevron-back" style="zoom:1.7;" (click)="tipo.abierto = false"></ion-icon>
+        </ng-template>  
+      </ion-col>
+      <ion-col class="ion-align-self-center ion-text-start">
+        <b>{{tipo.nombre}}</b>
+      </ion-col>
+      <ion-col class="ion-align-self-center ion-text-center">
+        <ion-icon name="add" style="zoom:1.7;" (click)="agregarEstado(tipo)" size="1"></ion-icon>    
+      </ion-col>
+      <ion-col class="ion-align-self-center ion-text-center">
+        <ion-icon name="trash" style="zoom:1.7;" (click)="eliminarTipoTablero(tipo)" size="1"></ion-icon>    
+      </ion-col>
+    </ion-row>
+
+    <div *ngIf="tipo.abierto">
+      <ion-row class="ion-justify-content-center estado" *ngFor="let estado of tipo.estados">
+        <ion-col class="ion-align-self-center ion-text-start">
+          {{estado}}
+        </ion-col>
+        <ion-col class="ion-align-self-center ion-text-start" size="1">
+          <ion-icon name="trash" style="zoom:1.4;" (click)="eliminarEstado(tipo, estado)" ></ion-icon>    
+        </ion-col>
+        <ion-col class="ion-align-self-center ion-text-start" size="5">
+        </ion-col>
+      </ion-row>
+    </div>
+
+  </ion-grid>
+
+</ion-content>

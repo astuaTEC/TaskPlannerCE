@@ -270,4 +270,22 @@ export class TablerosService {
     console.log(cuerpo);
     return this.http.put<string>('https://taskplannerce.azurewebsites.net/api/tablero/actualizar', cuerpo);
     }
+
+  // Solicitar la lista de tableros que un profesor puede visualizar
+  getListaTablerosObservables(correoInstitucional: string){
+    return this.http.get<any[]>('https://taskplannerce.azurewebsites.net/api/tablero/misTablerosObservados?', {
+      params: {
+        correo: '"' + correoInstitucional + '"'
+      }}); 
+}
+
+  // Solicitar la ruta crítica
+  getRutaCritica(correoInstitucional: string, nombreTablero: string){
+    return this.http.get<any[]>('https://taskplannerce.azurewebsites.net/api/tablero/rutaCritica?', {
+      params: {
+        correo: '"' + correoInstitucional + '"',
+        nombreTablero: '"' + nombreTablero + '"'
+      }}); 
+}
+
 }

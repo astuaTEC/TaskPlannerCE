@@ -18,6 +18,7 @@ import { CrearTableroPage } from '../crear-tablero/crear-tablero.page';
 import { EditarTableroPage } from '../editar-tablero/editar-tablero.page';
 import { Tablero } from 'src/app/Clases/tablero';
 import { Profesor } from 'src/app/Clases/profesor';
+import { RutaCriticaPage } from '../ruta-critica/ruta-critica.page';
 
 
 @Component({
@@ -74,6 +75,15 @@ export class ContenidoTableroPage implements OnInit {
   // Tablero de información
   tableroInfo: Tablero = new Tablero('', '', '', '', [], []);
 
+  // Cantidad de tareas
+  cantidadTareas: number = 0;
+
+  // Nombre de las tareas de la ruta crítica
+  nombreTareasRuta: string[] = [];
+
+  // Duración de las tareas de la ruta crítica
+  duracionTareasRuta: number[] = [];
+
   ngOnInit() {
 
 
@@ -94,6 +104,10 @@ export class ContenidoTableroPage implements OnInit {
     this.tableroInfo.colaboradores = [];
     this.tableroInfo.observadores = [];
 
+    this.cantidadTareas = 0;
+    this.nombreTareasRuta = [];
+    this.duracionTareasRuta = [];
+
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.nombreTablero = params.get('nombreTablero');
       this.correoCreador = params.get('correoCreador');
@@ -103,7 +117,6 @@ export class ContenidoTableroPage implements OnInit {
     this.tablerosService.getEstadosCompletitud(this.correoCreador, this.nombreTablero)
     .subscribe( 
       data => {
-        console.log(data);
         for(let estado of data){
           // Primero se obtienen las tareas de cada uno de los estados y se guardan en una lista
           let tareasEstado: Tarea[] = [];
@@ -137,6 +150,9 @@ export class ContenidoTableroPage implements OnInit {
             tareasEstado.push(
               new Tarea(tarea['nombreTarea'], tarea['idEstado'], tarea['descripcion'], tarea['fechaInicio'].split('T')[0], tarea['fechaFinalizacion'].split('T')[0], encargados, dependencias)
             )
+
+            // Se aumenta el contador de las tareas
+            this.cantidadTareas++;
           }
  
           // Se crea y se agrega un estado de completitud a la lista
@@ -146,13 +162,31 @@ export class ContenidoTableroPage implements OnInit {
             tareasEstado)
           )
         }
+        if(this.cantidadTareas > 2){
+          // Pedir la ruta crítica
+          this.tablerosService.getRutaCritica(
+            this.correoCreador, this.nombreTablero
+          )
+          .subscribe(
+            data => {
+              // Primero se obtiene la primera tarea de la ruta
+              this.nombreTareasRuta.push(data['ruta'][0]['nombre']);
+              this.duracionTareasRuta.push(data['ruta'][0]['dur']);
+
+              // Luego se agregan las siguientes tareas de la ruta
+              for(let hija of data['ruta'][0]['dependencias']){
+                this.nombreTareasRuta.push(hija['nombre']);
+                this.duracionTareasRuta.push(hija['dur']);
+              }
+
+            });
+        }
      }); 
      
      //Pedir la lista de todos los colaboradores del tablero
     this.tablerosService.getInfoTablero(this.correoCreador, this.nombreTablero)
     .subscribe(
       data => {
-
         // Llenar la lista de colaboradores del tablero
         for(let colaborador of data['colaboradores']){
           this.colaboradores.push(
@@ -227,8 +261,8 @@ export class ContenidoTableroPage implements OnInit {
         this.tableroInfo.descripcion = data['descripcion'];
         this.tableroInfo.creador = this.correoCreador;
         this.tableroInfo.nombre = this.nombreTablero;
-      }
-    )
+      });
+        
   }
   
   goToTableros(){
@@ -270,6 +304,8 @@ export class ContenidoTableroPage implements OnInit {
       cssClass: 'my-custom-class',
       event: ev,
       translucent: true,
+      backdropDismiss: false,
+      showBackdrop: true,
       componentProps: {correoCreador: this.correoCreador, nombreTablero: this.nombreTablero, estados: this.estadosCompletitud, colaboradores: this.colaboradores}
     });
     await popover.present();
@@ -278,6 +314,28 @@ export class ContenidoTableroPage implements OnInit {
     console.log('onDidDismiss resolved with role', role);
     // Cuando se cierra el Popover se debe actualizar la lista de estados
     this.actualizar();
+  }
+
+  async rutaCritica(ev: any) {
+    const popover = await this.popoverController.create({
+      component: RutaCriticaPage,
+      cssClass: 'my-custom-class',
+      event: ev,
+      translucent: true,
+      componentProps: {nombreTareasRuta: this.nombreTareasRuta, duracionTareasRuta: this.duracionTareasRuta}
+    });
+    if(this.cantidadTareas >= 2){
+      await popover.present();
+
+      const { role } = await popover.onDidDismiss();
+      console.log('onDidDismiss resolved with role', role);
+      // Cuando se cierra el Popover se debe actualizar la lista de estados
+      this.actualizar();     
+    }
+    else{
+      this.toastService.mostrarToast('Ruta Crítica', 'En este momento no es posible generar una ruta crítica', 3);
+    }
+
   }
 
   async editarTablero(ev: any) {
@@ -309,6 +367,8 @@ export class ContenidoTableroPage implements OnInit {
       cssClass: 'my-custom-class',
       event: ev,
       translucent: true,
+      backdropDismiss: false,
+      showBackdrop: true,
       componentProps: { tablero: this.tableroInfo}
     });
     await popover.present();
@@ -327,6 +387,8 @@ export class ContenidoTableroPage implements OnInit {
       cssClass: 'my-custom-class',
       event: ev,
       translucent: true,
+      backdropDismiss: false,
+      showBackdrop: true,
       componentProps: {correoCreador: this.correoCreador, nombreTablero: this.nombreTablero, estados: this.estadosCompletitud, colaboradores: this.colaboradores, tarea: this.tareaEditar}
     });
     await popover.present();
@@ -347,6 +409,8 @@ export class ContenidoTableroPage implements OnInit {
       cssClass: 'my-custom-class',
       event: ev,
       translucent: true,
+      backdropDismiss: false,
+      showBackdrop: true,
       componentProps: { tarea: this.tareaInfo}
     });
     await popover.present();

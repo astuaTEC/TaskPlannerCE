@@ -1,0 +1,105 @@
+<ion-row class="ion-justify-content-center cabecera">
+  <ion-col class="ion-align-self-center ion-text-center titulo">
+    <b>Agregar un nuevo administrador</b>
+  </ion-col>
+</ion-row>
+
+<ion-content>
+  <form #form="ngForm" novalidate>
+    <ion-grid>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center">
+          <ion-text>
+            <h5>Primer nombre</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text" required
+            name="primerNombre" [(ngModel)]="primerNombre">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col class="ion-align-self-center">
+          <ion-text>
+            <h5>Segundo nombre</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text"
+            name="segundoNombre" [(ngModel)]="segundoNombre">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center">
+          <ion-text>
+            <h5>Primer apellido</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text" required
+            name="primerApellido" [(ngModel)]="primerApellido">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col class="ion-align-self-center">
+          <ion-text>
+            <h5>Segundo apellido</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text" required
+            name="segundoApellido" [(ngModel)]="segundoApellido">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="9">
+          <ion-text>
+            <h5>Carné institucional</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text" required
+            name="carnet" [(ngModel)]="carnet">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="9">
+          <ion-text>
+            <h5>Correo institucional</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="text" requierd
+            name="correo" [(ngModel)]="correoInstitucional">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="9">
+          <ion-text>
+            <h5>Número de teléfono</h5>
+          </ion-text>
+          <ion-item class="ion-margin input-icon">
+            <ion-input clear-input="true" type="number" required
+            name="telefono" [(ngModel)]="telefono">
+           </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="fila-boton ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size="7">
+          <ion-button type="submit" [disabled]="form.invalid" expand="block" (click)="agregarAdministrador()">Agregar</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </form>
+</ion-content>

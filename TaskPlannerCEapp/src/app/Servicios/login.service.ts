@@ -35,4 +35,19 @@ export class LoginService {
     console.log(cuerpo);
     return this.http.post<string>('https://taskplannerce.azurewebsites.net/api/taskplanner/registrarEstudiante', cuerpo);
     }
+  // Crear un nuevo estado de completitud
+  registrarProfesor(carnet: string, correoInstitucional: string, primerNombre: string, segundoNombre: string, primerApellido: string, segundoApellido: string, telefono: string){
+    //se modela el objeto JSON que se va a enviar
+    let cuerpo = {
+      carnet: carnet,
+      correoInstitucional: correoInstitucional,
+      primerNombre: primerNombre,
+      segundoNombre: segundoNombre,
+      primerApellido: primerApellido,
+      segundoApellido: segundoApellido,
+      telefono: telefono,
+  };
+    console.log(cuerpo);
+    return this.http.post<string>('https://taskplannerce.azurewebsites.net/api/taskplanner/registrarProfesor', cuerpo);
+    }
 }

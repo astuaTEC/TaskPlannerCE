@@ -10,7 +10,6 @@ import { InformacionTableroPage } from '../informacion-tablero/informacion-table
 import { ToastService } from 'src/app/Servicios/toast.service';
 import { CrearTableroPage } from '../crear-tablero/crear-tablero.page';
 import { AmigosService } from 'src/app/Servicios/amigos.service';
-import { Amigo } from 'src/app/Clases/amigo';
 import { Encargado } from 'src/app/Clases/encargado';
 
 @Component({

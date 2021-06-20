@@ -53,7 +53,7 @@ export class AmigosPage implements OnInit {
 
   async eliminarAmigo(amigo: Amigo) {
     const alert = await this.alertController.create({
-      header: 'Eliminar amigos',
+      header: 'Eliminar Amigos',
       message: '¿Seguro que quieres eliminar a este amigo?',
       buttons: [
         {

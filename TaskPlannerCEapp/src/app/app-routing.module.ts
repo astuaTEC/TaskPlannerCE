@@ -35,6 +35,14 @@ const routes: Routes = [
   {
     path: 'crear-tablero',
     loadChildren: () => import('./Paginas/estudiante-tabs/crear-tablero/crear-tablero.module').then( m => m.CrearTableroPageModule)
+  },
+  {
+    path: 'profesor-tabs',
+    loadChildren: () => import('./Paginas/profesor-tabs/profesor-tabs.module').then( m => m.ProfesorTabsPageModule)
+  },
+  {
+    path: 'administrador-tabs',
+    loadChildren: () => import('./Paginas/administrador-tabs/administrador-tabs.module').then( m => m.AdministradorTabsPageModule)
   }
 ];
 

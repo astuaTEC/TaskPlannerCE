@@ -1,8 +1,15 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
 import { Colaborador } from 'src/app/Clases/colaborador';
+import { AmigosService } from 'src/app/Servicios/amigos.service';
 import { DashboardService } from 'src/app/Servicios/dashboard.service';
 
+
+interface UltimoAmigo{
+  nombre: string,
+  correo: string,
+  carrera: string
+}
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -26,19 +33,21 @@ export class DashboardPage implements OnInit {
   // Datos del gráfico
   datosGrafico: number[] = [];
 
-  // Lista de amigos
-  amigos: Colaborador[] = [];
+  // Lista de los últimos amigos
+  ultimosAmigos: UltimoAmigo[] = [];
+
   
   // Cantidad de tableros
-  c: number = 10;
-  constructor(private dashboardService: DashboardService) { }
+  c: number = 0;
+  constructor(private dashboardService: DashboardService, private amigosService: AmigosService) { }
 
   ngOnInit(): void {
     
   }
   ionViewWillEnter(){
     // Vaciar las listas
-    this.amigos = [];
+    this.ultimosAmigos = [];
+
     // Solicitar el numero de tableros creados
     this.dashboardService.getCantidadTableros(localStorage.getItem('correoInstitucional'))
     .subscribe(
@@ -75,12 +84,16 @@ export class DashboardPage implements OnInit {
     .subscribe(
       data => {
         for(let amigo of data){
-          this.amigos.push(
-            new Colaborador('', amigo['correoAmigo'])
+          this.ultimosAmigos.push(
+            {
+              nombre: amigo['nombre'],
+              correo: amigo['correoAmigo'],
+              carrera: amigo['carrera']
+            }
           )
+            
         }
-      }
-    )
+      });
   }
 
   ngAfterViewInit(): void{

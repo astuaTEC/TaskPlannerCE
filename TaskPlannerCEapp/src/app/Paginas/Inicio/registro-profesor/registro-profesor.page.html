@@ -20,7 +20,7 @@
           </ion-text>
           <ion-item class="ion-margin input-icon">
             <ion-input clear-input="true" type="text" required
-            name="correo">
+            name="primerNombre" [(ngModel)]="primerNombre">
            </ion-input>
           </ion-item>
         </ion-col>
@@ -30,8 +30,8 @@
             <h5>Segundo nombre</h5>
           </ion-text>
           <ion-item class="ion-margin input-icon">
-            <ion-input clear-input="true" type="text" required
-            name="correo">
+            <ion-input clear-input="true" type="text"
+            name="segundoNombre" [(ngModel)]="segundoNombre">
            </ion-input>
           </ion-item>
         </ion-col>
@@ -44,7 +44,7 @@
           </ion-text>
           <ion-item class="ion-margin input-icon">
             <ion-input clear-input="true" type="text" required
-            name="correo">
+            name="primerApellido" [(ngModel)]="primerApellido">
            </ion-input>
           </ion-item>
         </ion-col>
@@ -54,7 +54,7 @@
           </ion-text>
           <ion-item class="ion-margin input-icon">
             <ion-input clear-input="true" type="text" required
-            name="correo">
+            name="segundoApellido" [(ngModel)]="segundoApellido">
            </ion-input>
           </ion-item>
         </ion-col>
@@ -63,11 +63,11 @@
       <ion-row class="ion-justify-content-center">
         <ion-col class="ion-align-self-center" size="9">
           <ion-text>
-            <h5>Carné estudiantil</h5>
+            <h5>Carné institucional</h5>
           </ion-text>
           <ion-item class="ion-margin input-icon">
             <ion-input clear-input="true" type="text" required
-            name="correo">
+            name="carnet" [(ngModel)]="carnet">
            </ion-input>
           </ion-item>
         </ion-col>
@@ -80,7 +80,7 @@
           </ion-text>
           <ion-item class="ion-margin input-icon">
             <ion-input clear-input="true" type="text" required
-            name="correo">
+            name="correo" [(ngModel)]="correoInstitucional">
            </ion-input>
           </ion-item>
         </ion-col>
@@ -93,7 +93,7 @@
           </ion-text>
           <ion-item class="ion-margin input-icon">
             <ion-input clear-input="true" type="number" required
-            name="correo">
+            name="telefono" [(ngModel)]="telefono">
            </ion-input>
           </ion-item>
         </ion-col>
@@ -101,7 +101,7 @@
 
       <ion-row class="fila-boton ion-justify-content-center">
         <ion-col class="ion-align-self-center" size="7">
-          <ion-button type="submit" [disabled]="form.invalid" expand="block">Registrarse</ion-button>
+          <ion-button type="submit" [disabled]="form.invalid" expand="block" (click)="registrarProfesor()">Registrarse</ion-button>
         </ion-col>
       </ion-row>
 

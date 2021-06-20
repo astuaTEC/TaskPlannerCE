@@ -1,6 +1,6 @@
 {
 	"appId": "com.TaskPlannerCE.app",
-	"appName": "TP",
+	"appName": "TaskPlannerCE",
 	"webDir": "www",
 	"bundledWebRuntime": false
 }

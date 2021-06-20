@@ -13,11 +13,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditarTareaPage } from './Paginas/estudiante-tabs/editar-tarea/editar-tarea.page';
 import { EditarTableroPage } from './Paginas/estudiante-tabs/editar-tablero/editar-tablero.page';
 import { RutaCriticaPage } from './Paginas/estudiante-tabs/ruta-critica/ruta-critica.page';
+import { NgApexchartsModule } from 'ng-apexcharts';
+
 
 @NgModule({
   declarations: [AppComponent,InformacionTableroPage, InformacionTareaPage, EditarTareaPage, EditarTableroPage, RutaCriticaPage],
   entryComponents: [InformacionTableroPage,InformacionTareaPage,  EditarTareaPage, EditarTableroPage, RutaCriticaPage],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CommonModule,  FormsModule, HttpClientModule, BrowserAnimationsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CommonModule,  FormsModule, HttpClientModule, BrowserAnimationsModule, NgApexchartsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

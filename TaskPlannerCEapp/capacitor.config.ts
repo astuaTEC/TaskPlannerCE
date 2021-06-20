@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.TaskPlannerCE.app',
-  appName: 'TP',
+  appName: 'TaskPlannerCE',
   webDir: 'www',
   bundledWebRuntime: false
 };
