@@ -426,7 +426,7 @@ namespace TaskPlannerCE_API.Repositories
             var tareasConDependencias = _context.Set<TareaCPMView>().FromSqlRaw($"EXEC spGetTareasCPM " +
                             $"@correo = {correo}, @nombreTablero = {nombreTablero}").ToList();
             
-            if(tareasConDependencias.Count == 0)
+            if(tareasConDependencias == null || tareasConDependencias.Count == 0)
             {
                 return new Ruta();
             }
@@ -463,21 +463,15 @@ namespace TaskPlannerCE_API.Repositories
                 
             }
 
-            // se agregan las dependencias a cada tarea
-            listaTemp = listaTareas;
+            // se le agregan las dependencias a cada tarea
             foreach(var tarea in listaTareas)
             {
                 foreach(var t in tareasBD)
                 {
-                    if (t.nombre == tarea.nombre)
+                    if(tarea.nombre == t.nombre)
                     {
-                        foreach (var temp in listaTemp)
-                        {
-                            if(temp.nombre == t.dependencia)
-                            {
-                                tarea.dependencias.Add(temp);
-                            }
-                        }
+                        tarea.dependencias.Add(new TareaCPM(t.dependencia, (t.fechaFinalizacion - t.fechaInicio).Days,
+                        t.fechaInicio, t.fechaFinalizacion));
                     }
                     
                 }
