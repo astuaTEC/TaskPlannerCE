@@ -169,6 +169,7 @@ export class ContenidoTableroPage implements OnInit {
           )
           .subscribe(
             data => {
+              console.log(data);
               // Primero se obtiene la primera tarea de la ruta
               this.nombreTareasRuta.push(data['ruta'][0]['nombre']);
               this.duracionTareasRuta.push(data['ruta'][0]['dur']);
@@ -329,8 +330,7 @@ export class ContenidoTableroPage implements OnInit {
 
       const { role } = await popover.onDidDismiss();
       console.log('onDidDismiss resolved with role', role);
-      // Cuando se cierra el Popover se debe actualizar la lista de estados
-      this.actualizar();     
+      // Cuando se cierra el Popover se debe actualizar la lista de estados   
     }
     else{
       this.toastService.mostrarToast('Ruta Crítica', 'En este momento no es posible generar una ruta crítica', 3);
@@ -339,6 +339,9 @@ export class ContenidoTableroPage implements OnInit {
   }
 
   async editarTablero(ev: any) {
+    console.log('Correo creador:', this.correoCreador);
+    console.log('Mi correo:', localStorage.getItem('correoInstitucional'));
+
     if(localStorage.getItem('correoInstitucional') == this.correoCreador){
       const popover = await this.popoverController.create({
         component: EditarTableroPage,

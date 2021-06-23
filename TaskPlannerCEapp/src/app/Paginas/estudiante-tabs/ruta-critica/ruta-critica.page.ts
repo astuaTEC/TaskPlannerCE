@@ -69,6 +69,8 @@ export class RutaCriticaPage implements OnInit {
   ngOnInit() {
     this.nombreTareasRuta = this.navParams.get('nombreTareasRuta');
     this.duracionTareasRuta = this.navParams.get('duracionTareasRuta');
+    console.log(this.nombreTareasRuta);
+    console.log(this.duracionTareasRuta);
   }
 
 }

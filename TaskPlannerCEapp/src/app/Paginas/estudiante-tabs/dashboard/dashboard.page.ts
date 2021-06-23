@@ -45,59 +45,64 @@ export class DashboardPage implements OnInit {
     
   }
   ionViewWillEnter(){
-    // Vaciar las listas
-    this.ultimosAmigos = [];
-
-    // Solicitar el numero de tableros creados
-    this.dashboardService.getCantidadTableros(localStorage.getItem('correoInstitucional'))
-    .subscribe(
-      data => {
-        console.log(data);
-        this.c = data;
-
-      }
-    )
-
-    // Solicitar la cantidad de tableros en los últimos 6 meses
-    this.dashboardService.getCantidadTablerosMeses(localStorage.getItem('correoInstitucional'))
-    .subscribe(
-      data => {
-        for(let m of data){
-          this.tablerosMes.push(
-            {
-              mes: m['mes'],
-              cantidad: m['cantidad']
-            }
-          )
-        }
-      }
-    )
-
-  // Llenar los datos de los graficos
-  for(let mes of this.tablerosMes){
-      this.labelsGrafico.push(mes.mes);
-      this.datosGrafico.push(mes.cantidad);
+    this.actualizar();
+   
   }
 
-    // Solicitar la información de los últimos 5 amigos
-    this.dashboardService.getUltimosAmigos(localStorage.getItem('correoInstitucional'))
-    .subscribe(
-      data => {
-        for(let amigo of data){
-          this.ultimosAmigos.push(
-            {
-              nombre: amigo['nombre'],
-              correo: amigo['correoAmigo'],
-              carrera: amigo['carrera']
-            }
-          )
-            
-        }
-      });
-  }
+  actualizar(){
+      // Vaciar las listas
+      this.ultimosAmigos = [];
+      this.labelsGrafico = [];
+      this.datosGrafico = [];
 
+      // Solicitar el numero de tableros creados
+      this.dashboardService.getCantidadTableros(localStorage.getItem('correoInstitucional'))
+      .subscribe(
+        data => {
+          console.log(data);
+          this.c = data;
+  
+        }
+      )
+  
+      // Solicitar la cantidad de tableros en los últimos 6 meses
+      this.dashboardService.getCantidadTablerosMeses(localStorage.getItem('correoInstitucional'))
+      .subscribe(
+        data => {
+          console.log(data);
+          for(let m of data){
+            this.labelsGrafico.push(m['mes']);
+            this.datosGrafico.push(m['cantidad']);
+            this.tablerosMes.push(
+              {
+                mes: m['mes'],
+                cantidad: m['cantidad']
+              }
+            )
+          }
+
+          // Se muestra el gráfico
+          this.createBarChart();
+        }
+      )
+      // Solicitar la información de los últimos 5 amigos
+      this.dashboardService.getUltimosAmigos(localStorage.getItem('correoInstitucional'))
+      .subscribe(
+        data => {
+          for(let amigo of data){
+            this.ultimosAmigos.push(
+              {
+                nombre: amigo['nombre'],
+                correo: amigo['correoAmigo'],
+                carrera: amigo['carrera']
+              }
+            )
+              
+          }
+        });
+  }
   ngAfterViewInit(): void{
-    this.createBarChart();
+
   }
 
  

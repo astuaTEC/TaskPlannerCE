@@ -10,7 +10,4 @@ describe('PerfilService', () => {
     service = TestBed.inject(PerfilService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
 });

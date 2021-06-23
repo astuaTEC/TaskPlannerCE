@@ -9,8 +9,4 @@ describe('TablerosService', () => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(TablerosService);
   });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
 });

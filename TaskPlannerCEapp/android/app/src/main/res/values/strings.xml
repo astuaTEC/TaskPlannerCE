@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">TP</string>
-    <string name="title_activity_main">TP</string>
+    <string name="app_name">TaskPlannerCE</string>
+    <string name="title_activity_main">TaskPlannerCE</string>
     <string name="package_name">com.TaskPlannerCE.app</string>
     <string name="custom_url_scheme">com.TaskPlannerCE.app</string>
 </resources>
