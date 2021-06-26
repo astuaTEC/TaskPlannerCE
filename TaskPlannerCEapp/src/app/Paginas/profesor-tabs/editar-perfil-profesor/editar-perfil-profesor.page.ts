@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { PerfilService } from 'src/app/Servicios/perfil.service';
 import { ToastService } from 'src/app/Servicios/toast.service';
 
@@ -32,7 +33,7 @@ export class EditarPerfilProfesorPage implements OnInit {
   // Número de telefono
   telefono: number = 0;
 
-  constructor(private toastService: ToastService, private perfilService: PerfilService, private router: Router) { }
+  constructor(private alertController: AlertController, private toastService: ToastService, private perfilService: PerfilService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -78,6 +79,47 @@ export class EditarPerfilProfesorPage implements OnInit {
           }
         });
     
+  }
+
+  async eliminarCuenta() {
+    const alert = await this.alertController.create({
+      header: 'Eliminar Cuenta',
+      message: '¿Seguro que deseas eliminar tu cuenta?',
+      buttons: [
+        {
+          text: 'cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('cancelar');
+          }
+        }, {
+          text: 'confirmar',
+          handler: () => {
+            this.perfilService.eliminarCuentaProfesor(localStorage.getItem('correoInstitucional'))
+            .subscribe(
+              data => {
+                console.log(data);
+          
+              },
+              error => {
+                console.log(error);
+                if(error.status == 200){
+                  this.toastService.mostrarToast('Mi estimado', 'Se le informa que su cuenta se ha eliminado', 10);
+                  this.router.navigate(['/login-tabs/login']);
+                }
+                else{
+                  this.toastService.mostrarToast('Eliminar Cuenta', 'Error al intentar eliminar la cuenta', 10);
+                }
+              });
+
+            
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 }

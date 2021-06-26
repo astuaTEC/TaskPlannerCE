@@ -100,8 +100,12 @@
       </ion-row>
 
       <ion-row class="fila-boton ion-justify-content-center">
-        <ion-col class="ion-align-self-center" size="7">
+        <ion-col class="ion-align-self-center">
           <ion-button type="submit" [disabled]="form.invalid" expand="block" (click)="guardar()">Guardar</ion-button>
+        </ion-col>
+
+        <ion-col class="ion-align-self-center">
+          <ion-button color="danger" expand="block" (click)="eliminarCuenta()">Eliminar cuenta</ion-button>
         </ion-col>
       </ion-row>
 

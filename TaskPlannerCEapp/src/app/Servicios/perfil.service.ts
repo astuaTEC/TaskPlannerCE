@@ -74,4 +74,14 @@ editarPerfilProfesor(correoEstudiante: string, carnet: string, primerNombre: str
       }});
   }
 
+  // Solicita eliminar cuenta
+  eliminarCuentaProfesor(correoProfesor: string){
+    return this.http.delete<string>('https://taskplannerce.azurewebsites.net/api/profesor/eliminar?', {
+      params: {
+        correo: correoProfesor
+      }});
+  }
+
+
+
 }
