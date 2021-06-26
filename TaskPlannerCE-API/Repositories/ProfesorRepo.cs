@@ -48,6 +48,16 @@ namespace TaskPlannerCE_API.Repositories
 
             _context.Profesors.Update(profesor);
         }
+        /// <summary>
+        /// Metodo para eliminar a un profesor específico
+        /// </summary>
+        /// <param name="correo">El correo del profesor a eliminar</param>
+        public void EliminarProfesor(string correo)
+        {
+            _context.Database.ExecuteSqlRaw("spEliminarProfesor @p0",
+               correo);
+        }
+
 
 
         // guarda los cambios en la base de datos

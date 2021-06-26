@@ -139,3 +139,9 @@ VALUES	('kevinar51@estudiantec.cr', 'Maluma 2021', 'Perfecta', 'sam.astua@estudi
 INSERT INTO TAREA_DEPENDENCIA(correoEstudiante, nombreTablero, nombreTarea, nombreTareaDependiente)
 VALUES	('sam.astua@estudiantec.cr', 'Tablero 1', 'Tarea 2', 'Tarea 3'),
 		('sam.astua@estudiantec.cr', 'Tablero 1', 'Tarea 1', 'Tarea 2');
+
+
+INSERT INTO TABLERO(correoEstudiante, nombre, tipo, descripcion, fechaCreacion)
+VALUES ('sam.astua@estudiantec.cr', 'Tablero febrero', 'Tarea', 'Este es un tablero para probar funcionalidades', '2021-02-01'), -- SAYMON
+	   ('sam.astua@estudiantec.cr', 'Tablero marzo', 'Proyecto', 'Este es un tablero para probar funcionalidades', '2021-03-01'),
+	   ('sam.astua@estudiantec.cr', 'Tablero abril', 'Actividad deportiva', 'Este es un tablero para probar funcionalidades', '2021-04-01');

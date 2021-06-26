@@ -464,14 +464,23 @@ namespace TaskPlannerCE_API.Repositories
             }
 
             // se le agregan las dependencias a cada tarea
+            listaTemp = listaTareas;
             foreach(var tarea in listaTareas)
             {
                 foreach(var t in tareasBD)
                 {
-                    if(tarea.nombre == t.nombre)
+                    if(tarea.nombre == t.nombre && t.dependencia != null)
                     {
-                        tarea.dependencias.Add(new TareaCPM(t.dependencia, (t.fechaFinalizacion - t.fechaInicio).Days,
-                        t.fechaInicio, t.fechaFinalizacion));
+                        foreach(var tmp in listaTemp)
+                        {
+                            if(tmp.nombre == t.dependencia)
+                            {
+                                tarea.dependencias.Add(new TareaCPM(t.dependencia, (tmp.fechaFinalizacion - tmp.fechaInicio).Days, 
+                                    tmp.fechaInicio, tmp.fechaFinalizacion));
+                                break;
+                            }
+                        }
+                        
                     }
                     
                 }

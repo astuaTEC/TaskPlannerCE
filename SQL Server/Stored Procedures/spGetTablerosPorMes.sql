@@ -9,7 +9,7 @@ FROM	TABLERO
 WHERE	correoEstudiante = @correo AND
 		fechaCreacion >= GETDATE()-180 --está restando seis meses a la fecha actual
 GROUP BY MONTH(fechaCreacion)
-ORDER BY MONTH(fechaCreacion) DESC;
+ORDER BY MONTH(fechaCreacion) ASC;
 
 GO
 

@@ -18,4 +18,4 @@ WHERE	t.correoEstudiante = @correo AND
 
 GO
 
-EXEC spGetTareasCPM @correo = 'kevinar51@estudiantec.cr', @nombreTablero = 'Maluma 2021';
+EXEC spGetTareasCPM @correo = 'kevinar51@estudiantec.cr', @nombreTablero = 'Jicaral Hasta la Muerte';
