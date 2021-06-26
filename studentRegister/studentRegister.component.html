@@ -1,0 +1,76 @@
+<img class="wallpaper" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1606235915/CE3101/Segundo%20Proyecto/Fondo_de_pantalla_login.jpg">
+
+<div class="container registerContainer">
+    <img class="logo" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621993293/CE4101/TaskPlanner/Logo_small.png">
+    <input type="text" id="name1" class="registerInput" style="top: 10vh; left: 30vw;" placeholder="Primer nombre">
+    <input type="text" id="name2" class="registerInput" style="top: 10vh; left: 55vw" placeholder="Segundo nombre">
+    <input type="text" id="surname1" class="registerInput" style="top: 20vh; left: 30vw" placeholder="Primer apellido">
+    <input type="text" id="surname2" class="registerInput" style="top: 20vh; left: 55vw" placeholder="Segundo apellido">
+    <input type="text" id="email" class="registerInput" style="top: 30vh; left: 30vw" placeholder="Correo institucional">
+    <input type="text" id="id" class="registerInput" style="top: 30vh; left: 55vw" placeholder="Carné institucional">
+    <input type="text" id="phoneNumber" class="registerInput" style="top: 40vh; left: 30vw" placeholder="Número de teléfono">
+    
+    <select id="currentProvince" class="registerDropList" style="top: 50vh; left: 18.8vw;">
+        <option selected="true">Provincia de residencia actual</option>
+        <option>San José</option>
+        <option>Alajuela</option>
+        <option>Cartago</option>
+        <option>Heredia</option>
+        <option>Guanacaste</option>
+        <option>Puntarenas</option>
+        <option>Limón</option>
+    </select>
+
+    <select id="academicProvince" class="registerDropList" style="top: 50vh; left: 43.8vw;">
+        <option selected="true">Provincia de residencia al estudiar</option>
+        <option>San José</option>
+        <option>Alajuela</option>
+        <option>Cartago</option>
+        <option>Heredia</option>
+        <option>Guanacaste</option>
+        <option>Puntarenas</option>
+        <option>Limón</option>
+    </select>
+
+    <select id="career" class="registerDropList" style="top: 60vh; left: 18.8vw;">
+        <option selected="true">Carrera matriculada</option>
+        <option>Administración de Empresas</option>
+        <option>Arquitectura</option>
+        <option>Enseñanza de la Matemática con Entornos Tecnológicos</option>
+        <option>Gestión del Turismo Rural Sostenible</option>
+        <option>Ingeniería en Administración de Tecnología de Información</option>
+        <option>Ingeniería Agrícola</option>
+        <option>Ingeniería en Agronegocios</option>
+        <option>Ingeniería en Agronomía</option>
+        <option>Ingeniería Ambiental</option>
+        <option>Ingeniería en Biotecnología</option>
+        <option>Ingeniería en Computación</option>
+        <option>Ingeniería en Computadores</option>
+        <option>Ingeniería en Construcción</option>
+        <option>Ingeniería en Diseño Industrial</option>
+        <option>Ingeniería Electrónica</option>
+        <option>Ingeniería Física</option>
+        <option>Ingeniería Forestal</option>
+        <option>Ingeniería en Mantenimiento Industrial</option>
+        <option>Ingeniería en Materiales</option>
+        <option>Ingeniería Mecatrónica</option>
+        <option>Ingeniería en Producción Industrial</option>
+        <option>Ingeniería en Seguridad Laboral e Higiene Ambiental</option>
+    </select>
+
+    <select id="interest" class="registerDropList" style="top: 60vh; left: 43.8vw;">
+        <option selected="true">Área de interés</option>
+        <option>Académico</option>
+        <option>Cultural</option>
+        <option>Deportivo</option>
+        <option>Personal</option>
+        <option>Otro</option>
+    </select>
+
+    <button class="registerButton" (click)="register()" >¡Registrar!</button>
+
+</div>
+
+<img class="goBackLogo" matTooltip="Atrás" (click)="goToRegister()" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621985612/CE4101/TaskPlanner/Back.png">
+
+

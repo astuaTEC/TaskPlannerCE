@@ -1,0 +1,70 @@
+.wallpaper{
+    position: absolute;
+    top: 0px;
+    left: 0vw;
+    width: 100vw;
+    height: 100vh;
+}
+
+.registerContainer{
+    position: absolute;
+    background: rgba(156, 154, 154, 0.4);
+    top: 5vh;
+    left: 10vw;
+    height: 90vh;
+    width: 80vw;
+    border-radius: 4vh;
+}
+
+.logo{
+    position: absolute;
+    height: 30%;
+    top: 4vh;
+    left: 20vw;
+}
+
+.goBackLogo{
+    position: absolute;
+    height: 8%;
+    left: 85vw;
+    top: 8vh;
+    cursor: pointer;
+}
+
+.studentLogo{
+    position: absolute;
+    height: 30%;
+    left: 10vw;
+    top: 43vh;
+    cursor: pointer;
+}
+
+.teacherLogo{
+    position: absolute;
+    height: 30%;
+    left: 56vw;
+    top: 43vh;
+    cursor: pointer;
+}
+
+.studentLabel{
+    position: absolute;
+    font: 1em sans-serif;
+    font-weight: bold;
+    font-size: 4.3vh;
+    top: 71vh;
+    left: 11.4vw;
+    color: black;
+    cursor: pointer;
+}
+
+.teacherLabel{
+    position: absolute;
+    font: 1em sans-serif;
+    font-weight: bold;
+    font-size: 4.3vh;
+    top: 71vh;
+    left: 57vw;
+    color: black;
+    cursor: pointer;
+}

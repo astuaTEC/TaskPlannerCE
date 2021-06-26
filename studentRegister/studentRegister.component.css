@@ -1,0 +1,75 @@
+.wallpaper{
+    position: absolute;
+    top: 0px;
+    left: 0vw;
+    width: 100vw;
+    height: 100vh;
+}
+
+.registerContainer{
+    position: absolute;
+    background: rgba(156, 154, 154, 0.4);
+    top: 5vh;
+    left: 10vw;
+    height: 90vh;
+    width: 80vw;
+    border-radius: 4vh;
+}
+
+.logo{
+    position: absolute;
+    height: 30%;
+    top: 3vh;
+    left: 1vw;
+}
+
+.goBackLogo{
+    position: absolute;
+    height: 8%;
+    left: 85vw;
+    top: 8vh;
+    cursor: pointer;
+}
+
+.registerInput{
+    position: absolute;
+    width: 22vw;
+    height: 4vh;
+    border-radius: 1vh;
+    font-size: medium;
+    text-align: center;
+    display: inline-block;      
+    transform: translate(-50%);
+    font-size: 2.45vh;
+    border-color: black;
+}
+
+.registerDropList{
+    position: absolute;
+    border-radius: 1vh;
+    width: 22.4vw;
+    height: 4.5vh;
+    font-size: medium;
+    text-align-last: center;
+    border-color: black;
+    cursor: pointer;
+    border-width: 0.3vh;
+}
+
+.registerButton{
+    position: absolute;
+    width: 40vw;
+    height: 8vh;
+    border-radius: 2vh;
+    font-size: 4vh;
+    color: white;
+    background-color: #3B8686;
+    display: inline-block;
+    top: 73.5vh;   
+    left: 42.5vw;                  
+    transform: translate(-50%);
+    cursor: pointer;
+    border-color:black;
+}
+
+

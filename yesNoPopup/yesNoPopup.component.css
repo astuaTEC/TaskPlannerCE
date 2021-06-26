@@ -1,0 +1,16 @@
+.infoLabel{
+    position: relative;
+    font: 1em sans-serif;
+    font-size: 2.3vh;
+    top: 0vh;
+    left: 0vw;
+    text-align: center;
+    color: white;
+}
+
+.yesNoLogo{
+    position: relative;
+    height: 5vh;
+    top: 0vh;
+    cursor: pointer;
+}

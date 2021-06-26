@@ -1,0 +1,31 @@
+<div>
+    <h1 class="titleLabel" style="top: -1vh;">Agregar un estado de completitud:</h1>
+    <input type="text" id="stateName" class="editInput3" style="top: -2.5vh; left: 0vw;" placeholder="Nombre del estado de completitud">
+</div>
+
+
+<div>
+    <img class="logoPopup" matTooltip="Atrás" mat-dialog-close style="top: -13vh; left: 54vw; height: 3vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Back2.png">
+</div>
+
+<div>
+    <button class="saveChangesButton2" (click)="addState()" style="top: -14.2vh;" >Agregar</button>
+</div>
+
+<div>
+    <h1 class="titleLabel" style="top: -10vh;">Estados de completitud:</h1>
+    <div class="container scrollableContainerEdit" style="top: -11vh;">
+        <div id="scrollEdit">
+            <div class="container defaultEditParentContainer" *ngFor="let state of states; let i = index">
+                <div class="container defaultEditContainer">
+                    <h2 style="font-size: 2.5vh;">{{state.nombre}}</h2>
+                </div>
+                <img class="logo" matTooltip="Eliminar estado de completitud" (click)="deleteState(i)" style="top: 2.5vh; left: 41.5vw; height: 45%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Delete.png">
+            </div>
+            <h2 class="cantFindBoardsLabel" *ngIf="states.length==0">No hay estados de completitud</h2>
+        </div>
+    </div>
+</div>
+
+<button class="deleteButton" (click)="deleteType()" style="top: -8vh;" >Eliminar tipo de tablero</button>
+

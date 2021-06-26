@@ -1,0 +1,40 @@
+<div class="backgroundContainer">
+    <div class="navbarContainer">
+        <img class="navbarLogo" (click)="goToTeacherBoards()" style="left:3vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Table.png">
+        <h3 class="navbarLabel" (click)="goToTeacherBoards()" style="left:2.7vw; cursor: pointer;">Tableros</h3>
+        <img class="navbarLogo" style="left:48vw; cursor:default" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Profile.png">
+        <h3 class="navbarLabel" style="left:48.65vw; cursor:default;">Perfil</h3>
+        <img class="navbarLogo" (click)="logOut()" style="left:94vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Logout.png">
+        <h3 class="navbarLabel" (click)="logOut()" style="left:92.2vw; cursor:pointer;">Cerrar Sesión</h3>
+        <img class="navbarLogo" *ngIf="admin" (click)="goToBoardManagement()" style="left:24vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Edit.png">
+        <h3 class="navbarLabel" *ngIf="admin" (click)="goToBoardManagement()" style="left:20.6vw; cursor:pointer;">Administrar tableros</h3>
+        <img class="navbarLogo" *ngIf="admin" (click)="goToAdminManagement()" style="left:72vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Friends.png">
+        <h3 class="navbarLabel" *ngIf="admin" (click)="goToAdminManagement()" style="left:68.3vw; cursor:pointer;">Agregar administrador</h3>
+    </div>
+
+    <h1 class="titleLabel" style="left: 2.5vw; top: 27vh;">Primer nombre:</h1>
+    <input type="text" id="name1" class="registerInput" style="top: 27.5vh; left: 26.5vw;" placeholder="Primer nombre" value="{{name1}}">
+    
+    <h1 class="titleLabel" style="left: 2.5vw; top: 34vh;">Segundo nombre:</h1>
+    <input type="text" id="name2" class="registerInput" style="top: 34.5vh; left: 28vw" placeholder="Segundo nombre" *ngIf="name2!=''" value="{{name2}}">
+    <input type="text" id="name2" class="registerInput" style="top: 34.5vh; left: 28vw" placeholder="Segundo nombre" *ngIf="name2==''">
+
+    
+    <h1 class="titleLabel" style="left: 2.5vw; top: 41vh;">Primer apellido:</h1>
+    <input type="text" id="surname1" class="registerInput" style="top: 41.5vh; left: 26.5vw" placeholder="Primer apellido" value="{{surname1}}">
+    
+    <h1 class="titleLabel" style="left: 2.5vw; top: 48vh;">Segundo apellido:</h1>
+    <input type="text" id="surname2" class="registerInput" style="top: 48.5vh; left: 28vw" placeholder="Segundo apellido" value="{{surname2}}">
+
+    <h1 class="titleLabel" style="left: 2.5vw; top: 61vh;">Correo institucional:</h1>
+    <input type="text" id="email" (keyup)="openErrorDialog('No es posible editar el correo institucional.')" (click)="openErrorDialog('No es posible editar el correo institucional.')" readonly="true" class="registerInput" style="top: 61.5vh; left: 29.3vw" placeholder="Correo institucional" value="{{email}}">
+    
+    <h1 class="titleLabel" style="left: 2.5vw; top: 68vh;">Carné institucional:</h1>
+    <input type="text" (keyup)="openErrorDialog('No es posible editar el carné institucional.')" (click)="openErrorDialog('No es posible editar el carné institucional.')" readonly="true" id="id" class="registerInput" style="top: 68.5vh; left: 28.9vw" placeholder="Carné institucional" value="{{id}}">
+
+    <h1 class="titleLabel" style="left: 2.5vw; top: 81vh;">Número de teléfono:</h1>
+    <input type="text" id="phoneNumber" class="registerInput" style="top: 81.5vh; left: 29.5vw" placeholder="Número de teléfono" value="{{phoneNumber}}">
+
+    <button class="registerButton" (click)="editProfile()">Guardar cambios</button>
+    <button class="deleteButton" (click)="deleteProfile()">Eliminar mi perfil</button>
+</div>

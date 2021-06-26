@@ -1,0 +1,184 @@
+.editInput{
+    position: relative;
+    width: 23vw;
+    height: 5vh;
+    border-radius: 1.5vh;
+    font-size: 2.45vh;
+    border-color: black;
+}
+
+.editInput2{
+    position: relative;
+    width: 23vw;
+    height: 5vh;
+    border-radius: 1.5vh;
+    font-size: 2vh;
+    border-color: black;
+}
+
+.editInput3{
+  position: relative;
+  width: 30vw;
+  height: 5vh;
+  border-radius: 1.5vh;
+  font-size: 2.45vh;
+  border-color: black;
+}
+
+.editDropList{
+    position: relative;
+    border-radius: 1vh;
+    width: 23vw;
+    height: 4.5vh;
+    font-size: 2.45vh;
+    border-color: black;
+    cursor: pointer;
+    border-width: 0.3vh;
+}
+
+.editDescriptionLabel{
+    position: relative;
+    font-family: 'Oswald', sans-serif;
+    top: -0.5vh;
+    left: 0vw;
+    font-size: 2.4vh;
+    border-color: black;
+    min-width: 46vw;
+    height: 9vh;
+    border-radius: 1vh;
+}
+
+.titleLabel{
+    position: relative;
+    font-size: 1.4vw;
+    color: white;
+    user-select: none;
+}
+
+.scrollableContainerEdit{
+  position: relative;
+  left: -5vw;
+  height: 23vh;
+  width: 46vw;
+  align-self:center;
+  background: white;
+  border: 2px solid black;
+  border-radius: 2vh;
+}
+
+#scrollEdit{
+  position: relative;
+  top: 0vh; 
+  left: -0.5vw;
+  height: 22.2vh;
+  width: 45.5vw;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.defaultEditContainer{
+  display: inline-flex;
+  position: relative;
+  top: 1vh;
+  left: -0.5vw;
+  height: 6vh;
+  width: 43vw;
+
+  border-radius: 1vh;
+
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  background-color: rgb(150, 150, 150);
+
+}
+
+.defaultEditParentContainer{
+  display: inline-flex;
+  position: relative;
+  top: 0vh;
+  left: 0vw;
+  height: 7vh;
+  width: 45vw;
+}
+
+  .createBoardButton{
+    position: relative;
+    width: 25vw;
+    height: 10vh;
+    border-radius: 2vh;
+    font-size: 3.5vh;
+    color: white;
+    background-color: #3B8686;
+    display: inline-block;      
+    left: 50%;                  
+    transform: translate(-50%);
+    cursor: pointer;
+    border-color:black;
+}
+
+.cantFindBoardsLabel{
+  user-select: none;
+  position: relative;
+  top: 9vh;
+  left: 13vw;
+  color: black;
+  width: 36vw;
+  font-size: 2.8vh;
+}
+
+.titleLabel{
+  position: relative;
+  font-size: 1.4vw;
+  left: 0vw;
+  color: white;
+}
+
+.saveChangesButton{
+  position: relative;
+  width: 40vw;
+  height: 6vh;
+  border-radius: 2vh;
+  font-size: 3.5vh;
+  color: white;
+  background-color: #3B8686;
+  display: inline-block;      
+  left: 41vh;                  
+  transform: translate(-50%);
+  cursor: pointer;
+  border-color:black;
+}
+
+.saveChangesButton2{
+  position: relative;
+  width: 10vw;
+  height: 6vh;
+  border-radius: 2vh;
+  font-size: 2.5vh;
+  color: white;
+  background-color: #3B8686;
+  display: inline-block;      
+  left: 68%;                  
+  transform: translate(-50%);
+  cursor: pointer;
+  border-color:black;
+}
+
+.deleteButton{
+  position: relative;
+  width: 30vw;
+  height: 6vh;
+  border-radius: 2vh;
+  font-size: 3.5vh;
+  color: white;
+  background-color: #720000;
+  display: inline-block;      
+  left: 31.7vh;                  
+  transform: translate(-50%);
+  cursor: pointer;
+  border-color:black;
+}

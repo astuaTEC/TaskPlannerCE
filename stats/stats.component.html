@@ -1,0 +1,45 @@
+<div class="backgroundContainer">
+    <div class="navbarContainer">
+        <img class="navbarLogo" (click)="goToStudentBoards()" style="left:3vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Table.png">
+        <h3 class="navbarLabel" (click)="goToStudentBoards()" style="left:2.9vw; cursor: pointer;">Tableros</h3>
+        <img class="navbarLogo" (click)="goToFriends()" style="left:25vw; cursor:pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Friends.png">
+        <h3 class="navbarLabel" (click)="goToFriends()" style="left:25vw; cursor:pointer;">Amigos</h3>
+        <img class="navbarLogo" style="left:48vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Stats.png">
+        <h3 class="navbarLabel" style="left:47.1vw; cursor:default;">Estadísticas</h3>
+        <img class="navbarLogo" (click)="goToStudentProfile()" style="left:72vw; cursor:pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Profile.png">
+        <h3 class="navbarLabel" (click)="goToStudentProfile()" style="left:72.67vw; cursor:pointer;">Perfil</h3>
+        <img class="navbarLogo" (click)="logOut()" style="left:94vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Logout.png">
+        <h3 class="navbarLabel" (click)="logOut()" style="left:92.2vw; cursor:pointer;">Cerrar Sesión</h3>
+    </div>
+
+    <h1 class="titleLabel" style="left: 3vw;">Cantidad de tableros creados en los últimos seis meses</h1>
+    <apx-chart style="top: 26.5vh; left: 1.5vw;" *ngIf="visible"
+        [series]="series"
+        [chart]="chart"
+        [xaxis]="xaxis"
+        [yaxis]="yaxis"
+        [dataLabels]="dataLabels"
+        [grid]="grid"
+        [title]="title"
+    ></apx-chart>
+
+    <h1 class="titleLabel" style="left: 63vw;">Últimos amigos agregados</h1>
+    <div class="container smallScrollableContainer" style="left: 63vw;">
+        <div id="smallScroll">
+            <div class="container defaultSmallParentContainer" *ngFor="let friend of lastFriends; let i = index">
+                <div class="container defaultSmallContainer">
+                    <div style="top: 0vh; left: 6vw; position: relative;">
+                        <h1 class="containerLabel" style="font-size: 1.5vw; max-width: 20vw; overflow: hidden;">{{lastFriends[i].name}}</h1>
+                    </div>
+                    <div style="top: 4vh; left: -13.8vw; position: relative;">
+                        <h1 class="containerLabel" style="font-size: 1vw;">{{lastFriends[i].email}}</h1>
+                    </div>
+                    <h1 style="color: white; font-size: 3vw; position: relative; left: -55vw; top: 3.5vh;">{{i+1}}</h1>
+
+                </div>
+            </div>
+            <h2 class="cantFindLabel" *ngIf="lastFriends.length==0">No has agregado a ningún amigo</h2>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,44 @@
+<div class="backgroundContainer">
+    <div class="navbarContainer">
+        <img class="navbarLogo" (click)="goToTeacherBoards()" style="left:3vw; cursor:pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Table.png">
+        <h3 class="navbarLabel" (click)="goToTeacherBoards()" style="left:2.7vw; cursor:pointer;">Tableros</h3>
+        <img class="navbarLogo" (click)="goToTeacherProfile()" style="left:48vw; cursor:pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Profile.png">
+        <h3 class="navbarLabel" (click)="goToTeacherProfile()" style="left:48.65vw; cursor:pointer;">Perfil</h3>
+        <img class="navbarLogo" (click)="logOut()" style="left:94vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Logout.png">
+        <h3 class="navbarLabel" (click)="logOut()" style="left:92.2vw; cursor:pointer;">Cerrar Sesión</h3>
+        <img class="navbarLogo" *ngIf="admin" (click)="goToBoardManagement()" style="left:24vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Edit.png">
+        <h3 class="navbarLabel" *ngIf="admin" (click)="goToBoardManagement()" style="left:20.6vw; cursor:pointer;">Administrar tableros</h3>
+        <img class="navbarLogo" *ngIf="admin" (click)="goToAdminManagement()" style="left:72vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Friends.png">
+        <h3 class="navbarLabel" *ngIf="admin" (click)="goToAdminManagement()" style="left:68.3vw; cursor:pointer;">Agregar administrador</h3>
+    </div>
+
+    <h1 class="titleLabel" style="left: 2vw;">{{board.name}}</h1>
+
+
+    <div id="horizontalScroll">
+        <div class="container stateParentContainer" *ngFor="let state of states; let i = index">
+            <div class="container stateContainer">
+                <div class="example-container">
+                    <div
+                      
+                      id="{{state.realID}}"
+
+                      class="example-list"
+                      >
+                      <div class="example-box" *ngFor="let task of state.tasks; let j = index;"  matTooltip="{{task.info}}">
+                        <div style="top: -2vh; left: 0.5vw; position: relative;">
+                            <h1 style="position: relative; font-size: 1.2vw; max-width: 20vw;">{{task.name}}</h1>
+                        </div>
+                        <div style="top: 0vh; left: 0.4vw; position: relative;">
+                            <p style="position: absolute; top: 0vh; left: -20vw; font-size: 0.9vw; max-width: 20vw;">Creada el {{task.startDate}}. <br>Finaliza el {{task.endDate}}.</p>
+                        </div>
+                        </div>
+                        <h1 *ngIf="state.tasks.length!=0" style="color: white; cursor: default; user-select: none;" >Ignore</h1>
+                    </div>
+                </div>
+                <h1 class="stateLabel">{{state.name}}</h1>
+            </div>
+        </div>  
+    </div>
+
+</div>

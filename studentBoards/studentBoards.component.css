@@ -1,0 +1,42 @@
+.titleLabel{
+    position: absolute;
+    font-size: 2.5vw;
+    top: 21vh;
+    color: black;
+    user-select: none;
+ }
+
+.boardLabel{
+    position: relative;
+    top: 2.5vh;
+    left: 0.3vw;
+    color: black;
+    width: 36vw;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.descriptionLabel{
+    position: relative;
+    font-family: 'Oswald', sans-serif;
+    top: 13vh;
+    left: -71.7vw;
+    font-size: small;
+    color: black;
+    min-width: 36.7vw;
+    height: 9vh;
+    border-radius: 1vh;
+    background-color: rgba(233, 233, 233, 0.89);
+    border-color: black;
+}
+
+.cantFindBoardsLabel{
+    position: relative;
+    top: 26vh;
+    left: 5.2vw;
+    color: white;
+    width: 36vw;
+    font-size: 4vh;
+    user-select: none;
+}

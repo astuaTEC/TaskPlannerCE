@@ -1,0 +1,57 @@
+<div>
+    <h1 class="titleLabel" style="top: -1vh;">Nombre del tablero:</h1>
+    <input (keyup)="openErrorDialog('No es posible editar el nombre del tablero.')" (click)="openErrorDialog('No es posible editar el nombre del tablero.')" readonly="true" type="text" id="boardName" class="editInput" style="top: -3vh; left: -0.1vw; " value="{{boardName}}" placeholder="Nombre del tablero">
+</div>
+
+<div>
+    <h1 class="titleLabel" style="top: -1vh;">Tipo de tablero:</h1>
+    <select id="boardType" class="editDropList" style="top: -3vh; left: -0.1vw;">
+        <option selected="true">{{boardType}}</option>
+        <option *ngFor="let type of boardTypes; let i = index">{{boardTypes[i].type}}</option>
+    </select>
+</div>
+
+<div>
+    <h1 class="titleLabel" style="top: 0vh;">Descripción del tablero:</h1>
+    <textarea id="boardDescription" class="editDescriptionLabel" placeholder="Descripción del tablero">{{boardDescription}}</textarea>
+</div>
+
+<div>
+    <h1 class="titleLabel" style="top: 0vh;">Colaborador(es):</h1>
+    <div class="container scrollableContainerEdit" style="top: -2.2vh;">
+        <div id="scrollEdit">
+            <div class="container defaultEditParentContainer" *ngFor="let collaborator of boardCollaborators; let i = index">
+                <div class="container defaultEditContainer">
+                    <h2 style="font-size: 2.5vh;">{{boardCollaborators[i].name}} ({{boardCollaborators[i].email}})</h2>
+                </div>
+                <img class="logo" matTooltip="Eliminar colaborador" (click)="deleteCollaborator(i)" style="top: 2.5vh; left: 41.5vw; height: 45%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Delete.png">
+            </div>
+            <h2 class="cantFindBoardsLabel" *ngIf="boardCollaborators.length==0" style="top:5vh; left:13vw">No hay colaboradores en el tablero</h2>
+        </div>
+    </div>
+</div>
+
+<div>
+    <h1 class="titleLabel" style="top: 0vh;">Profesor(es) observador(es):</h1>
+    <div class="container scrollableContainerEdit" style="top: -2.2vh;">
+        <div id="scrollEdit">
+            <div class="container defaultEditParentContainer" *ngFor="let teacher of boardTeachers; let j = index">
+                <div class="container defaultEditContainer">
+                    <h2 style="font-size: 2.5vh;">{{boardTeachers[j].name}} ({{boardTeachers[j].email}})</h2>
+                </div>
+                <img class="logo" matTooltip="Eliminar profesor" (click)="deleteTeacher(j)" style="top: 2.5vh; left: 41.5vw; height: 45%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Delete.png">
+            </div>
+        </div>
+        <h2 class="cantFindBoardsLabel" *ngIf="boardTeachers.length==0" style="top:-9.5vh; left:10vw">No hay profesores observadores en el tablero</h2>
+    </div>
+</div>
+
+<div>
+    <img class="logoPopup" matTooltip="Atrás" mat-dialog-close style="top: -87.5vh; left: 44.3vw; height: 3vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Back2.png">
+</div>
+
+<div>
+    <button class="saveChangesButton" (click)="saveBoardChanges()" style="top: -6vh;" >Guardar cambios</button>
+</div>
+
+

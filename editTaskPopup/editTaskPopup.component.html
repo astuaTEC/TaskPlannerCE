@@ -1,0 +1,75 @@
+<div *ngIf="edit">
+    <h1 class="titleLabel" style="top: -1vh;">Nombre de la tarea:</h1>
+    <input type="text" id="taskName" class="editInput3" style="top: -2.5vh; left: 0vw;" placeholder="Nombre de la tarea" value="{{taskName}}" (keyup)="openErrorDialog('No es posible editar el nombre de una tarea.')" (click)="openErrorDialog('No es posible editar el nombre de una tarea.')" readonly="true">
+</div>
+
+<div *ngIf="!edit">
+    <h1 class="titleLabel" style="top: -1vh;">Nombre de la tarea:</h1>
+    <input type="text" id="taskName" class="editInput3" style="top: -2.5vh; left: 0vw;" placeholder="Nombre de la tarea" value="{{taskName}}">
+</div>
+
+<div>
+    <h1 class="titleLabel" style="top: 1vh;">Descripción de la tarea:</h1>
+    <textarea id="taskDescription" class="editDescriptionLabel" placeholder="Descripción de la tarea">{{taskDescription}}</textarea></div>
+<div>
+    <h1 class="titleLabel" style="top: 3vh;">Fecha de inicio de la tarea:</h1>
+    <input type="date" id="startDate" class="editInput" style="top: 1.5vh; left: 0vw;" placeholder="Fecha de inicio de la tarea" value="{{startDate}}">
+</div>
+
+<div>
+    <h1 class="titleLabel" style="top: -9.2vh; left: 30vw;">Fecha de finalización de la tarea:</h1>
+    <input type="date" id="endDate" class="editInput" style="top: -10.8vh; left: 29.8vw;" placeholder="Fecha de inicio de la tarea" value="{{endDate}}">
+</div>
+
+
+<div>
+    <h1 class="titleLabel" style="left: 0.1vw; top: -6vh;">Encargado(s):</h1>
+    <input type="text" id="searchManager" class="editInput2" (keyup.enter)="searchManager()" style="top: -8vh; left: 0vw;" placeholder="Ingrese el nombre de un colaborador para buscar" #searchmanager>
+    <img class="logoPopup" matTooltip="Buscar en los colaboradores" (click)="searchManager(); searchmanager.value='';" style="top: -8vh; left: 1.5vw; height: 4vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Search2.png">
+    <img class="logoPopup" matTooltip="Mostrar todos los colaboradores" (click)="cancelSearchManager(); searchmanager.value='';" style="top: -8vh; left: 2.5vw; height: 4vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/DeleteSearch2.png">
+</div>
+
+<div>
+    <h1 class="titleLabel" style="left: 35.1vw; top: -18.2vh;">Depedencia(s):</h1>
+    <input type="text" id="searchDependencie" class="editInput2" (keyup.enter)="searchDependencie()" style="top: -20.2vh; left: 35vw;" placeholder="Ingrese el nombre de una tarea para buscar" #searchdependencie>
+    <img class="logoPopup" matTooltip="Buscar en las tareas" (click)="searchDependencie(); searchdependencie.value='';" style="top: -20.2vh; left: 36.5vw; height: 4vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Search2.png">
+    <img class="logoPopup" matTooltip="Mostrar todas las tareas" (click)="cancelSearchDependencie(); searchdependencie.value='';" style="top: -20.2vh; left: 37.5vw; height: 4vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/DeleteSearch2.png">
+</div>
+
+
+
+<div class="container scrollableContainerEdit" style="left: -18.5vw; top: -18vh;">
+    <div id="scrollEdit">
+        <div class="container defaultEditParentContainer" *ngFor="let manager of displayedManagers; let i = index">
+            <div class="container defaultEditContainer">
+                <h2 style="font-size: 2.2vh; user-select: none;">{{displayedManagers[i].name}}</h2>
+            </div>
+            <img class="logoPopup" (click)="toggleManagerState(i);" *ngIf="displayedManagers[i].isManager" matTooltip="{{displayedManagers[i].name}} es encargado" style="top: 2.5vh; left: -2.7vw; height: 3vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes.png">
+            <img class="logoPopup" (click)="toggleManagerState(i);" *ngIf="!displayedManagers[i].isManager" matTooltip="{{displayedManagers[i].name}} no es encargado" style="top: 2.5vh; left: -2.7vw; height: 3vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No.png">
+        </div>
+        <h2 class="cantFindLabel" *ngIf="displayedManagers.length==0">No hay coincidencias en tu búsqueda</h2>
+    </div>
+</div>
+
+<div class="container scrollableContainerEdit" style="left: 16.5vw; top: -38vh;">
+    <div id="scrollEdit">
+        <div class="container defaultEditParentContainer" *ngFor="let depedencie of displayedDependencies; let i = index">
+            <div class="container defaultEditContainer">
+                <h2 style="font-size: 2.2vh; user-select: none;">{{displayedDependencies[i].name}}</h2>
+            </div>
+            <img class="logoPopup" (click)="toggleDependencieState(i);" *ngIf="displayedDependencies[i].isDependencie" matTooltip="{{displayedDependencies[i].name}} es una dependencia" style="top: 2.5vh; left: -2.7vw; height: 3vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes.png">
+            <img class="logoPopup" (click)="toggleDependencieState(i);" *ngIf="!displayedDependencies[i].isDependencie" matTooltip="{{displayedDependencies[i].name}} no es una dependencia" style="top: 2.5vh; left: -2.7vw; height: 3vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No.png">
+        </div>
+        <h2 class="cantFindLabel" *ngIf="displayedDependencies.length==0">No hay coincidencias en tu búsqueda</h2>
+    </div>
+</div>
+
+<div>
+    <img class="logoPopup" matTooltip="Atrás" mat-dialog-close style="top: -120vh; left: 63.9vw; height: 3vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Back2.png">
+</div>
+
+<div>
+    <button *ngIf="edit" class="saveChangesButton" (click)="saveTaskChanges()" style="top: -42vh;" >Guardar cambios</button>
+    <button *ngIf="edit" class="deleteButton" (click)="deleteTask()" style="top: -42vh;" >Eliminar tarea</button>
+    <button *ngIf="!edit" class="saveChangesButton2" (click)="createTask()" style="top: -42vh;" >Crear tarea</button>
+</div>

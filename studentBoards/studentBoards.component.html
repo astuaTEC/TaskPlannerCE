@@ -1,0 +1,67 @@
+<div class="backgroundContainer">
+    <div class="navbarContainer">
+        <img class="navbarLogo" style="left:3vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Table.png">
+        <h3 class="navbarLabel" style="left:2.9vw; cursor: default;">Tableros</h3>
+        <img class="navbarLogo" (click)="goToFriends()" style="left:25vw; cursor:pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Friends.png">
+        <h3 class="navbarLabel" (click)="goToFriends()" style="left:25vw; cursor:pointer;">Amigos</h3>
+        <img class="navbarLogo" (click)="goToStats()" style="left:48vw; cursor:pointer" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Stats.png">
+        <h3 class="navbarLabel" (click)="goToStats()" style="left:47.1vw; cursor:pointer;">Estadísticas</h3>
+        <img class="navbarLogo" (click)="goToStudentProfile()" style="left:72vw; cursor:pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Profile.png">
+        <h3 class="navbarLabel" (click)="goToStudentProfile()" style="left:72.67vw; cursor:pointer;">Perfil</h3>
+        <img class="navbarLogo" (click)="logOut()" style="left:94vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Logout.png">
+        <h3 class="navbarLabel" (click)="logOut()" style="left:92.2vw; cursor:pointer;">Cerrar Sesión</h3>
+    </div>
+
+    <h1 class="titleLabel" style="left: 2.5vw;">Mis tableros</h1>
+    <input type="text" id="searchMyBoard" (keyup.enter)="searchMyBoard()" class="searchInput" style="top: 29vh; left: 2.5vw; " placeholder="  Ingrese el nombre de un tablero para buscar" #searchmyboard>
+    <img class="logo" matTooltip="Buscar en los tableros" (click)="searchMyBoard(); searchmyboard.value=''" style="top: 29vh; left: 40vw; height: 5%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Search.png">
+    <img class="logo" matTooltip="Mostrar todos los tableros" (click)="cancelSearchMyBoard(); searchmyboard.value=''" style="top: 29vh; left: 44vw; height: 5%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/DeleteSearch.png">
+    <img class="logo" matTooltip="Crear un tablero" (click)="createBoard()" style="top: 18vh; left: 43vw; height: 8%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/New.png">
+
+    <h1 class="titleLabel" style="left: 53vw;">Tableros en los que colaboro</h1>
+    <input type="text" id="searchCollabBoard" (keyup.enter)="searchCollabBoard()" class="searchInput" style="top: 29vh; left: 53vw;" placeholder="  Ingrese el nombre de un tablero para buscar" #searchcollabboard>
+    <img class="logo" matTooltip="Buscar en los tableros" (click)="searchCollabBoard(); searchcollabboard.value=''" style="top: 29vh; left: 90vw; height: 5%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Search.png">
+    <img class="logo" matTooltip="Mostrar todos los tableros" (click)="cancelSearchCollabBoard(); searchcollabboard.value=''" style="top: 29vh; left: 94vw; height: 5%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/DeleteSearch.png">
+
+    <div class="container scrollableContainer" style="left: 2.5vw;">
+        <div id="scroll">
+            <div class="container defaultParentContainer" *ngFor="let myBoard of displayedMyBoards; let i = index">
+                <div class="container defaultContainer">
+                    <div style="top: 0vh; left: 0vw; position: relative;">
+                        <h1 class="boardLabel" style="font-size: 1.8vw;">{{displayedMyBoards[i].name}}</h1>
+                    </div>
+                    <div style="top: 4.6vh; left: -35.9vw; position: relative;">
+                        <h1 class="boardLabel" style="font-size: 1.2vw;">Tipo de tablero: {{displayedMyBoards[i].type}}</h1>
+                    </div>
+                    <textarea class="descriptionLabel" disabled=true>{{displayedMyBoards[i].description}}</textarea>
+                    <img class="logo" matTooltip="Editar el tablero" (click)="editBoard(i)" style="top: 3vh; left: 32.5vw; height: 18%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Edit.png">
+                    <img class="logo" matTooltip="Eliminar el tablero" (click)="deleteBoard(i)" style="top: 3vh; left: 36vw; height: 18%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Delete.png">
+                    <div class="container touchableContainer1" (click)="openMyBoard(i)"></div>
+                    <div class="container touchableContainer2" (click)="openMyBoard(i)"></div>
+                </div>
+            </div>
+            <h2 class="cantFindBoardsLabel" *ngIf="displayedMyBoards.length==0">No hay coincidencias en tu búsqueda</h2>
+        </div>
+    </div>
+
+    <div class="container scrollableContainer" style="left: 53vw;">
+        <div id="scroll">
+            <div class="container defaultParentContainer" *ngFor="let collabBoard of displayedCollabBoards; let i = index">
+                <div class="container defaultContainer">
+                    <div style="top: 0vh; left: 0vw; position: relative;">
+                        <h1 class="boardLabel" style="font-size: 1.8vw;">{{displayedCollabBoards[i].name}}</h1>
+                    </div>
+                    <div style="top: 4.6vh; left: -35.9vw; position: relative;">
+                        <h1 class="boardLabel" style="font-size: 1.2vw;">Tipo de tablero: {{displayedCollabBoards[i].type}}</h1>
+                    </div>
+                    <textarea class="descriptionLabel" disabled=true>{{displayedCollabBoards[i].description}}</textarea>
+                    <div class="container touchableContainer3" (click)="openCollabBoard(i)"></div>
+                </div>
+            </div>
+            <h2 class="cantFindBoardsLabel" *ngIf="displayedCollabBoards.length==0">No hay coincidencias en tu búsqueda</h2>
+        </div>
+    </div>
+</div>
+
+<h1 style="position: absolute; left: 20vw; top: 21.5vh; font-size: 2.6vh; color: black;user-select: none;">(Cantidad: {{displayedMyBoards.length}})</h1>
+<h1 style="position: absolute; left: 89vw; top: 21.5vh; font-size: 2.6vh; color: black;user-select: none;">(Cantidad: {{displayedCollabBoards.length}})</h1>

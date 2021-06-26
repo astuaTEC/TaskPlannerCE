@@ -1,0 +1,47 @@
+<div>
+    <h1 class="titleLabel" style="left: 0.1vw; top: 4vh;">Colaborador(es):</h1>
+    <input type="text" id="searchCollaborator" class="editInput2" (keyup.enter)="searchCollaborator()" style="top: 2vh; left: 0vw;" placeholder="Ingrese el nombre de un colaborador para buscar" #searchcollaborator>
+    <img class="logoPopup" matTooltip="Buscar en los colaboradores" (click)="searchCollaborator(); searchcollaborator.value='';" style="top: 2vh; left: 1.5vw; height: 4vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Search2.png">
+    <img class="logoPopup" matTooltip="Mostrar todos los colaboradores" (click)="cancelSearchCollaborator(); searchcollaborator.value='';" style="top: 2vh; left: 2.5vw; height: 4vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/DeleteSearch2.png">
+</div>
+
+<div>
+    <h1 class="titleLabel" style="left: 36.2vw; top: -8.2vh;">Profesor(es) observador(es):</h1>
+    <input type="text" id="searchTeacher" class="editInput2" (keyup.enter)="searchTeacher()" style="top: -10.3vh; left: 36.2vw;" placeholder="Ingrese el nombre de un profesor para buscar" #searchteacher>
+    <img class="logoPopup" matTooltip="Buscar en los profesores" (click)="searchTeacher(); searchteacher.value='';" style="top: -10.2vh; left: 37.7vw; height: 4vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Search2.png">
+    <img class="logoPopup" matTooltip="Mostrar todos los profesores" (click)="cancelSearchTeacher(); searchteacher.value='';" style="top: -10.2vh; left: 38.7vw; height: 4vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/DeleteSearch2.png">
+</div>
+
+<div class="container scrollableContainerEdit" style="left: -18.5vw; top: -8vh;">
+    <div id="scrollEdit">
+        <div class="container defaultEditParentContainer" *ngFor="let friend of displayedMyFriends; let i = index">
+            <div class="container defaultEditContainer">
+                <h2 style="font-size: 2.2vh;">{{displayedMyFriends[i].name}}</h2>
+            </div>
+            <img class="logoPopup" (click)="toggleCollaboratorState(i);" *ngIf="displayedMyFriends[i].isCollaborator" matTooltip="{{displayedMyFriends[i].name}} es colaborador" style="top: 2.5vh; left: -2.7vw; height: 3vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes.png">
+            <img class="logoPopup" (click)="toggleCollaboratorState(i);" *ngIf="!displayedMyFriends[i].isCollaborator" matTooltip="{{displayedMyFriends[i].name}} no es colaborador" style="top: 2.5vh; left: -2.7vw; height: 3vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No.png">
+        </div>
+        <h2 class="cantFindLabel" *ngIf="displayedMyFriends.length==0">No hay coincidencias en tu búsqueda</h2>
+    </div>
+</div>
+
+<div class="container scrollableContainerEdit" style="left: 17.7vw; top: -40vh;">
+    <div id="scrollEdit">
+        <div class="container defaultEditParentContainer" *ngFor="let teacher of displayedTeachers; let j = index">
+            <div class="container defaultEditContainer">
+                <h2 style="font-size: 2.2vh;">{{displayedTeachers[j].name}}</h2>
+            </div>
+            <img class="logoPopup" (click)="toggleObserverState(j);" *ngIf="displayedTeachers[j].isObserver" matTooltip="{{displayedTeachers[j].name}} es observador" style="top: 2.5vh; left: -2.7vw; height: 3vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes.png">
+            <img class="logoPopup" (click)="toggleObserverState(j);" *ngIf="!displayedTeachers[j].isObserver" matTooltip="{{displayedTeachers[j].name}} no es observador" style="top: 2.5vh; left: -2.7vw; height: 3vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No.png">
+        </div>
+        <h2 class="cantFindLabel" *ngIf="displayedTeachers.length==0">No hay coincidencias en tu búsqueda</h2>
+    </div>
+</div>
+
+<div>
+    <button class="createBoardButton" (click)="shareBoard()" style="top: -36vh;" >Compartir tablero</button>
+</div>
+
+<div>
+    <img class="logoPopup" matTooltip="Atrás" mat-dialog-close style="top: -99.5vh; left: 64vw; height: 3vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Back2.png">
+</div>
