@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
             this.usuario.contrasena = '';
 
             // Guardar el correo para usos posteriores
-            localStorage.setItem('correoInstitucional', data['correoInstitucional']);
+            localStorage.setItem('correoInstitucional', data['correoInstitucional'].replace(/\s/g, ""));
 
             // Detener el loading
             this.loadingService.detenerLoading();
@@ -51,7 +51,7 @@ export class LoginPage implements OnInit {
             this.usuario.contrasena = '';
 
             // Guardar el correo para usos posteriores
-            localStorage.setItem('correoInstitucional', data['correoInstitucional']);
+            localStorage.setItem('correoInstitucional', data['correoInstitucional'].replace(/\s/g, ""));
 
             // Detener el loading
             this.loadingService.detenerLoading();
@@ -65,7 +65,7 @@ export class LoginPage implements OnInit {
             this.usuario.contrasena = '';
 
             // Guardar el correo para usos posteriores
-            localStorage.setItem('correoInstitucional', data['correoInstitucional']);
+            localStorage.setItem('correoInstitucional', data['correoInstitucional'].replace(/\s/g, ""));
 
             // Detener el loading
             this.loadingService.detenerLoading();
