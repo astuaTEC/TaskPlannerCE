@@ -1,0 +1,61 @@
+<div class="backgroundContainer">
+    <div class="navbarContainer">
+        <img class="navbarLogo" (click)="goToStudentBoards()" style="left:3vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Table.png">
+        <h3 class="navbarLabel" (click)="goToStudentBoards()" style="left:2.9vw; cursor: pointer;">Tableros</h3>
+        <img class="navbarLogo" style="left:25vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Friends.png">
+        <h3 class="navbarLabel" style="left:25vw; cursor:default;">Amigos</h3>
+        <img class="navbarLogo" (click)="goToStats()" style="left:48vw; cursor:pointer" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Stats.png">
+        <h3 class="navbarLabel" (click)="goToStats()" style="left:47.1vw; cursor:pointer;">Estadísticas</h3>
+        <img class="navbarLogo" (click)="goToStudentProfile()" style="left:72vw; cursor:pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Profile.png">
+        <h3 class="navbarLabel" (click)="goToStudentProfile()" style="left:72.67vw; cursor:pointer;">Perfil</h3>
+        <img class="navbarLogo" (click)="logOut()" style="left:94vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Logout.png">
+        <h3 class="navbarLabel" (click)="logOut()" style="left:92.2vw; cursor:pointer;">Cerrar Sesión</h3>
+    </div>
+
+    <h1 class="titleLabel" style="left: 2.5vw;">Mis amigos</h1>
+    <input type="text" id="searchMyFriend" (keyup.enter)="searchMyFriend()" class="searchInput" style="top: 29vh; left: 2.5vw; " placeholder="  Ingrese el nombre de un amigo para buscar" #searchmyfriend>
+    <img class="logo" matTooltip="Buscar en mis amigos" (click)="searchMyFriend(); searchmyfriend.value=''" style="top: 29vh; left: 40vw; height: 5%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Search.png">
+    <img class="logo" matTooltip="Mostrar todos mis amigos" (click)="cancelSearchMyFriend(); searchmyfriend.value=''" style="top: 29vh; left: 44vw; height: 5%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/DeleteSearch.png">
+    <img class="logo" matTooltip="Notificaciones" (click)="goToNotifications()" style="top: 18vh; left: 43vw; height: 8%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Notifications.png">
+
+    <h1 class="titleLabel" style="left: 53vw;">Agregar amigos</h1>
+    <input type="text" id="searchStudent" (keyup.enter)="searchStudent()" class="searchInput" style="top: 29vh; left: 53vw;" placeholder="  Ingrese el nombre de un estudiante para buscar" #searchstudent>
+    <img class="logo" matTooltip="Buscar en los estudiantes" (click)="searchStudent(); searchstudent.value=''" style="top: 29vh; left: 90vw; height: 5%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Search.png">
+    <img class="logo" matTooltip="Mostrar todos los estudiantes" (click)="cancelSearchStudent(); searchstudent.value=''" style="top: 29vh; left: 94vw; height: 5%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/DeleteSearch.png">
+
+    <div class="container scrollableContainer" style="left: 2.5vw;">
+        <div id="scroll">
+            <div class="container defaultSmallParentContainer" *ngFor="let myFriend of displayedMyFriends; let i = index">
+                <div class="container defaultSmallContainer">
+                    <div style="top: 0vh; left: 0vw; position: relative;">
+                        <h1 class="containerLabel" style="font-size: 1.7vw;">{{displayedMyFriends[i].name}}</h1>
+                    </div>
+                    <div style="top: 4vh; left: -35.9vw; position: relative;">
+                        <h1 class="containerLabel" style="font-size: 1.2vw;">{{displayedMyFriends[i].email}}</h1>
+                    </div>
+                    <img class="logo" matTooltip="Eliminar el amigo" (click)="deleteMyFriend(i)" style="top: 3.7vh; left: 35.7vw; height: 37%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Delete.png">
+                </div>
+            </div>
+            <h2 class="cantFindLabel" *ngIf="displayedMyFriends.length==0">No hay coincidencias en tu búsqueda</h2>
+        </div>
+    </div>
+
+    <div class="container scrollableContainer" style="left: 53vw;">
+        <div id="scroll">
+            <div class="container defaultSmallParentContainer" *ngFor="let student of displayedStudents; let j = index">
+                <div class="container defaultSmallContainer">
+                    <div style="top: 0vh; left: 0vw; position: relative;">
+                        <h1 class="containerLabel" style="font-size: 1.7vw;">{{displayedStudents[j].name}}</h1>
+                    </div>
+                    <div style="top: 4vh; left: -35.9vw; position: relative;">
+                        <h1 class="containerLabel" style="font-size: 1.2vw;">{{displayedStudents[j].email}}</h1>
+                    </div>
+                    <img class="logo" *ngIf="displayedStudents[j].requested" matTooltip="Existe una solicitud de amistad pendiente" (click)="cancelFriendRequest(j)" style="top: 3.7vh; left: 35.7vw; height: 37%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No.png">
+                    <img class="logo" *ngIf="!displayedStudents[j].requested" matTooltip="Enviar solicitud de amistad" (click)="sendFriendRequest(j)" style="top: 3.7vh; left: 35.7vw; height: 37%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Request.png">
+                </div>
+            </div>
+            <h2 class="cantFindLabel" *ngIf="displayedStudents.length==0">No hay coincidencias en tu búsqueda</h2>
+        </div>
+    </div>
+
+</div>

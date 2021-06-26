@@ -1,0 +1,37 @@
+<div>
+    <h1 class="titleLabel1" style="top: -0.7vh;">Solicitudes de amistad:</h1>
+</div>
+
+<div class="container scrollableContainerEdit" style="left: -2.4vw; top: -1vh;">
+    <div id="scrollEdit">
+        <div class="container defaultEditParentContainer" *ngFor="let friendRequest of friendRequests; let i = index">
+            <div class="container defaultEditContainer">
+                <h2 style="font-size: 2.2vh; user-select: none;">{{friendRequests[i].name}} ({{friendRequests[i].email}})</h2>
+            </div>
+            <img class="logoPopup" (click)="acceptFriendRequest(i);"  matTooltip="Aceptar la solicitud de amistad de {{friendRequests[i].name}}" style="top: 2.7vh; left: -6.5vw; height: 3vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes.png">
+            <img class="logoPopup" (click)="declineFriendRequest(i);"  matTooltip="Rechazar la solicitud de amistad de {{friendRequests[i].name}}" style="top: 2.7vh; left: -5.7vw; height: 3vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No.png">
+        </div>
+        <h2 class="cantFindLabel" style="left: 13.5vw;" *ngIf="friendRequests.length==0">No hay solicitudes de amistad</h2>
+    </div>
+</div>
+
+<div>
+    <h1 class="titleLabel1" style="top: 3vh;">Notificaciones:</h1>
+</div>
+
+<div class="container scrollableContainerEdit" style="left: -2.4vw; top: 2.5vh;">
+    <div id="scrollEdit">
+        <div class="container defaultEditParentContainer" *ngFor="let notification of notifications; let i = index">
+            <div class="container defaultEditContainer">
+                <h2 style="font-size: 2.2vh; user-select: none;">{{notifications[i].description}}</h2>
+            </div>
+            <img class="logoPopup" style="top: 2.7vh; left: -6.5vw; height: 3vh; visibility: hidden;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes.png">
+            <img class="logoPopup" style="top: 2.7vh; left: -5.7vw; height: 3vh; visibility: hidden;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No.png">
+        </div>
+        <h2 class="cantFindLabel" style="left: 12vw;" *ngIf="notifications.length==0">No hay notificaciones que mostrar</h2>
+    </div>
+</div>
+
+<div>
+    <img class="logoPopup" matTooltip="Atrás" mat-dialog-close style="top: -65.4vh; left: 47vw; height: 3vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Back2.png">
+</div>

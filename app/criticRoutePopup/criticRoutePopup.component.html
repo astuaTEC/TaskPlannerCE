@@ -1,0 +1,31 @@
+<h1 class="titleLabel">Ruta crítica del proyecto:</h1>
+<div class="container newScrollableContainer" style="left: 0vw;">
+    <div id="newScroll">
+        <div class="container defaultNewParentContainer" *ngFor="let task of tasks; let i = index">
+            <div class="container defaultNewContainer">
+                <div style="top: 0vh; left: 6vw; position: relative;">
+                    <div *ngIf="!task.end" style="top: 1.5vh; left: -5.5vw; position: relative;">
+                        <h1 style="position: relative; font-size: 1.5vw; max-width: 20vw;">{{task.name}}</h1>
+                    </div>
+                    <div *ngIf="!task.end " style="top: -1.5vh; left: -5.5vw; position: relative;">
+                        <h1 style="position: relative; font-size: 1vw; max-width: 20vw;">Creada el {{task.startDate}}</h1>
+                    </div>
+                    <div *ngIf="!task.end" style="top: -6vh; left: -5.5vw; position: relative;">
+                        <h1 style="position: relative; font-size: 1vw; max-width: 20vw;">Finaliza el {{task.endDate}}</h1>
+                    </div>
+                    <div *ngIf="task.end && !task.endend" style="top: 4.5vh; left: 2.8vw; position: relative;">
+                        <h1 style="position: relative; font-size: 1.5vw; max-width: 25vw; left: -5vw; top: 0.5vh;">Tareas sin prioridad establecida</h1>
+                    </div>
+                    <div *ngIf="task.endend" style="top: 4.5vh; left: 2.6vw; position: relative;">
+                        <h1 style="position: relative; font-size: 1.5vw; max-width: 25vw; top: 0.5vh;">Fin del proyecto</h1>
+                    </div>
+                </div>
+            </div>
+            <img *ngIf="tasks.length!=(i+1)" class="arrowLogo" style="top: 20vh; left: -20vw; height: 5vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1624386312/CE4101/TaskPlanner/CriticArrow.png"> 
+            <img *ngIf="tasks.length==(i+1)" class="arrowLogo" style="top: 20vh; left: -20vw; height: 5vw; visibility: hidden;"  src="https://res.cloudinary.com/dfionqbqe/image/upload/v1624386312/CE4101/TaskPlanner/CriticArrow.png"> 
+        </div>
+    </div>
+</div>
+<div>
+    <img class="logoPopup" matTooltip="Atrás" mat-dialog-close style="top: -80vh; left: 34vw; height: 3vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Back2.png">
+</div>

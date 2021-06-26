@@ -1,0 +1,131 @@
+<div class="backgroundContainer">
+    <div class="navbarContainer">
+        <img class="navbarLogo" (click)="goToStudentBoards()" style="left:3vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Table.png">
+        <h3 class="navbarLabel" (click)="goToStudentBoards()" style="left:2.9vw; cursor: pointer;">Tableros</h3>
+        <img class="navbarLogo" (click)="goToFriends()" style="left:25vw; cursor:pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Friends.png">
+        <h3 class="navbarLabel" (click)="goToFriends()" style="left:25vw; cursor:pointer;">Amigos</h3>
+        <img class="navbarLogo" (click)="goToStats()" style="left:48vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Stats.png">
+        <h3 class="navbarLabel" (click)="goToStats()" style="left:47.1vw; cursor:pointer;">Estadísticas</h3>
+        <img class="navbarLogo" style="left:72vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Profile.png">
+        <h3 class="navbarLabel" style="left:72.67vw; cursor:default;">Perfil</h3>
+        <img class="navbarLogo" (click)="logOut()" style="left:94vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Logout.png">
+        <h3 class="navbarLabel" (click)="logOut()" style="left:92.2vw; cursor:pointer;">Cerrar Sesión</h3>
+    </div>
+
+
+
+    <h1 class="titleLabel" style="left: 2.5vw; top: 27vh;">Primer nombre:</h1>
+    <input type="text" id="name1" class="registerInput" style="top: 27.5vh; left: 26.5vw;" placeholder="Primer nombre" value="{{name1}}">
+    
+    <h1 class="titleLabel" style="left: 2.5vw; top: 34vh;">Segundo nombre:</h1>
+    <input type="text" id="name2" class="registerInput" style="top: 34.5vh; left: 28vw" placeholder="Segundo nombre" *ngIf="name2!=''" value="{{name2}}">
+    <input type="text" id="name2" class="registerInput" style="top: 34.5vh; left: 28vw" placeholder="Segundo nombre" *ngIf="name2==''">
+
+    
+    <h1 class="titleLabel" style="left: 2.5vw; top: 41vh;">Primer apellido:</h1>
+    <input type="text" id="surname1" class="registerInput" style="top: 41.5vh; left: 26.5vw" placeholder="Primer apellido" value="{{surname1}}">
+    
+    <h1 class="titleLabel" style="left: 2.5vw; top: 48vh;">Segundo apellido:</h1>
+    <input type="text" id="surname2" class="registerInput" style="top: 48.5vh; left: 28vw" placeholder="Segundo apellido" value="{{surname2}}">
+    
+
+
+
+
+
+    <h1 class="titleLabel" style="left: 2.5vw; top: 61vh;">Correo institucional:</h1>
+    <input type="text" id="email" (keyup)="openErrorDialog('No es posible editar el correo institucional.')" (click)="openErrorDialog('No es posible editar el correo institucional.')" readonly="true" class="registerInput" style="top: 61.5vh; left: 29.3vw" placeholder="Correo institucional" value="{{email}}">
+    
+    <h1 class="titleLabel" style="left: 2.5vw; top: 68vh;">Carné institucional:</h1>
+    <input type="text" (keyup)="openErrorDialog('No es posible editar el carné institucional.')" (click)="openErrorDialog('No es posible editar el carné institucional.')" readonly="true" id="id" class="registerInput" style="top: 68.5vh; left: 28.9vw" placeholder="Carné institucional" value="{{id}}">
+
+
+
+
+
+
+    <h1 class="titleLabel" style="left: 2.5vw; top: 81vh;">Número de teléfono:</h1>
+    <input type="text" id="phoneNumber" class="registerInput" style="top: 81.5vh; left: 29.5vw" placeholder="Número de teléfono" value="{{phoneNumber}}">
+
+
+
+
+
+    <h1 class="titleLabel" style="left: 50vw; top: 27vh;">Provincia de residencia actual:</h1>
+    <select id="currentProvince" class="registerDropList" style="top: 27.2vh; left: 73.3vw;">
+        <option *ngIf="currentProvince=='San José'" selected="true">San José</option>
+        <option *ngIf="currentProvince!='San José'">San José</option>
+
+        <option *ngIf="currentProvince=='Alajuela'" selected="true">Alajuela</option>
+        <option *ngIf="currentProvince!='Alajuela'">Alajuela</option>
+
+        <option *ngIf="currentProvince=='Cartago'" selected="true">Cartago</option>
+        <option *ngIf="currentProvince!='Cartago'">Cartago</option>
+
+        <option *ngIf="currentProvince=='Heredia'" selected="true">Heredia</option>
+        <option *ngIf="currentProvince!='Heredia'">Heredia</option>
+
+        <option *ngIf="currentProvince=='Guanacaste'" selected="true">Guanacaste</option>
+        <option *ngIf="currentProvince!='Guanacaste'">Guanacaste</option>
+
+        <option *ngIf="currentProvince=='Puntarenas'" selected="true">Puntarenas</option>
+        <option *ngIf="currentProvince!='Puntarenas'">Puntarenas</option>
+
+        <option *ngIf="currentProvince=='Limón'" selected="true">Limón</option>
+        <option *ngIf="currentProvince!='Limón'">Limón</option>
+    </select>
+
+    <h1 class="titleLabel" style="left: 50vw; top: 34vh;">Provincia de residencia al estudiar:</h1>
+    <select id="academicProvince" class="registerDropList" style="top: 34.2vh; left: 76.2vw;">
+        <option *ngIf="academicProvince=='San José'" selected="true">San José</option>
+        <option *ngIf="academicProvince!='San José'">San José</option>
+
+        <option *ngIf="academicProvince=='Alajuela'" selected="true">Alajuela</option>
+        <option *ngIf="academicProvince!='Alajuela'">Alajuela</option>
+
+        <option *ngIf="academicProvince=='Cartago'" selected="true">Cartago</option>
+        <option *ngIf="academicProvince!='Cartago'">Cartago</option>
+
+        <option *ngIf="academicProvince=='Heredia'" selected="true">Heredia</option>
+        <option *ngIf="academicProvince!='Heredia'">Heredia</option>
+
+        <option *ngIf="academicProvince=='Guanacaste'" selected="true">Guanacaste</option>
+        <option *ngIf="academicProvince!='Guanacaste'">Guanacaste</option>
+
+        <option *ngIf="academicProvince=='Puntarenas'" selected="true">Puntarenas</option>
+        <option *ngIf="academicProvince!='Puntarenas'">Puntarenas</option>
+
+        <option *ngIf="academicProvince=='Limón'" selected="true">Limón</option>
+        <option *ngIf="academicProvince!='Limón'">Limón</option>
+    </select>
+
+
+
+    <h1 class="titleLabel" style="left: 50vw; top: 47vh;">Carrera matriculada:</h1>
+    <input id="career" class="registerInput"  value="{{career}}" style="top: 47.2vh; left: 77.5vw;" (keyup)="openErrorDialog('No es posible editar la carrera matriculada.')" (click)="openErrorDialog('No es posible editar la carrera matriculada.')" readonly="true" dropzone="down">
+
+
+    <h1 class="titleLabel" style="left: 50vw; top: 54vh;">Área de interés:</h1>
+    <select id="interest" class="registerDropList" style="top: 54.2vh; left: 62.7vw;">
+        
+        <option *ngIf="interest=='Académico'" selected="true">Académico</option>
+        <option *ngIf="interest!='Académico'">Académico</option>
+
+        <option *ngIf="interest=='Cultural'" selected="true">Cultural</option>
+        <option *ngIf="interest!='Cultural'">Cultural</option>
+
+        <option *ngIf="interest=='Deportivo'" selected="true">Deportivo</option>
+        <option *ngIf="interest!='Deportivo'">Deportivo</option>
+
+        <option *ngIf="interest=='Personal'" selected="true">Personal</option>
+        <option *ngIf="interest!='Personal'">Personal</option>
+
+        <option *ngIf="interest=='Otro'" selected="true">Otro</option>
+        <option *ngIf="interest!='Otro'">Otro</option>
+    </select>
+
+    <button class="registerButton" (click)="editProfile()">Guardar cambios</button>
+    <button class="deleteButton" (click)="deleteProfile()">Eliminar mi perfil</button>
+
+</div>
+

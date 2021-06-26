@@ -1,0 +1,134 @@
+.titleLabel1{
+    position: relative;
+    font-size: 1.4vw;
+    color: white;
+    user-select: none;
+}
+
+
+.scrollableContainerEdit{
+    position: relative;
+    height: 25vh;
+    width: 45vw;
+    align-self:center;
+    background: white;
+    border: 2px solid black;
+    border-radius: 2vh;
+ }
+ 
+ #scrollEdit{
+    position: relative;
+    top: 0vh; 
+    left: -0.5vw;
+    height: 24.4vh;
+    width: 45vw;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: auto;
+    overflow-x: hidden;
+  }
+ 
+  .defaultEditContainer{
+    display: inline-flex;
+    position: relative;
+    top: 1vh;
+    left: -1vw;
+    height: 6vh;
+    width: 42vw;
+ 
+    border-radius: 1vh;
+    overflow-y:hidden;
+ 
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    background-color: rgb(150, 150, 150);
+ 
+  }
+ 
+  .defaultEditParentContainer{
+    display: inline-flex;
+    position: relative;
+    top: 0vh;
+    left: 0vw;
+    height: 7vh;
+    width: 48vw;
+  }
+
+  .createBoardButton{
+    position: relative;
+    width: 25vw;
+    height: 10vh;
+    border-radius: 2vh;
+    font-size: 3.5vh;
+    color: white;
+    background-color: #3B8686;
+    display: inline-block;      
+    left: 50%;                  
+    transform: translate(-50%);
+    cursor: pointer;
+    border-color:black;
+}
+
+.cantFindLabel{
+  user-select: none;
+  position: relative;
+  top: 9.6vh;
+  color: black;
+  width: 36vw;
+  font-size: 2.8vh;
+}
+
+.titleLabel{
+  position: relative;
+  font-size: 1.4vw;
+  left: 0vw;
+  color: white;
+}
+
+.saveChangesButton{
+  position: relative;
+  width: 40vw;
+  height: 6vh;
+  border-radius: 2vh;
+  font-size: 3.5vh;
+  color: white;
+  background-color: #3B8686;
+  display: inline-block;      
+  left: 41vh;                  
+  transform: translate(-50%);
+  cursor: pointer;
+  border-color:black;
+}
+
+.saveChangesButton2{
+  position: relative;
+  width: 40vw;
+  height: 6vh;
+  border-radius: 2vh;
+  font-size: 3.5vh;
+  color: white;
+  background-color: #3B8686;
+  display: inline-block;      
+  left: 50%;                  
+  transform: translate(-50%);
+  cursor: pointer;
+  border-color:black;
+}
+
+.deleteButton{
+  position: relative;
+  width: 20vw;
+  height: 6vh;
+  border-radius: 2vh;
+  font-size: 3.5vh;
+  color: white;
+  background-color: #720000;
+  display: inline-block;      
+  left: 33vh;                  
+  transform: translate(-50%);
+  cursor: pointer;
+  border-color:black;
+}

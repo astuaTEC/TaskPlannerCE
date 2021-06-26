@@ -1,0 +1,14 @@
+<div>
+    <h1 class="titleLabel" style="top: -1vh;">Nombre del estado de completitud:</h1>
+    <input type="text" id="stateName" class="editInput" style="top: -3vh; left: -0.1vw; " value="{{stateName}}" placeholder="Nombre del estado de completitud">
+</div>
+
+<div>
+    <img class="logoPopup" matTooltip="Atrás" mat-dialog-close style="top: -13.5vh; left: 34vw; height: 3vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Back2.png">
+</div>
+
+<div>
+    <button class="saveChangesButton" *ngIf='edit' (click)="saveStateChanges()" style="top: -6vh;" >Guardar cambios</button>
+    <button class="saveChangesButton" *ngIf='!edit' (click)="saveStateChanges()" style="top: -6vh;" >Crear estado de completitud</button>
+</div>
+

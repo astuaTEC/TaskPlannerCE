@@ -1,0 +1,73 @@
+<h1 class="infoLabel">
+    {{message}}
+</h1>
+
+<div>
+    <img class="yesNoLogo" *ngIf="id==1" mat-dialog-close (click)="goToLogin()" style="left: 25%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+    <img class="yesNoLogo" *ngIf="id==1" mat-dialog-close style="left: 45.5%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+</div>
+
+
+
+<img class="yesNoLogo" *ngIf="id==2" mat-dialog-close (click)="deleteCollaborator()" style="left: 10vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==2" mat-dialog-close style="left: 17vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==3" mat-dialog-close (click)="deleteTeacher()" style="left: 10vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==3" mat-dialog-close style="left: 16.5vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==4" mat-dialog-close (click)="saveBoardChanges()" style="left: 10vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==4" mat-dialog-close style="left: 20vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==5" mat-dialog-close (click)="deleteBoard()" style="left: 10vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==5" mat-dialog-close style="left: 17vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==21" mat-dialog-close (click)="deleteState()" style="left: 10vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==21" mat-dialog-close style="left: 17vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==6" mat-dialog-close (click)="createBoard()" style="left: 10vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==6" mat-dialog-close style="left: 17vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==7" mat-dialog-close (click)="deleteStudentProfile()" style="left: 3.8vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==7" mat-dialog-close style="left: 8vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==8" mat-dialog-close (click)="editStudentProfile()" style="left: 3.8vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==8" mat-dialog-close style="left: 8vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==9" mat-dialog-close (click)="deleteFriend()" style="left: 10vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==9" mat-dialog-close style="left: 17vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==10" mat-dialog-close (click)="sendFriendRequest()" style="left: 10vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==10" mat-dialog-close style="left: 17vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==11" mat-dialog-close (click)="cancelFriendRequest()" style="left: 10vw; top: -1vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==11" mat-dialog-close style="left: 17vw; top: -1vh;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==12" mat-dialog-close (click)="editState()" style="left: 10vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==12" mat-dialog-close style="left: 17vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==13" mat-dialog-close (click)="deleteState()" style="left: 10vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==13" mat-dialog-close style="left: 17vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==14" mat-dialog-close (click)="editTask()" style="left: 10vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==14" mat-dialog-close style="left: 17vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==15" mat-dialog-close (click)="deleteTask()" style="left: 10vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==15" mat-dialog-close style="left: 17vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==16" mat-dialog-close (click)="createTask()" style="left: 10vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==16" mat-dialog-close style="left: 17vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==17" mat-dialog-close (click)="editTeacherProfile()" style="left: 3.8vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==17" mat-dialog-close style="left: 8vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==18" mat-dialog-close (click)="deleteStudentProfile()" style="left: 3.8vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==18" mat-dialog-close style="left: 8vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==19" mat-dialog-close (click)="acceptFriendRequest()" style="left: 10vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==19" mat-dialog-close style="left: 17vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==20" mat-dialog-close (click)="declineFriendRequest()" style="left: 10vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==20" mat-dialog-close style="left: 17vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">
+
+<img class="yesNoLogo" *ngIf="id==25" mat-dialog-close (click)="shareBoard()" style="left: 10vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Yes2.png">
+<img class="yesNoLogo" *ngIf="id==25" mat-dialog-close style="left: 17vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/No2.png">

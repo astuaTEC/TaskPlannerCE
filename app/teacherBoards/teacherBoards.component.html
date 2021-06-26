@@ -1,0 +1,41 @@
+<div class="backgroundContainer">
+    <div class="navbarContainer">
+        <img class="navbarLogo" style="left:3vw;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Table.png">
+        <h3 class="navbarLabel" style="left:2.7vw; cursor: default;">Tableros</h3>
+        <img class="navbarLogo" (click)="goToTeacherProfile()" style="left:48vw; cursor:pointer" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Profile.png">
+        <h3 class="navbarLabel" (click)="goToTeacherProfile()" style="left:48.65vw; cursor:pointer;">Perfil</h3>
+        <img class="navbarLogo" (click)="logOut()" style="left:94vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Logout.png">
+        <h3 class="navbarLabel" (click)="logOut()" style="left:92.2vw; cursor:pointer;">Cerrar Sesión</h3>
+        <img class="navbarLogo" *ngIf="admin" (click)="goToBoardManagement()" style="left:24vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Edit.png">
+        <h3 class="navbarLabel" *ngIf="admin" (click)="goToBoardManagement()" style="left:20.6vw; cursor:pointer;">Administrar tableros</h3>
+        <img class="navbarLogo" *ngIf="admin" (click)="goToAdminManagement()" style="left:72vw; cursor: pointer;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1622076899/CE4101/TaskPlanner/Friends.png">
+        <h3 class="navbarLabel" *ngIf="admin" (click)="goToAdminManagement()" style="left:68.3vw; cursor:pointer;">Agregar administrador</h3>
+    </div>
+
+    <h1 class="titleLabel" style="left: 2.5vw;">Tableros en los que soy visualizador</h1>
+    <input type="text" id="searchMyBoard" (keyup.enter)="searchMyBoard()" class="searchInput" style="top: 29vh; left: 2.5vw; " placeholder="  Ingrese el nombre de un tablero para buscar" #searchmyboard>
+    <img class="logo" matTooltip="Buscar en los tableros" (click)="searchMyBoard(); searchmyboard.value=''" style="top: 29vh; left: 40vw; height: 5%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Search.png">
+    <img class="logo" matTooltip="Mostrar todos los tableros" (click)="cancelSearchMyBoard(); searchmyboard.value=''" style="top: 29vh; left: 44vw; height: 5%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/DeleteSearch.png">
+
+    <div class="container scrollableContainer" style="left: 2.5vw;">
+        <div id="scroll">
+            <div class="container defaultParentContainer" *ngFor="let myBoard of displayedMyBoards; let i = index">
+                <div class="container defaultContainer">
+                    <div style="top: 0vh; left: 0vw; position: relative;">
+                        <h1 class="boardLabel" style="font-size: 1.8vw;">{{displayedMyBoards[i].name}}</h1>
+                    </div>
+                    <div style="top: 4.6vh; left: -35.9vw; position: relative;">
+                        <h1 class="boardLabel" style="font-size: 1.2vw;">Tipo de tablero: {{displayedMyBoards[i].type}}</h1>
+                    </div>
+                    <textarea class="descriptionLabel" disabled=true>{{displayedMyBoards[i].description}}</textarea>
+                    <div class="container touchableContainer1" (click)="openMyBoard(i)"></div>
+                    <div class="container touchableContainer2" (click)="openMyBoard(i)"></div>
+                    <img class="logo5" matTooltip="{{displayedMyBoards[i].info}}" style="top: 3vh; left: -74vw; height: 20%;" src="https://res.cloudinary.com/dfionqbqe/image/upload/v1621979930/CE4101/TaskPlanner/Info.png">
+                </div>
+            </div>
+            <h2 class="cantFindBoardsLabel" *ngIf="displayedMyBoards.length==0">No hay coincidencias en tu búsqueda</h2>
+        </div>
+    </div>
+
+
+</div>
