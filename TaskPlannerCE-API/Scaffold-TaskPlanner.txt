@@ -1,0 +1,1 @@
+Scaffold-DBContext "Server=tcp:taskplannerce.database.windows.net,1433;Initial Catalog=TaskPlannerCEDB;Persist Security Info=False;User ID=XtecDigitalAdmin;Password=XtecDigital20;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Force

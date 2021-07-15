@@ -33,6 +33,7 @@ namespace TaskPlannerCEAPI.Test.PruebasUnitarias
                 ProvinciaUniversidad = "Cartago",
                 AreaDeInteres = "Deportiva"
             });
+
             contexto.SaveChanges();
 
             var login = new Login() { correoInstitucional = "sam.astua@estudiantec.cr", contrasena = "123456" };
